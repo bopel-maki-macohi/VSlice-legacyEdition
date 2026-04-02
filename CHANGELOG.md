@@ -168,3 +168,5 @@ note, this one is iffy cuz they slacked wit it lol!
 ## [0.1.0] - 2020-10-05
 ### Added
 - Uh, everything. This the game's initial gamejam release. We put it out
+
+Why are you down here lol?

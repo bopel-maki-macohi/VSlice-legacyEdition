@@ -1,5 +1,8 @@
 export/
 .vscode/
 .haxelib/
-APIStuff.hx
+
+# filesize
+art/devvids/
+
 .DS_STORE
