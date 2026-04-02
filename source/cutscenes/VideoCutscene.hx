@@ -28,6 +28,8 @@ class VideoCutscene extends FlxSpriteGroup
 
 		vid.active = false;
 
+		vid.bitmap.onEndReached.add(finishVideo.bind(0.5));
+
 		vid.bitmap.onFormatSetup.add(function():Void
 		{
 			if (vid.bitmap != null && vid.bitmap.bitmapData != null)
@@ -48,8 +50,6 @@ class VideoCutscene extends FlxSpriteGroup
 
 		add(blackScreen);
 		add(vid);
-
-		blackScreen.visible = vid.visible = false;
 	}
 
 	public function play(cutscene:String)
@@ -61,8 +61,6 @@ class VideoCutscene extends FlxSpriteGroup
 			vid.load(cutscene, fileOptions);
 			vid.play();
 			// onVideoStarted.dispatch();
-
-			blackScreen.visible = vid.visible = true;
 		}
 		else
 		{
