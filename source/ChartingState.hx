@@ -64,7 +64,7 @@ class ChartingState extends MusicBeatState
 
 	var gridBG:FlxSprite;
 
-	var _song:SwagSong;
+	var _song:SongData;
 
 	var typingShit:FlxInputText;
 	/*
@@ -207,7 +207,7 @@ class ChartingState extends MusicBeatState
 			loadSong(_song.song);
 		});
 
-		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
+		var reloadSongJson:FlxButton = new FlxButton(reloadSongRegistry.x, saveButton.y + 30, "Reload JSON", function()
 		{
 			loadJson(_song.song.toLowerCase());
 		});
@@ -894,7 +894,7 @@ class ChartingState extends MusicBeatState
 
 	private function addSection(lengthInSteps:Int = 16):Void
 	{
-		var sec:SwagSection = {
+		var sec:SectionData = {
 			lengthInSteps: lengthInSteps,
 			bpm: _song.bpm,
 			changeBPM: false,
@@ -992,7 +992,7 @@ class ChartingState extends MusicBeatState
 	}
 
 	/*
-		function calculateSectionLengths(?sec:SwagSection):Int
+		function calculateSectionLengths(?sec:SectionData):Int
 		{
 			var daLength:Int = 0;
 
@@ -1035,13 +1035,13 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
-		PlayState.SONG = Song.loadFromJson(song.toLowerCase(), song.toLowerCase());
+		PlayState.SONG = SongRegistry.loadFromJson(song.toLowerCase(), song.toLowerCase());
 		LoadingState.loadAndSwitchState(new ChartingState());
 	}
 
 	function loadAutosave():Void
 	{
-		PlayState.SONG = Song.parseJSONshit(FlxG.save.data.autosave);
+		PlayState.SONG = SongRegistry.parseJSONshit(FlxG.save.data.autosave);
 		FlxG.resetState();
 	}
 

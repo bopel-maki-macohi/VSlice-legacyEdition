@@ -30,7 +30,7 @@ class Conductor
 	{
 	}
 
-	public static function mapBPMChanges(song:SwagSong)
+	public static function mapBPMChanges(song:SongData)
 	{
 		bpmChangeMap = [];
 

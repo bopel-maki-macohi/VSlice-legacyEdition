@@ -36,7 +36,7 @@ import Discord.DiscordClient;
 class PlayState extends MusicBeatState
 {
 	public static var curStage:String = '';
-	public static var SONG:SwagSong;
+	public static var SONG:SongData;
 	public static var isStoryMode:Bool = false;
 	public static var storyWeek:Int = 0;
 	public static var storyPlaylist:Array<String> = [];
@@ -161,7 +161,7 @@ class PlayState extends MusicBeatState
 		persistentDraw = true;
 
 		if (SONG == null)
-			SONG = Song.loadFromJson('tutorial');
+			SONG = SongRegistry.loadFromJson('tutorial');
 
 		Conductor.mapBPMChanges(SONG);
 		Conductor.changeBPM(SONG.bpm);
@@ -801,7 +801,7 @@ class PlayState extends MusicBeatState
 		{
 			seenCutscene = true;
 
-			switch (curSong.toLowerCase())
+			switch (curSongRegistry.toLowerCase())
 			{
 				case "winter-horrorland":
 					var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
@@ -851,7 +851,7 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			switch (curSong.toLowerCase())
+			switch (curSongRegistry.toLowerCase())
 			{
 				// REMOVE THIS LATER
 				// case 'ugh':
@@ -1144,7 +1144,7 @@ class PlayState extends MusicBeatState
 		notes = new FlxTypedGroup<Note>();
 		add(notes);
 
-		var noteData:Array<SwagSection>;
+		var noteData:Array<SectionData>;
 
 		// NEW SHIT
 		noteData = songData.notes;
@@ -1914,7 +1914,7 @@ class PlayState extends MusicBeatState
 					FlxG.sound.play(Paths.sound('Lights_Shut_off'), function()
 					{
 						// no camFollow so it centers on horror tree
-						SONG = Song.loadFromJson(storyPlaylist[0].toLowerCase() + difficulty, storyPlaylist[0]);
+						SONG = SongRegistry.loadFromJson(storyPlaylist[0].toLowerCase() + difficulty, storyPlaylist[0]);
 						LoadingState.loadAndSwitchState(new PlayState());
 					});
 				}
@@ -1922,7 +1922,7 @@ class PlayState extends MusicBeatState
 				{
 					prevCamFollow = camFollow;
 
-					SONG = Song.loadFromJson(storyPlaylist[0].toLowerCase() + difficulty, storyPlaylist[0]);
+					SONG = SongRegistry.loadFromJson(storyPlaylist[0].toLowerCase() + difficulty, storyPlaylist[0]);
 					LoadingState.loadAndSwitchState(new PlayState());
 				}
 			}
@@ -2542,7 +2542,7 @@ class PlayState extends MusicBeatState
 
 		if (PreferencesMenu.getPref('camera-zoom'))
 		{
-			if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
+			if (curSongRegistry.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
 			{
 				FlxG.camera.zoom += 0.015;
 				camHUD.zoom += 0.03;
