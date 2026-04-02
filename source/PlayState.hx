@@ -801,7 +801,7 @@ class PlayState extends MusicBeatState
 		{
 			seenCutscene = true;
 
-			switch (curSongRegistry.toLowerCase())
+			switch (curSong.toLowerCase())
 			{
 				case "winter-horrorland":
 					var blackScreen:FlxSprite = new FlxSprite(0, 0).makeGraphic(Std.int(FlxG.width * 2), Std.int(FlxG.height * 2), FlxColor.BLACK);
@@ -851,7 +851,7 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			switch (curSongRegistry.toLowerCase())
+			switch (curSong.toLowerCase())
 			{
 				// REMOVE THIS LATER
 				// case 'ugh':
@@ -2542,7 +2542,7 @@ class PlayState extends MusicBeatState
 
 		if (PreferencesMenu.getPref('camera-zoom'))
 		{
-			if (curSongRegistry.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
+			if (curSong.toLowerCase() == 'milf' && curBeat >= 168 && curBeat < 200 && camZooming && FlxG.camera.zoom < 1.35)
 			{
 				FlxG.camera.zoom += 0.015;
 				camHUD.zoom += 0.03;
