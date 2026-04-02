@@ -386,6 +386,9 @@ class StoryMenuState extends MusicBeatState
 			if (weekCharacterThing.graphic == null)
 				continue;
 
+			weekCharacterThing.x += weekCharacterThing.propData?.offsets[0] ?? 0;
+			weekCharacterThing.y += weekCharacterThing.propData?.offsets[1] ?? 0;
+			
 			weekCharacterThing.playAnimation('idle');
 			grpWeekCharacters.add(weekCharacterThing);
 		}

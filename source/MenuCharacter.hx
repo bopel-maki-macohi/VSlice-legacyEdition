@@ -47,12 +47,12 @@ class MenuCharacter extends FlxSprite
 		}
 
 		playAnimation('idle');
-		updateHitbox();
 
 		if (propData.scale != null)
 			this.scale.set(propData?.scale[0] ?? 1, propData?.scale[0] ?? 1);
 		else
 			this.scale.set(1, 1);
+		updateHitbox();
 
 		return c;
 	}
@@ -60,7 +60,7 @@ class MenuCharacter extends FlxSprite
 	public function playAnimation(anim:String)
 	{
 		animation.play(anim);
-		
+
 		if (character == '' || character == null)
 			return;
 
