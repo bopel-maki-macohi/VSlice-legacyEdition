@@ -1,9 +1,9 @@
 package;
 
+import data.Song;
+import data.Section;
 import cutscenes.*;
 import stageprops.*;
-import data.Section.SwagSection;
-import data.Song.SwagSong;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxObject;
@@ -107,7 +107,6 @@ class PlayState extends MusicBeatState
 	var santa:FlxSprite;
 
 	var bgGirls:BackgroundGirls;
-	var wiggleShit:WiggleEffect = new WiggleEffect();
 
 	var tankmanRun:FlxTypedGroup<TankmenBG>;
 	var gfCutsceneLayer:FlxGroup;
@@ -215,7 +214,7 @@ class PlayState extends MusicBeatState
 				halloweenBG.animation.addByPrefix('idle', 'halloweem bg0');
 				halloweenBG.animation.addByPrefix('lightning', 'halloweem bg lightning strike', 24, false);
 				halloweenBG.animation.play('idle');
-				
+
 				add(halloweenBG);
 
 				isHalloween = true;
@@ -244,7 +243,7 @@ class PlayState extends MusicBeatState
 					light.visible = false;
 					light.setGraphicSize(Std.int(light.width * 0.85));
 					light.updateHitbox();
-					
+
 					light.shader = lightFadeShader.shader;
 					phillyCityLights.add(light);
 				}
@@ -294,7 +293,6 @@ class PlayState extends MusicBeatState
 				limo.frames = Paths.getSparrowAtlas('limo/limoDrive');
 				limo.animation.addByPrefix('drive', "Limo stage", 24);
 				limo.animation.play('drive');
-				
 
 				fastCar = new FlxSprite(-300, 160).loadGraphic(Paths.image('limo/fastCarLol'));
 			case "cocoa" | 'eggnog':
@@ -303,7 +301,7 @@ class PlayState extends MusicBeatState
 				defaultCamZoom = 0.80;
 
 				var bg:FlxSprite = new FlxSprite(-1000, -500).loadGraphic(Paths.image('christmas/bgWalls'));
-				
+
 				bg.scrollFactor.set(0.2, 0.2);
 				bg.active = false;
 				bg.setGraphicSize(Std.int(bg.width * 0.8));
@@ -313,14 +311,14 @@ class PlayState extends MusicBeatState
 				upperBoppers = new FlxSprite(-240, -90);
 				upperBoppers.frames = Paths.getSparrowAtlas('christmas/upperBop');
 				upperBoppers.animation.addByPrefix('bop', "Upper Crowd Bob", 24, false);
-				
+
 				upperBoppers.scrollFactor.set(0.33, 0.33);
 				upperBoppers.setGraphicSize(Std.int(upperBoppers.width * 0.85));
 				upperBoppers.updateHitbox();
 				add(upperBoppers);
 
 				var bgEscalator:FlxSprite = new FlxSprite(-1100, -600).loadGraphic(Paths.image('christmas/bgEscalator'));
-				
+
 				bgEscalator.scrollFactor.set(0.3, 0.3);
 				bgEscalator.active = false;
 				bgEscalator.setGraphicSize(Std.int(bgEscalator.width * 0.9));
@@ -328,14 +326,14 @@ class PlayState extends MusicBeatState
 				add(bgEscalator);
 
 				var tree:FlxSprite = new FlxSprite(370, -250).loadGraphic(Paths.image('christmas/christmasTree'));
-				
+
 				tree.scrollFactor.set(0.40, 0.40);
 				add(tree);
 
 				bottomBoppers = new FlxSprite(-300, 140);
 				bottomBoppers.frames = Paths.getSparrowAtlas('christmas/bottomBop');
 				bottomBoppers.animation.addByPrefix('bop', 'Bottom Level Boppers', 24, false);
-				
+
 				bottomBoppers.scrollFactor.set(0.9, 0.9);
 				bottomBoppers.setGraphicSize(Std.int(bottomBoppers.width * 1));
 				bottomBoppers.updateHitbox();
@@ -343,18 +341,18 @@ class PlayState extends MusicBeatState
 
 				var fgSnow:FlxSprite = new FlxSprite(-600, 700).loadGraphic(Paths.image('christmas/fgSnow'));
 				fgSnow.active = false;
-				
+
 				add(fgSnow);
 
 				santa = new FlxSprite(-840, 150);
 				santa.frames = Paths.getSparrowAtlas('christmas/santa');
 				santa.animation.addByPrefix('idle', 'santa idle in fear', 24, false);
-				
+
 				add(santa);
 			case 'winter-horrorland':
 				curStage = 'mallEvil';
 				var bg:FlxSprite = new FlxSprite(-400, -500).loadGraphic(Paths.image('christmas/evilBG'));
-				
+
 				bg.scrollFactor.set(0.2, 0.2);
 				bg.active = false;
 				bg.setGraphicSize(Std.int(bg.width * 0.8));
@@ -362,12 +360,12 @@ class PlayState extends MusicBeatState
 				add(bg);
 
 				var evilTree:FlxSprite = new FlxSprite(300, -300).loadGraphic(Paths.image('christmas/evilTree'));
-				
+
 				evilTree.scrollFactor.set(0.2, 0.2);
 				add(evilTree);
 
 				var evilSnow:FlxSprite = new FlxSprite(-200, 700).loadGraphic(Paths.image("christmas/evilSnow"));
-				
+
 				add(evilSnow);
 			case 'senpai' | 'roses':
 				curStage = 'school';
@@ -450,50 +448,6 @@ class PlayState extends MusicBeatState
 				bg.scrollFactor.set(0.8, 0.9);
 				bg.scale.set(6, 6);
 				add(bg);
-
-			/* 
-				var bg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolBG'));
-				bg.scale.set(6, 6);
-				// bg.setGraphicSize(Std.int(bg.width * 6));
-				// bg.updateHitbox();
-				add(bg);
-
-				var fg:FlxSprite = new FlxSprite(posX, posY).loadGraphic(Paths.image('weeb/evilSchoolFG'));
-				fg.scale.set(6, 6);
-				// fg.setGraphicSize(Std.int(fg.width * 6));
-				// fg.updateHitbox();
-				add(fg);
-
-				wiggleShit.effectType = WiggleEffectType.DREAMY;
-				wiggleShit.waveAmplitude = 0.01;
-				wiggleShit.waveFrequency = 60;
-				wiggleShit.waveSpeed = 0.8;
-			 */
-
-			// bg.shader = wiggleShit.shader;
-			// fg.shader = wiggleShit.shader;
-
-			/* 
-				var waveSprite = new FlxEffectSprite(bg, [waveEffectBG]);
-				var waveSpriteFG = new FlxEffectSprite(fg, [waveEffectFG]);
-
-				// Using scale since setGraphicSize() doesnt work???
-				waveSprite.scale.set(6, 6);
-				waveSpriteFG.scale.set(6, 6);
-				waveSprite.setPosition(posX, posY);
-				waveSpriteFG.setPosition(posX, posY);
-
-				waveSprite.scrollFactor.set(0.7, 0.8);
-				waveSpriteFG.scrollFactor.set(0.9, 0.8);
-
-				// waveSprite.setGraphicSize(Std.int(waveSprite.width * 6));
-				// waveSprite.updateHitbox();
-				// waveSpriteFG.setGraphicSize(Std.int(fg.width * 6));
-				// waveSpriteFG.updateHitbox();
-
-				add(waveSprite);
-				add(waveSpriteFG);
-			 */
 
 			case 'guns' | 'stress' | 'ugh':
 				defaultCamZoom = 0.90;
@@ -578,7 +532,7 @@ class PlayState extends MusicBeatState
 				var stageFront:FlxSprite = new FlxSprite(-650, 600).loadGraphic(Paths.image('stagefront'));
 				stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 				stageFront.updateHitbox();
-				
+
 				stageFront.scrollFactor.set(0.9, 0.9);
 				stageFront.active = false;
 				add(stageFront);
@@ -586,7 +540,7 @@ class PlayState extends MusicBeatState
 				var stageCurtains:FlxSprite = new FlxSprite(-500, -300).loadGraphic(Paths.image('stagecurtains'));
 				stageCurtains.setGraphicSize(Std.int(stageCurtains.width * 0.9));
 				stageCurtains.updateHitbox();
-				
+
 				stageCurtains.scrollFactor.set(1.3, 1.3);
 				stageCurtains.active = false;
 
@@ -1322,7 +1276,6 @@ class PlayState extends MusicBeatState
 					babyArrow.animation.addByPrefix('purple', 'arrowLEFT');
 					babyArrow.animation.addByPrefix('red', 'arrowRIGHT');
 
-					
 					babyArrow.setGraphicSize(Std.int(babyArrow.width * 0.7));
 
 					switch (Math.abs(i))
@@ -2065,7 +2018,6 @@ class PlayState extends MusicBeatState
 		else
 		{
 			rating.setGraphicSize(Std.int(rating.width * 0.7));
-			
 		}
 		rating.updateHitbox();
 
@@ -2114,7 +2066,6 @@ class PlayState extends MusicBeatState
 		else
 		{
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * 0.7));
-			
 		}
 		comboSpr.updateHitbox();
 
@@ -2151,7 +2102,6 @@ class PlayState extends MusicBeatState
 			}
 			else
 			{
-				
 				numScore.setGraphicSize(Std.int(numScore.width * 0.5));
 			}
 			numScore.updateHitbox();
@@ -2589,7 +2539,6 @@ class PlayState extends MusicBeatState
 			// Conductor.changeBPM(SONG.bpm);
 		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
-		wiggleShit.update(Conductor.crochet);
 
 		// HARDCODING FOR MILF ZOOMS!
 

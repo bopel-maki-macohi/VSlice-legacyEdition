@@ -1,8 +1,8 @@
 package;
 
 import Conductor.BPMChangeEvent;
-import data.Section.SwagSection;
-import data.Song.SwagSong;
+import data.Section;
+import data.Song;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;

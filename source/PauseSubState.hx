@@ -1,5 +1,6 @@
 package;
 
+import data.Song;
 import Controls.Control;
 import flixel.FlxG;
 import flixel.FlxSprite;

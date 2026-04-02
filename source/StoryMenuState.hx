@@ -1,5 +1,6 @@
 package;
 
+import data.Song;
 #if discord_rpc
 import Discord.DiscordClient;
 #end
