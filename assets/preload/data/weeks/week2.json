@@ -7,10 +7,10 @@
     "songs": [
         "spookeez",
         "south",
-        "dadbattle"
+        "monster"
     ],
     "message": "Spooky Month",
 
-    "freeplayChars": ["spooky"],
-    "color": "0xff9271fd"
+    "freeplayChars": ["spooky","spooky","monster"],
+    "color": "0xff223344"
 }
