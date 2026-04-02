@@ -1,0 +1,17 @@
+{
+    "path": "storymenu/props/spooky",
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "spooky dance idle BLACK LINES"
+        }
+    ],
+    "offsets": [
+        -45,
+        60
+    ],
+    "scale": [
+        0.5,
+        0.5
+    ]
+}

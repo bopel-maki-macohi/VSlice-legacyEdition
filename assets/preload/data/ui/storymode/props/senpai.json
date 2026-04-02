@@ -1,0 +1,13 @@
+{
+    "path": "storymenu/props/senpai",
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "SENPAI idle Black Lines"
+        }
+    ],
+    "offsets": [
+        -100,
+        75
+    ]
+}

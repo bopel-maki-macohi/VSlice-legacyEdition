@@ -1,0 +1,13 @@
+{
+    "path": "storymenu/props/tankman",
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "Tankman Menu BLACK"
+        }
+    ],
+    "offsets": [
+        -25,
+        50
+    ]
+}

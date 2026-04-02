@@ -1,13 +1,13 @@
 {
-    "path": "storymenu/props/dad",
+    "path": "storymenu/props/parents-christmas",
     "animations": [
         {
             "name": "idle",
-            "prefix": "Dad idle dance BLACK LINE"
+            "prefix": "Parent Christmas Idle Black Lines"
         }
     ],
     "offsets": [
-        0,
+        -125,
         0
     ],
     "scale": [

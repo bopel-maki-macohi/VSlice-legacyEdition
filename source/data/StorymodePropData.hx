@@ -13,4 +13,6 @@ typedef StorymodePropData =
 		}>,
 	?offsets:Array<Float>,
 	?scale:Array<Float>,
+	?flipX:Bool,
+	?flipY:Bool,
 }

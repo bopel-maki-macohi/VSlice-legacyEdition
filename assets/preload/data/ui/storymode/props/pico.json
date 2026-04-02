@@ -1,0 +1,22 @@
+{
+    "path": "storymenu/props/pico",
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "Pico Idle Dance"
+        },
+        {
+            "name": "confirm",
+            "prefix": "Pico HEY!! Black outline"
+        }
+    ],
+    "offsets": [
+        -30,
+        100
+    ],
+    "scale": [
+        0.5,
+        0.5
+    ],
+    "flipX": true
+}

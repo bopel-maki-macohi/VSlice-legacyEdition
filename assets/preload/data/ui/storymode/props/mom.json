@@ -1,9 +1,9 @@
 {
-    "path": "storymenu/props/dad",
+    "path": "storymenu/props/mom",
     "animations": [
         {
             "name": "idle",
-            "prefix": "Dad idle dance BLACK LINE"
+            "prefix": "Mom Idle BLACK LINES"
         }
     ],
     "offsets": [

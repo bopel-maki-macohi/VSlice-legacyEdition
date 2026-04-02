@@ -54,6 +54,9 @@ class MenuCharacter extends FlxSprite
 			this.scale.set(1, 1);
 		updateHitbox();
 
+		flipX = propData?.flipX;
+		flipY = propData?.flipY;
+
 		return c;
 	}
 
