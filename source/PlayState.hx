@@ -1,7 +1,5 @@
 package;
 
-import data.Song;
-import data.Section;
 import cutscenes.*;
 import stageprops.*;
 import flixel.FlxCamera;
