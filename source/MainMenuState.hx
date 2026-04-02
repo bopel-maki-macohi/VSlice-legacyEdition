@@ -92,7 +92,7 @@ class MainMenuState extends MusicBeatState
 		#if CAN_OPEN_LINKS
 		var hasPopupBlocker = #if web true #else false #end;
 
-		if (VideoState.seenVideo)
+		if (KickStarterState.seenVideo)
 			menuItems.createItem('kickstarter', selectDonate, hasPopupBlocker);
 		else
 			menuItems.createItem('donate', selectDonate, hasPopupBlocker);

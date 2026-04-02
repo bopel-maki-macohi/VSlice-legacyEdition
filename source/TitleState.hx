@@ -110,7 +110,7 @@ class TitleState extends MusicBeatState
 
 		if (FlxG.save.data.seenVideo != null)
 		{
-			VideoState.seenVideo = FlxG.save.data.seenVideo;
+			KickStarterState.seenVideo = FlxG.save.data.seenVideo;
 		}
 
 		#if FREEPLAY
@@ -319,7 +319,7 @@ class TitleState extends MusicBeatState
 			initialized = true;
 
 		if (FlxG.sound.music != null)
-			FlxG.sound.music.onComplete = function() FlxG.switchState(new VideoState());
+			FlxG.sound.music.onComplete = function() FlxG.switchState(new KickStarterState());
 
 		startedIntro = true;
 		// credGroup.add(credTextShit);

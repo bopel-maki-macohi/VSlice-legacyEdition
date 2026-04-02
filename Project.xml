@@ -10,6 +10,23 @@
 
 	<haxedef name="CAN_OPEN_LINKS" unless="switch" />
 	<haxedef name="CAN_CHEAT" if="switch debug" />
+	<!-- _______________________________ Libraries ______________________________ -->
+
+	<haxelib name="flixel" />
+	<haxedev set='webgl' />
+
+	<haxelib name="flixel-addons" />
+	<haxelib name="hscript" />
+
+	<haxelib name="flixel-ui" />
+
+	<!-- <haxelib name="polymod"/> -->
+	<haxelib name="hxcpp-debug-server" if="desktop debug" />
+
+	<!-- i need to setup a vslice legacy one -->
+	<!--<haxelib name="discord_rpc" if="cpp" unless="neko"/> -->
+
+	<haxelib name="hxCodec" />
 
 	<!-- _________________________ Application Settings _________________________ -->
 
@@ -110,21 +127,6 @@
 		NOT USING A DIRECT THING TO THE ASSET!!!
 	-->
 	<assets path="assets/fonts" embed='true' />
-	<!-- _______________________________ Libraries ______________________________ -->
-
-	<haxelib name="flixel" />
-	<haxedev set='webgl' />
-
-	<haxelib name="flixel-addons" />
-	<haxelib name="hscript" />
-
-	<haxelib name="flixel-ui" />
-
-	<!-- <haxelib name="polymod"/> -->
-	<haxelib name="hxcpp-debug-server" if="desktop debug" />
-
-	<!-- i need to setup a vslice legacy one -->
-	<!--<haxelib name="discord_rpc" if="cpp" unless="neko"/> -->
 
 	<!-- ______________________________ Haxedefines _____________________________ -->
 
