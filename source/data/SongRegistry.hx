@@ -32,7 +32,16 @@ class SongRegistry
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SongData
 	{
-		var rawJson = Assets.getText(Paths.json('songs/' + folder.toLowerCase() + '/' + jsonInput.toLowerCase())).trim();
+		if (folder == null || folder == '')
+			return null;
+		if (jsonInput == null || jsonInput == '')
+			return null;
+
+		var path = Paths.json('songs/' + folder.toLowerCase() + '/' + jsonInput.toLowerCase());
+		if (!Assets.exists(path))
+			return null;
+
+		var rawJson = Assets.getText(path).trim();
 
 		return parseJSONshit(rawJson);
 	}

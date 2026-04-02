@@ -1,0 +1,18 @@
+{
+    "path": "storymenu/props/bf",
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "BF idle dance white"
+        },
+        {
+            "name": "confirm",
+            "prefix": "BF HEY!!",
+            "looping": false
+        }
+    ],
+    "offsets": [
+        0,
+        0
+    ]
+}

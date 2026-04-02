@@ -1,0 +1,13 @@
+{
+    "path": "storymenu/props/gf",
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "GF Dancing Beat WHITE"
+        }
+    ],
+    "offsets": [
+        0,
+        0
+    ]
+}

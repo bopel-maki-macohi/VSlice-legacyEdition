@@ -1,0 +1,13 @@
+{
+    "path": "storymenu/props/dad",
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "Dad idle dance BLACK LINE"
+        }
+    ],
+    "offsets": [
+        0,
+        0
+    ]
+}

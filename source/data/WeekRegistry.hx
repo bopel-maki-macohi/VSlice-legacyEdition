@@ -16,10 +16,10 @@ class WeekRegistry
 
 		for (week in Assets.getText(Paths.txt('weekList')).split('\n'))
 		{
-			if (loadFromJson(week) == null)
+			if (loadFromJson(week.trim()) == null)
 				continue;
 
-			w.push(week);
+			w.push(week.trim());
 		}
 
 		return w;
@@ -27,7 +27,12 @@ class WeekRegistry
 
 	public static function loadFromJson(week:String):WeekData
 	{
-		var rawJson = Assets.getText(Paths.json('weeks/' + week));
+		if (week == null || week == '') return null;
+
+        var path = Paths.json('weeks/' + week);
+        if (!Assets.exists(path)) return null;
+
+		var rawJson = Assets.getText(path);
 		var weekJson:WeekData = null;
 
 		try
