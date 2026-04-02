@@ -26,7 +26,7 @@
 	<!-- i need to setup a vslice legacy one -->
 	<!--<haxelib name="discord_rpc" if="cpp" unless="neko"/> -->
 
-	<haxelib name="hxCodec" />
+	<haxelib name="hxvlc" />
 
 	<!-- _________________________ Application Settings _________________________ -->
 

@@ -1,7 +1,13 @@
 package cutscenes;
 
-import hxcodec.flixel.FlxVideoSprite;
+import flixel.util.FlxColor;
+import flixel.FlxG;
+import flixel.util.FlxSignal;
+import flixel.FlxBasic;
+import flixel.group.FlxSpriteGroup;
+import hxvlc.flixel.FlxVideoSprite;
 import flixel.FlxSprite;
+import flixel.FlxBasic;
 
 class VideoCutscene extends FlxSpriteGroup
 {
@@ -9,10 +15,14 @@ class VideoCutscene extends FlxSpriteGroup
 
 	public var vid:FlxVideoSprite;
 
-	public function new()
+	public var finishCallback:FlxSignal = new FlxSignal();
+
+	override public function new()
 	{
-		blackScreen = new FlxSprite();
-		blackScreen.makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
+		super();
+
+		blackScreen = new FlxSprite(-200, -200).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+		blackScreen.scrollFactor.set();
 
 		vid = new FlxVideoSprite(0, 0);
 
@@ -42,7 +52,7 @@ class VideoCutscene extends FlxSpriteGroup
 			vid.play(cutscene, false);
 			// onVideoStarted.dispatch();
 
-		blackScreen.visible = vid.visible = true;
+			blackScreen.visible = vid.visible = true;
 		}
 		else
 		{
@@ -59,6 +69,9 @@ class VideoCutscene extends FlxSpriteGroup
 			vid.destroy();
 		}
 		vid = null;
+
+		if (finishCallback != null)
+			finishCallback.dispatch();
 	}
 
 	public function restartVideo(resume:Bool = true):Void

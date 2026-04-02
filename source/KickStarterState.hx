@@ -1,12 +1,13 @@
 package;
 
+import cutscenes.VideoCutscene;
 import flixel.FlxG;
 
 class KickStarterState extends MusicBeatState
 {
 	public static var seenVideo:Bool = false;
 
-	public var video:FlxVideo;
+	public var video:VideoCutscene;
 
 	override function create()
 	{
@@ -20,10 +21,11 @@ class KickStarterState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
-		video = new FlxVideo('music/kickstarterTrailer.mp4');
+		video = new VideoCutscene();
 		add(video);
+		video.play(Paths.video('kickstarterTrailer'));
 
-		video.finishCallback = done;
+		video.finishCallback.add(done);
 	}
 
 	override function update(elapsed:Float)
