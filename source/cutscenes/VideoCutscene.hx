@@ -27,16 +27,25 @@ class VideoCutscene extends FlxSpriteGroup
 		vid = new FlxVideoSprite(0, 0);
 
 		vid.bitmap.onEndReached.add(finishVideo.bind(0.5));
-		vid.autoPause = false;
 
-		// Resize videos bigger or smaller than the screen.
-		vid.bitmap.onTextureSetup.add(() ->
+		vid.active = false;
+
+		vid.bitmap.onFormatSetup.add(function():Void
 		{
-			vid.setGraphicSize(FlxG.width, FlxG.height);
-			vid.updateHitbox();
-			vid.x = 0;
-			vid.y = 0;
-			// vid.scale.set(0.5, 0.5);
+			if (vid.bitmap != null && vid.bitmap.bitmapData != null)
+			{
+				final scale:Float = Math.min(FlxG.width / vid.bitmap.bitmapData.width, FlxG.height / vid.bitmap.bitmapData.height);
+
+				vid.setGraphicSize(vid.bitmap.bitmapData.width * scale, vid.bitmap.bitmapData.height * scale);
+				vid.updateHitbox();
+				vid.screenCenter();
+			}
+		});
+
+		vid.bitmap.onEncounteredError.add(function(msg:String):Void
+		{
+			trace('Video error: $msg');
+			finishVideo(0.5);
 		});
 
 		add(blackScreen);
@@ -49,7 +58,23 @@ class VideoCutscene extends FlxSpriteGroup
 	{
 		if (vid != null)
 		{
-			vid.play(cutscene, false);
+			final fileOptions:Array<String> = [];
+
+			//   #if FEATURE_VIDEO_SUBTITLES
+			//   if (Preferences.subtitles)
+			//   {
+			//     fileOptions.push(':sub-language=$DEFAULT_LANGUAGE');
+			//   }
+			//   else
+			//   {
+			//     fileOptions.push(':sub-language=none');
+			//   }
+
+			//   fileOptions.push(':audio-language=$DEFAULT_LANGUAGE');
+			//   #end
+
+			vid.load(cutscene, fileOptions);
+			vid.play();
 			// onVideoStarted.dispatch();
 
 			blackScreen.visible = vid.visible = true;
