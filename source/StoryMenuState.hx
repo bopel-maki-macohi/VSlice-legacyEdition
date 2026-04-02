@@ -348,24 +348,48 @@ class StoryMenuState extends MusicBeatState
 
 	function updateText()
 	{
+		// attempted fix for gf bop resetting
+		var prevChars = grpWeekCharacters.members;
+		var prevFrames:Array<Int> = [];
+
 		for (char in grpWeekCharacters.members)
 		{
-			grpWeekCharacters.members.remove(char);
+			while (prevFrames.length - 1 < char.ID)
+				prevFrames.push(0);
+
+			prevFrames.push(char.animation.frameIndex);
 			char.destroy();
 		}
+		grpWeekCharacters.clear();
 
 		for (i => char in weekCharacters[curWeek])
 		{
-			if (char == null || char == '') continue;
+			var addedOldChar = false;
+
+			for (c in prevChars)
+			{
+				if (c.ID == i && c.character == char)
+				{
+					addedOldChar = true;
+					grpWeekCharacters.add(c);
+					c.animation.frameIndex = prevFrames[c.ID];
+				}
+			}
+
+			if (char == null || char == '' || addedOldChar)
+				continue;
 
 			var weekCharacterThing:MenuCharacter = new MenuCharacter((FlxG.width * 0.25) * (1 + i) - 150, char);
 			weekCharacterThing.y += 70;
+			weekCharacterThing.ID = i;
 
-			if (weekCharacterThing.graphic == null) continue;
+			if (weekCharacterThing.graphic == null)
+				continue;
 
+			weekCharacterThing.playAnimation('idle');
 			grpWeekCharacters.add(weekCharacterThing);
 		}
-		
+
 		txtTracklist.text = "Tracks\n";
 
 		var stringThing:Array<String> = weekData[curWeek];

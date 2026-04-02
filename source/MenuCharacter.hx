@@ -14,8 +14,9 @@ class MenuCharacter extends FlxSprite
 		{
 			propData = null;
 			this.visible = false;
-			makeGraphic(8, 8);
-			offset.set(1000000000000, 10000000000000);
+
+			graphic = null;
+
 			return null;
 		}
 
@@ -28,7 +29,7 @@ class MenuCharacter extends FlxSprite
 			return character;
 		}
 
-		var tex = Paths.getSparrowAtlas(propData.path ?? 'storymode/props/$c');
+		var tex = Paths.getSparrowAtlas(propData?.path ?? 'storymode/props/$c');
 		frames = tex;
 
 		if (frames == null)
@@ -38,21 +39,28 @@ class MenuCharacter extends FlxSprite
 			animation.remove(n);
 
 		for (a in propData.animations)
-			animation.addByPrefix(a.name, a.prefix, 24, a.looping ?? true);
+		{
+			if (a.name == null || a.prefix == null)
+				continue;
 
-		playAnimation(propData.animations[0].name);
+			animation.addByPrefix(a.name, a.prefix, 24, a?.looping ?? true);
+		}
+
+		playAnimation('idle');
 		updateHitbox();
 
 		if (propData.scale != null)
 			this.scale.set(propData?.scale[0] ?? 1, propData?.scale[0] ?? 1);
 		else
-			this.scale.set(1,1);
+			this.scale.set(1, 1);
 
 		return c;
 	}
 
 	public function playAnimation(anim:String)
 	{
+		animation.play(anim);
+		
 		if (character == '' || character == null)
 			return;
 
@@ -63,7 +71,6 @@ class MenuCharacter extends FlxSprite
 				if (a.name == anim)
 					offsets = a.offsets;
 
-		animation.play(anim);
 		offset.set(offsets[0] ?? 0, offsets[1] ?? 0);
 	}
 
