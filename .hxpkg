@@ -21,14 +21,15 @@
 				"name": "flixel-ui"
 			},
 			{
-				"name": "polymod"
-			},
-			{
 				"name": "hxcpp-debug-server"
 			},
 			{
 				"name": "discord_rpc",
 				"link": "https://github.com/Aidan63/linc_discord-rpc"
+			},
+			{
+				"name": "polymod",
+				"link": "https://github.com/larsiusprime/polymod.git"
 			}
 		]
 	}
