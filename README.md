@@ -1,6 +1,6 @@
 # VSlice: Legacy Edition
 
-This is the repository for VSlice Legacy Edition, FNF if they release the update ontime.
+This is the repository for VSlice Legacy Edition, FNF if they released the update ontime.
 
 IF YOU MAKE A MOD AND DISTRIBUTE A MODIFIED / RECOMPILED VERSION, YOU MUST OPEN SOURCE YOUR MOD AS WELL
 
