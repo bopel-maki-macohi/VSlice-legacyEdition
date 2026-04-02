@@ -9,5 +9,8 @@
         "fresh",
         "dadbattle"
     ],
-    "message": "Daddy Dearest"
+    "message": "Daddy Dearest",
+
+    "freeplayChars": ["dad"],
+    "color": "0xff9271fd"
 }

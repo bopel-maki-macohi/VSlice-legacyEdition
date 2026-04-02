@@ -30,14 +30,14 @@ class FreeplayState extends MusicBeatState
 	var intendedScore:Int = 0;
 
 	var coolColors:Array<Int> = [
-		0xff9271fd,
-		0xff9271fd,
-		0xff223344,
-		0xFF941653,
-		0xFFfc96d7,
-		0xFFa0d1ff,
-		0xffff78bf,
-		0xfff6b604
+		// 0xff9271fd,
+		// 0xff9271fd,
+		// 0xff223344,
+		// 0xFF941653,
+		// 0xFFfc96d7,
+		// 0xFFa0d1ff,
+		// 0xffff78bf,
+		// 0xfff6b604
 	];
 
 	private var grpSongs:FlxTypedGroup<Alphabet>;
@@ -65,6 +65,21 @@ class FreeplayState extends MusicBeatState
 		{
 			if (!FlxG.sound.music.playing)
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+		}
+
+		for (i => week in WeekRegistry.weeks)
+		{
+			final parsedWeek = WeekRegistry.loadFromJson(week);
+
+			if (parsedWeek == null)
+				continue;
+
+			addWeek(parsedWeek.songs, i, parsedWeek?.freeplayChars ?? null);
+
+			if (parsedWeek.color != null)
+				coolColors.push(FlxColor.fromString(parsedWeek.color));
+			else
+				coolColors.push(coolColors[coolColors.length - 1] ?? 0xFFFFFF);
 		}
 
 		bg = new FlxSprite().loadGraphic(Paths.image('menuDesat'));
@@ -155,7 +170,7 @@ class FreeplayState extends MusicBeatState
 		{
 			addSong(song, weekNum, songCharacters[num]);
 
-			if (songCharacters.length != 1)
+			if (songCharacters.length - 1 > num)
 				num++;
 		}
 	}
