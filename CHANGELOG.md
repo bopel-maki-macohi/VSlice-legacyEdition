@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+This is VSlice Legacy Edition now!
+
 ### Fixed
 - Video cutscenes work on desktop now!
 
@@ -13,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Newgrounds (It's gone now)
 
 ## [0.2.8] - 2021-04-18
+
 note, this one is iffy cuz they slacked wit it lol!
 
 ### Added
