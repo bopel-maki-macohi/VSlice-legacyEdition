@@ -70,6 +70,11 @@ class TitleState extends MusicBeatState
 		if (FlxG.save.data.seenVideo != null)
 			KickStarterState.seenVideo = FlxG.save.data.seenVideo;
 
+		FlxG.signals.postUpdate.add(function() {
+			if (FlxG.keys.justReleased.F3)
+				FlxG.resetState();
+		});
+
 		#if FREEPLAY
 		FlxG.switchState(() -> new FreeplayState());
 		#elseif CHARTING
