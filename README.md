@@ -40,8 +40,8 @@ You should have everything ready for compiling the game! Follow the guide below 
 
 - [FunkinCrew](https://github.com/FunkinCrew) - Made the game.
 
-- [Maki](https://github.com/bopel-maki-macohi) - Programming
+- [Maki](https://www.youtube.com/@sphis-sinco) - Programming
 - [Hunter Under](https://www.youtube.com/@UnderHunter1) - Art
-- Nikodeg - Art
+- [Nikodeg](https://www.youtube.com/@nik0degYT) - Art
 
 This game was made with love to Newgrounds and its community. Extra love to Tom Fulp.
