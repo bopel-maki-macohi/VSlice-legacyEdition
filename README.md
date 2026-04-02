@@ -1,20 +1,8 @@
-# Friday Night Funkin
+# VSlice: Legacy Edition
 
-This is the repository for Friday Night Funkin, a game originally made for Ludum Dare 47 "Stuck In a Loop".
-
-Play the Ludum Dare prototype here: https://ninja-muffin24.itch.io/friday-night-funkin
-Play the Newgrounds one here: https://www.newgrounds.com/portal/view/770371
-Support the project on the itch.io page: https://ninja-muffin24.itch.io/funkin
+This is the repository for VSlice Legacy Edition, FNF if they release the update ontime.
 
 IF YOU MAKE A MOD AND DISTRIBUTE A MODIFIED / RECOMPILED VERSION, YOU MUST OPEN SOURCE YOUR MOD AS WELL
-
-## Credits / shoutouts
-
-- [ninjamuffin99 (me!)](https://twitter.com/ninja_muffin99) - Programmer
-- [PhantomArcade3K](https://twitter.com/phantomarcade3k) and [Evilsk8r](https://twitter.com/evilsk8r) - Art
-- [Kawaisprite](https://twitter.com/kawaisprite) - Musician
-
-This game was made with love to Newgrounds and its community. Extra love to Tom Fulp.
 
 ## Build instructions
 
@@ -39,7 +27,7 @@ Windows:
     - MSVC v143 VS 2022 C++ x64/x86 build tools.
     - Windows 10/11 SDK.
 
-## Compiling
+### Compiling
 
 NOTE: If you see any messages relating to deprecated packages, ignore them. They're just warnings that don't affect compiling
 
@@ -47,3 +35,13 @@ NOTE: If you see any messages relating to deprecated packages, ignore them. They
 - Run `lime run <platform>` if you want to relaunch the game.
 
 You should have everything ready for compiling the game! Follow the guide below to continue!
+
+## Credits / shoutouts
+
+- [FunkinCrew](https://github.com/FunkinCrew) - Made the game.
+
+- [Maki](https://github.com/bopel-maki-macohi) - Programming
+- [Hunter Under](https://www.youtube.com/@UnderHunter1) - Art
+- Nikodeg - Art
+
+This game was made with love to Newgrounds and its community. Extra love to Tom Fulp.
