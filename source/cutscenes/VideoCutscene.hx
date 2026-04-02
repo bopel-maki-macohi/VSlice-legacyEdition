@@ -26,8 +26,6 @@ class VideoCutscene extends FlxSpriteGroup
 
 		vid = new FlxVideoSprite(0, 0);
 
-		vid.bitmap.onEndReached.add(finishVideo.bind(0.5));
-
 		vid.active = false;
 
 		vid.bitmap.onFormatSetup.add(function():Void
@@ -60,19 +58,6 @@ class VideoCutscene extends FlxSpriteGroup
 		{
 			final fileOptions:Array<String> = [];
 
-			//   #if FEATURE_VIDEO_SUBTITLES
-			//   if (Preferences.subtitles)
-			//   {
-			//     fileOptions.push(':sub-language=$DEFAULT_LANGUAGE');
-			//   }
-			//   else
-			//   {
-			//     fileOptions.push(':sub-language=none');
-			//   }
-
-			//   fileOptions.push(':audio-language=$DEFAULT_LANGUAGE');
-			//   #end
-
 			vid.load(cutscene, fileOptions);
 			vid.play();
 			// onVideoStarted.dispatch();
@@ -82,6 +67,7 @@ class VideoCutscene extends FlxSpriteGroup
 		else
 		{
 			trace('ALERT: Video is null! Could not play cutscene!');
+			finishVideo(0.5);
 		}
 	}
 
