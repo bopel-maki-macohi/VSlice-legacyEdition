@@ -42,6 +42,6 @@ class KickStarterState extends MusicBeatState
 	function done():Void
 	{
 		TitleState.initialized = false;
-		FlxG.switchState(new TitleState());
+		FlxG.switchState(() -> new TitleState());
 	}
 }

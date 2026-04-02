@@ -71,9 +71,9 @@ class TitleState extends MusicBeatState
 			KickStarterState.seenVideo = FlxG.save.data.seenVideo;
 
 		#if FREEPLAY
-		FlxG.switchState(new FreeplayState());
+		FlxG.switchState(() -> new FreeplayState());
 		#elseif CHARTING
-		FlxG.switchState(new ChartingState());
+		FlxG.switchState(() -> new ChartingState());
 		#else
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
@@ -200,7 +200,7 @@ class TitleState extends MusicBeatState
 			initialized = true;
 
 		if (FlxG.sound.music != null)
-			FlxG.sound.music.onComplete = function() FlxG.switchState(new KickStarterState());
+			FlxG.sound.music.onComplete = function() FlxG.switchState(() -> new KickStarterState());
 
 		startedIntro = true;
 		// credGroup.add(credTextShit);
@@ -268,7 +268,7 @@ class TitleState extends MusicBeatState
 			transitioning = true;
 			// FlxG.sound.music.stop();
 
-			FlxG.switchState(new MainMenuState());
+			FlxG.switchState(() -> new MainMenuState());
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
