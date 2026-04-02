@@ -30,6 +30,9 @@
 			{
 				"name": "polymod",
 				"link": "https://github.com/larsiusprime/polymod.git"
+			},
+			{
+				"name": "hxcpp"
 			}
 		]
 	}

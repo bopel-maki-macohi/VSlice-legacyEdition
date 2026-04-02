@@ -5,7 +5,9 @@ import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.text.FlxText;
 import flixel.util.FlxColor;
 #if cpp
+#if polymod
 import polymod.Polymod;
+#end
 import sys.FileSystem;
 #end
 
@@ -110,7 +112,11 @@ class ModMenu extends ui.OptionsState.Page
 
 		enabledMods = [];
 
+#if polymod
 		modList = Polymod.scan(MOD_PATH);
+		#else
+		modList = [];
+		#end
 
 		trace(modList);
 
