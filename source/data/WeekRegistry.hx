@@ -12,7 +12,13 @@ class WeekRegistry
 
 	static function get_weeks():Array<String>
 	{
-		var w = Assets.list().filter(f -> return Path.directory(f) == 'assets/data/weeks/');
+		var w = Assets.list().filter(f -> return Path.directory(f) == 'assets/data/weeks');
+
+		for (i => file in w)
+		{
+			w.remove(file);
+			w.insert(i, Path.withoutDirectory(Path.withoutExtension(file)));
+		}
 
 		return w;
 	}
