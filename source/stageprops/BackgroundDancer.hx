@@ -1,9 +1,9 @@
-package;
+package stageprops;
 
 import flixel.FlxSprite;
 import flixel.graphics.frames.FlxAtlasFrames;
 
-class BackgroundDancer extends FlxSprite
+class BackgroundDancer extends BGSprite
 {
 	public function new(x:Float, y:Float)
 	{
@@ -14,7 +14,7 @@ class BackgroundDancer extends FlxSprite
 		animation.addByIndices('danceRight', 'bg dancer sketch PINK', [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29], "", 24, false);
 		animation.play('danceLeft');
 		animation.finish();
-		antialiasing = true;
+		
 	}
 
 	var danceDir:Bool = false;
