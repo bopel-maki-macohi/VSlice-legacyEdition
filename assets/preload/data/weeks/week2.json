@@ -1,0 +1,16 @@
+{
+    "chars": [
+        "spooky",
+        "bf",
+        "gf"
+    ],
+    "songs": [
+        "spookeez",
+        "south",
+        "dadbattle"
+    ],
+    "message": "Spooky Month",
+
+    "freeplayChars": ["spooky"],
+    "color": "0xff9271fd"
+}

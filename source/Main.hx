@@ -90,6 +90,7 @@ class Main extends Sprite
 		addChild(fpsCounter);
 		#end
 
+		#if debug
 		trace('Weeks: ');
 		for (week in WeekRegistry.weeks)
 			trace(' * ' + week);
@@ -97,5 +98,6 @@ class Main extends Sprite
 		trace('Songs: ');
 		for (song in SongRegistry.songs)
 			trace(' * ' + song);
+		#end
 	}
 }
