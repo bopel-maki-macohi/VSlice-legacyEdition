@@ -47,15 +47,17 @@ class VideoCutscene extends FlxSpriteGroup
 			trace('Video error: $msg');
 			finishVideo(0.5);
 		});
-
-		add(blackScreen);
-		add(vid);
 	}
 
 	public function play(cutscene:String)
 	{
 		if (vid != null)
 		{
+			if (!members.contains(blackScreen))
+				add(blackScreen);
+			if (!members.contains(vid))
+				add(vid);
+
 			final fileOptions:Array<String> = [];
 
 			vid.load(cutscene, fileOptions);
@@ -78,6 +80,7 @@ class VideoCutscene extends FlxSpriteGroup
 			vid.destroy();
 		}
 		vid = null;
+		remove(blackScreen);
 
 		if (finishCallback != null)
 			finishCallback.dispatch();
