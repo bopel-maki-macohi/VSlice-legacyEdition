@@ -1,6 +1,6 @@
 package;
 
-import Section.SwagSection;
+import data.Section.SwagSection;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.animation.FlxBaseAnimation;

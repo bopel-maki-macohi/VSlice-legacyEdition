@@ -2,8 +2,8 @@ package;
 
 import cutscenes.*;
 import stageprops.*;
-import Section.SwagSection;
-import Song.SwagSong;
+import data.Section.SwagSection;
+import data.Song.SwagSong;
 import flixel.FlxCamera;
 import flixel.FlxG;
 import flixel.FlxObject;

@@ -1,6 +1,6 @@
-package;
+package data;
 
-import Section.SwagSection;
+import data.Section.SwagSection;
 import haxe.Json;
 import haxe.format.JsonParser;
 import lime.utils.Assets;
