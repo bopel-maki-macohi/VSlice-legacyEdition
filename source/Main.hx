@@ -89,5 +89,13 @@ class Main extends Sprite
 		fpsCounter = new FPS(10, 3, 0xFFFFFF);
 		addChild(fpsCounter);
 		#end
+
+		trace('Weeks: ');
+		for (week in WeekRegistry.weeks)
+			trace(' * ' + week);
+
+		trace('Songs: ');
+		for (song in SongRegistry.songs)
+			trace(' * ' + song);
 	}
 }
