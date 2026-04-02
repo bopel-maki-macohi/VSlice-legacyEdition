@@ -8,8 +8,11 @@
 	<icon path="art/icon64.png" size='64' />
 	<icon path="art/iconOG.png" />
 
-	<haxedef name="CAN_OPEN_LINKS" unless="switch" />
-	<haxedef name="CAN_CHEAT" if="switch debug" />
+	<define name="CAN_OPEN_LINKS" unless="switch" />
+	<define name="CAN_CHEAT" if="switch debug" />
+
+	<define name="VIDEOS_ALLOWED" if="desktop" unless="hl"/>
+
 	<!-- _______________________________ Libraries ______________________________ -->
 
 	<haxelib name="flixel" />
@@ -26,7 +29,7 @@
 	<!-- i need to setup a vslice legacy one -->
 	<!--<haxelib name="discord_rpc" if="cpp" unless="neko"/> -->
 
-	<haxelib name="hxvlc" />
+	<haxelib name="hxvlc" if="VIDEOS_ALLOWED"/>
 
 	<!-- _________________________ Application Settings _________________________ -->
 
