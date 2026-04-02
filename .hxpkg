@@ -1,0 +1,41 @@
+[
+	{
+		"profile": "default",
+		"pkgs": [
+			{
+				"name": "flixel"
+			},
+			{
+				"name": "lime"
+			},
+			{
+				"name": "openfl"
+			},
+			{
+				"name": "flixel-addons"
+			},
+			{
+				"name": "hscript"
+			},
+			{
+				"name": "flixel-ui"
+			},
+			{
+				"name": "faxe"
+			},
+			{
+				"name": "polymod"
+			},
+			{
+				"name": "newgrounds"
+			},
+			{
+				"name": "hxcpp-debug-server"
+			},
+			{
+				"name": "discord_rpc",
+				"link": "https://github.com/Aidan63/linc_discord-rpc"
+			}
+		]
+	}
+]
