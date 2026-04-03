@@ -63,7 +63,7 @@ class StoryMenuState extends MusicBeatState
 		{
 			final parsedWeek = WeekRegistry.loadFromJson(week);
 
-			if (parsedWeek == null)
+			if (parsedWeek == null || parsedWeek.storymodeVisible == false)
 				continue;
 
 			weekTitle.push(week);

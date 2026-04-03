@@ -91,14 +91,24 @@ class Paths
 		return getPath('music/$key.$SOUND_EXT', MUSIC, library);
 	}
 
-	inline static public function voices(song:String)
+	static public function songFile(file:String, song:String, ?difficulty:Int)
 	{
-		return 'songs:assets/songs/${song.toLowerCase()}/Voices.$SOUND_EXT';
+		var songSuffix = '';
+
+		if (difficulty > 2)
+			songSuffix = '-erect';
+
+		return 'songs:assets/songs/${song.toLowerCase()}$songSuffix/$file.$SOUND_EXT';
 	}
 
-	inline static public function inst(song:String)
+	inline static public function voices(song:String, ?difficulty:Int)
 	{
-		return 'songs:assets/songs/${song.toLowerCase()}/Inst.$SOUND_EXT';
+		return songFile('Voices', song, difficulty);
+	}
+
+	inline static public function inst(song:String, ?difficulty:Int)
+	{
+		return songFile('Inst', song, difficulty);
 	}
 
 	inline static public function image(key:String, ?library:String)

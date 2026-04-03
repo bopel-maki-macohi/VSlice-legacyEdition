@@ -43,13 +43,23 @@ class SongRegistry
 
 		var rawJson = Assets.getText(path).trim();
 
-		return parseJSONshit(rawJson);
+		return parseSavedChart(rawJson, jsonInput);
 	}
 
-	public static function parseJSONshit(rawJson:String):SongData
+	public static function parseSavedChart(chart:String, song:String):SongData
 	{
-		var swagShit:SongData = cast Json.parse(rawJson).song;
-		swagShit.validScore = true;
+		var swagShit:SongData = null;
+		try
+		{
+			swagShit = cast Json.parse(chart).song;
+			swagShit.validScore = true;
+		}
+		catch (e)
+		{
+			swagShit = null;
+			trace('Couldnt parse song chart JSON: $song\n$e');
+		}
+
 		return swagShit;
 	}
 }

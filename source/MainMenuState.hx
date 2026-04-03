@@ -111,14 +111,8 @@ class MainMenuState extends MusicBeatState
 		FlxG.camera.follow(camFollow, null, 0.06);
 		// FlxG.camera.setScrollBounds(bg.x, bg.x + bg.width, bg.y, bg.y + bg.height * 1.2);
 
-		var versionShit:FunkinText = new FunkinText(5, FlxG.height - 18, 0, "V-Slice : Legacy Edition v" + Application.current.meta.get('version'), 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		var versionShit:VersionText = new VersionText(5, FlxG.height - 18);
 		add(versionShit);
-
-		#if PLAYTESTING_BUILD
-		versionShit.text += ' (Playtesting build)';
-		#end
 
 		// NG.core.calls.event.logEvent('swag').send();
 

@@ -145,8 +145,8 @@ class PlayState extends MusicBeatState
 		if (FlxG.sound.music != null)
 			FlxG.sound.music.stop();
 
-		FlxG.sound.cache(Paths.inst(PlayState.SONG.song));
-		FlxG.sound.cache(Paths.voices(PlayState.SONG.song));
+		FlxG.sound.cache(Paths.inst(PlayState.SONG.song, storyDifficulty));
+		FlxG.sound.cache(Paths.voices(PlayState.SONG.song, storyDifficulty));
 
 		// var gameCam:FlxCamera = FlxG.camera;
 		camGame = new SwagCamera();
@@ -864,19 +864,9 @@ class PlayState extends MusicBeatState
 
 		super.create();
 
-		var versionShit:FunkinText = new FunkinText(5, FlxG.height - 18, 0, "V-Slice : Legacy Edition", 12);
-		versionShit.scrollFactor.set();
-		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
-		versionShit.cameras = [camHUD];
-
 		#if (debug || PLAYTESTING_BUILD)
+		var versionShit:VersionText = new VersionText(5, FlxG.height - 18);
 		add(versionShit);
-		#end
-
-		#if PLAYTESTING_BUILD
-		versionShit.text += ' (Playtesting build)';
-		#elseif debug
-		versionShit.text += ' (Debug build)';
 		#end
 
 		dad.dance();
@@ -1117,7 +1107,7 @@ class PlayState extends MusicBeatState
 		previousFrameTime = FlxG.game.ticks;
 
 		if (!paused)
-			FlxG.sound.playMusic(Paths.inst(SONG.song), 1, false);
+			FlxG.sound.playMusic(Paths.inst(SONG.song, storyDifficulty), 1, false);
 		FlxG.sound.music.onComplete = endSong;
 		vocals.play();
 
@@ -1140,7 +1130,7 @@ class PlayState extends MusicBeatState
 		curSong = songData.song;
 
 		if (SONG.needsVoices)
-			vocals = new FlxSound().loadEmbedded(Paths.voices(SONG.song));
+			vocals = new FlxSound().loadEmbedded(Paths.voices(SONG.song, storyDifficulty));
 		else
 			vocals = new FlxSound();
 

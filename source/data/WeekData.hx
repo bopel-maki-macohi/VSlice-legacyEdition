@@ -8,4 +8,6 @@ typedef WeekData =
 
     ?freeplayChars:Array<String>,
     ?color:String,
+
+	?storymodeVisible:Bool,
 }
