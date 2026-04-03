@@ -1,0 +1,46 @@
+{
+	"flipX": true,
+	"scale": [
+		1,
+		1
+	],
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/Mom_Assets",
+	"flipY": true,
+	"antialiasing": true,
+	"animations": [
+		{
+			"prefix": "Mom Idle",
+			"name": "idle",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Mom Up Pose",
+			"name": "singUP",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "MOM DOWN POSE",
+			"name": "singDOWN",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Mom Left Pose",
+			"name": "singLEFT",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Mom Pose Left",
+			"name": "singRIGHT",
+			"fps": 24,
+			"looping": true
+		}
+	]
+}

@@ -1,0 +1,46 @@
+{
+	"flipX": true,
+	"scale": [
+		1,
+		1
+	],
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/DADDY_DEAREST",
+	"flipY": true,
+	"antialiasing": true,
+	"animations": [
+		{
+			"prefix": "Dad idle dance",
+			"name": "idle",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Dad Sing Note UP",
+			"name": "singUP",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Dad Sing Note RIGHT",
+			"name": "singRIGHT",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Dad Sing Note DOWN",
+			"name": "singDOWN",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Dad Sing Note LEFT",
+			"name": "singLEFT",
+			"fps": 24,
+			"looping": true
+		}
+	]
+}

@@ -1,0 +1,46 @@
+{
+	"flipX": true,
+	"scale": [
+		1,
+		1
+	],
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/Monster_Assets",
+	"flipY": true,
+	"antialiasing": true,
+	"animations": [
+		{
+			"prefix": "monster idle",
+			"name": "idle",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "monster up note",
+			"name": "singUP",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "monster down",
+			"name": "singDOWN",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Monster left note",
+			"name": "singLEFT",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Monster Right note",
+			"name": "singRIGHT",
+			"fps": 24,
+			"looping": true
+		}
+	]
+}

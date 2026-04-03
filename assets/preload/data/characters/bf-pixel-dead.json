@@ -1,0 +1,40 @@
+{
+	"flipX": true,
+	"scale": [
+		6,
+		6
+	],
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/bfPixelsDEAD",
+	"flipY": true,
+	"antialiasing": false,
+	"animations": [
+		{
+			"prefix": "BF Dies pixel",
+			"name": "singUP",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF Dies pixel",
+			"name": "firstDeath",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Retry Loop",
+			"name": "deathLoop",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "RETRY CONFIRM",
+			"name": "deathConfirm",
+			"fps": 24,
+			"looping": true
+		}
+	]
+}

@@ -4,55 +4,68 @@
     "animations": [
         {
             "name": "idle",
-            "prefix": "BF idle dance"
+            "prefix": "BF idle dance",
+            "looping": false
         },
         {
             "name": "singLEFT",
-            "prefix": "BF NOTE LEFT0"
+            "prefix": "BF NOTE LEFT0",
+            "looping": false
         },
         {
             "name": "singDOWN",
-            "prefix": "BF NOTE DOWN0"
+            "prefix": "BF NOTE DOWN0",
+            "looping": false
         },
         {
             "name": "singUP",
-            "prefix": "BF NOTE UP0"
+            "prefix": "BF NOTE UP0",
+            "looping": false
         },
         {
             "name": "singRIGHT",
-            "prefix": "BF NOTE RIGHT0"
+            "prefix": "BF NOTE RIGHT0",
+            "looping": false
         },
         {
             "name": "singLEFTmiss",
-            "prefix": "BF NOTE LEFT MISS0"
+            "prefix": "BF NOTE LEFT MISS0",
+            "looping": false
         },
         {
             "name": "singDOWNmiss",
-            "prefix": "BF NOTE DOWN MISS0"
+            "prefix": "BF NOTE DOWN MISS0",
+            "looping": false
         },
         {
             "name": "singUPmiss",
-            "prefix": "BF NOTE UP MISS0"
+            "prefix": "BF NOTE UP MISS0",
+            "looping": false
         },
         {
             "name": "singRIGHTmiss",
-            "prefix": "BF NOTE RIGHT MISS0"
+            "prefix": "BF NOTE RIGHT MISS0",
+            "looping": false
         },
         {
             "name": "hey",
-            "prefix": "BF HEY"
+            "prefix": "BF HEY",
+            "looping": false
         },
         {
             "name": "firstDeath",
-            "prefix": "BF dies"
+            "prefix": "BF dies",
+            "looping": false
         },
         {
             "name": "deathLoop",
-            "prefix": "BF Dead Loop"
+            "prefix": "BF Dead Loop",
+            "looping": false
         },
         {
             "name": "deathConfirm",
-            "prefix": "BF Dead confirm"
+            "prefix": "BF Dead confirm",
+            "looping": false
         },
         {
             "name": "scared",

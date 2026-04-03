@@ -1,0 +1,40 @@
+{
+	"flipX": true,
+	"scale": [
+		1,
+		1
+	],
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/picoSpeaker",
+	"flipY": true,
+	"antialiasing": true,
+	"animations": [
+		{
+			"prefix": "Pico shoot 1",
+			"name": "shoot1",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Pico shoot 2",
+			"name": "shoot2",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Pico shoot 3",
+			"name": "shoot3",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Pico shoot 4",
+			"name": "shoot4",
+			"fps": 24,
+			"looping": true
+		}
+	]
+}

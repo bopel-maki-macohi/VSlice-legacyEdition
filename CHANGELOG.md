@@ -10,6 +10,7 @@ This is VSlice Legacy Edition now!
 
 ### Changed
 - Moved character offset files to "data/characters"
+    - There are plans to soon depricate offset text files, keep this in mind
 - The following are driven by data JSON files now:
     - Characters
     - Storymode characters / props

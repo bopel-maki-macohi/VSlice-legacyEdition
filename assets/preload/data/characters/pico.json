@@ -1,0 +1,70 @@
+{
+	"flipX": true,
+	"scale": [
+		1,
+		1
+	],
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/Pico_FNF_assetss",
+	"flipY": true,
+	"antialiasing": true,
+	"animations": [
+		{
+			"prefix": "Pico Idle Dance",
+			"name": "idle",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "pico Up note0",
+			"name": "singUP",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Pico Down Note0",
+			"name": "singDOWN",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Pico Note Right0",
+			"name": "singLEFT",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Pico NOTE LEFT0",
+			"name": "singRIGHT",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Pico NOTE LEFT miss",
+			"name": "singRIGHTmiss",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Pico Note Right Miss",
+			"name": "singLEFTmiss",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "pico Up note miss",
+			"name": "singUPmiss",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "Pico Down Note MISS",
+			"name": "singDOWNmiss",
+			"fps": 24,
+			"looping": true
+		}
+	]
+}

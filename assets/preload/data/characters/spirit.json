@@ -1,0 +1,46 @@
+{
+	"flipX": true,
+	"scale": [
+		6,
+		6
+	],
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/spirit",
+	"flipY": true,
+	"antialiasing": false,
+	"animations": [
+		{
+			"prefix": "idle spirit_",
+			"name": "idle",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "up_",
+			"name": "singUP",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "right_",
+			"name": "singRIGHT",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "left_",
+			"name": "singLEFT",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "spirit down_",
+			"name": "singDOWN",
+			"fps": 24,
+			"looping": true
+		}
+	]
+}

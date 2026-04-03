@@ -1,0 +1,70 @@
+{
+	"flipX": true,
+	"scale": [
+		6,
+		6
+	],
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/bfPixel",
+	"flipY": true,
+	"antialiasing": false,
+	"animations": [
+		{
+			"prefix": "BF IDLE",
+			"name": "idle",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF UP NOTE",
+			"name": "singUP",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF LEFT NOTE",
+			"name": "singLEFT",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF RIGHT NOTE",
+			"name": "singRIGHT",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF DOWN NOTE",
+			"name": "singDOWN",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF UP MISS",
+			"name": "singUPmiss",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF LEFT MISS",
+			"name": "singLEFTmiss",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF RIGHT MISS",
+			"name": "singRIGHTmiss",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF DOWN MISS",
+			"name": "singDOWNmiss",
+			"fps": 24,
+			"looping": true
+		}
+	]
+}
