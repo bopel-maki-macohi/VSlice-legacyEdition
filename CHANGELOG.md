@@ -22,7 +22,8 @@ This is VSlice Legacy Edition now!
 - Moved song files / folders to "data/songs"
 
 ### Fixed
-- When character offset files can't be found, it won't crash
+- Probably at least a couple o fixes I can't think about
+- When character offset files can't be found, it won't crash anymore :D
 - Video cutscenes work on desktop now!
 
 ### Removed
