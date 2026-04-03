@@ -118,7 +118,7 @@ class Character extends CharacterBase
 				{
 					if (Conductor.songPosition > animationNotes[0][0])
 					{
-						trace('played shoot anim' + animationNotes[0][1]);
+						trace('played shoot anim ${animationNotes[0][1]}');
 
 						var shootAnim:Int = 1;
 
@@ -127,7 +127,7 @@ class Character extends CharacterBase
 
 						shootAnim += FlxG.random.int(0, 1);
 
-						playAnim('shoot' + shootAnim, true);
+						playAnim('shoot$shootAnim', true);
 						animationNotes.shift();
 					}
 				}
