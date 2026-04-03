@@ -11,7 +11,7 @@ typedef CharacterData =
 			?looping:Bool,
 			?offsets:Array<Null<Float>>,
 		}>,
-	?offsets:Array<Null<Float>>,
+	?offsets:Array<Float>,
 	?scale:Array<Float>,
 	?flipX:Bool,
 	?flipY:Bool,
