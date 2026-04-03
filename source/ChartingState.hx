@@ -907,8 +907,8 @@ class ChartingState extends MusicBeatState
 
 		_song.notes.push(sec);
 
-		if (!FlxG.sound.music?.playing)
-			playChartingSound('openWindow');
+		// if (!FlxG.sound.music?.playing)
+		playChartingSound('openWindow');
 	}
 
 	function selectNote(note:Note):Void
