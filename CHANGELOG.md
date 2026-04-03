@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This is VSlice Legacy Edition now!
 
 ### Added
+- Difficulty dropdown to chart editor (looks for the song jsons)
 - BOPEEBO ERECT!
 - Censored roses cutscene!
 - Censored stress cutscene!
