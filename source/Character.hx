@@ -17,6 +17,12 @@ class Character extends CharacterBase
 
 		var tex:FlxAtlasFrames;
 
+		if (curCharacter == 'pico-speaker')
+		{
+			loadMappedAnims();
+			playAnim('shoot1');
+		}
+
 		danceCallback = function()
 		{
 			switch (curCharacter)

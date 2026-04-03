@@ -180,5 +180,7 @@ class CharacterBase extends FlxSprite
 
 		flipX = data?.flipX;
 		flipY = data?.flipY;
+
+		loadOffsetFile(c);
 	}
 }

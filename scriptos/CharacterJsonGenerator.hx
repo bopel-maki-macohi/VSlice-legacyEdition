@@ -78,7 +78,6 @@ class CharacterJsonGenerator
 
 		function loadOffsetFile(v:String) {}
 		function playAnim(v:String) {}
-		function play(v:String) {}
 		function updateHitbox() {}
 		function loadMappedAnims() {}
 
