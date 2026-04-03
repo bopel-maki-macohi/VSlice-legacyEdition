@@ -18,8 +18,7 @@ class GitarooPause extends MusicBeatState
 
 	override function create()
 	{
-		if (FlxG.sound.music != null)
-			FlxG.sound.music.stop();
+		if (FlxG.sound.music != null) FlxG.sound.music.stop();
 
 		var bg:FlxSprite = new FlxSprite().loadGraphic(Paths.image('pauseAlt/pauseBG'));
 		add(bg);
@@ -52,8 +51,7 @@ class GitarooPause extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (controls.UI_LEFT_P || controls.UI_RIGHT_P)
-			changeThing();
+		if (controls.UI_LEFT_P || controls.UI_RIGHT_P) changeThing();
 
 		if (controls.ACCEPT)
 		{

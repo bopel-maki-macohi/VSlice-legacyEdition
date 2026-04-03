@@ -14,12 +14,13 @@ class DiscordClient
 	public function new()
 	{
 		trace("Discord Client starting...");
-		DiscordRpc.start({
-			clientID: "814588678700924999",
-			onReady: onReady,
-			onError: onError,
-			onDisconnected: onDisconnected
-		});
+		DiscordRpc.start(
+			{
+				clientID: "814588678700924999",
+				onReady: onReady,
+				onError: onError,
+				onDisconnected: onDisconnected
+			});
 		trace("Discord Client started.");
 
 		while (true)
@@ -36,15 +37,16 @@ class DiscordClient
 	{
 		DiscordRpc.shutdown();
 	}
-	
+
 	static function onReady()
 	{
-		DiscordRpc.presence({
-			details: "In the Menus",
-			state: null,
-			largeImageKey: 'icon',
-			largeImageText: "Friday Night Funkin'"
-		});
+		DiscordRpc.presence(
+			{
+				details: "In the Menus",
+				state: null,
+				largeImageKey: 'icon',
+				largeImageText: "Friday Night Funkin'"
+			});
 	}
 
 	static function onError(_code:Int, _message:String)
@@ -59,8 +61,7 @@ class DiscordClient
 
 	public static function initialize()
 	{
-		var DiscordDaemon = sys.thread.Thread.create(() ->
-		{
+		var DiscordDaemon = sys.thread.Thread.create(() -> {
 			new DiscordClient();
 		});
 		trace("Discord Client initialized");
@@ -75,16 +76,17 @@ class DiscordClient
 			endTimestamp = startTimestamp + endTimestamp;
 		}
 
-		DiscordRpc.presence({
-			details: details,
-			state: state,
-			largeImageKey: 'icon',
-			largeImageText: "Friday Night Funkin'",
-			smallImageKey: smallImageKey,
-			// Obtained times are in milliseconds so they are divided so Discord can use it
-			startTimestamp: Std.int(startTimestamp / 1000),
-			endTimestamp: Std.int(endTimestamp / 1000)
-		});
+		DiscordRpc.presence(
+			{
+				details: details,
+				state: state,
+				largeImageKey: 'icon',
+				largeImageText: "Friday Night Funkin'",
+				smallImageKey: smallImageKey,
+				// Obtained times are in milliseconds so they are divided so Discord can use it
+				startTimestamp: Std.int(startTimestamp / 1000),
+				endTimestamp: Std.int(endTimestamp / 1000)
+			});
 
 		// trace('Discord RPC Updated. Arguments: $details, $state, $smallImageKey, $hasStartTimestamp, $endTimestamp');
 	}

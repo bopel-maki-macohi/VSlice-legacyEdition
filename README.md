@@ -40,6 +40,12 @@ NOTE: If you see any messages relating to deprecated packages, ignore them. They
 
 You should have everything ready for compiling the game! Follow the guide below to continue!
 
+## Random
+
+### Formatting
+
+You can run `haxelib run formatter -s source` to format everything, cause why not?
+
 ## Credits / shoutouts
 
 - [FunkinCrew](https://github.com/FunkinCrew) - Made the game.

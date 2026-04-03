@@ -44,8 +44,7 @@ class AnimationDebug extends FlxState
 		gridBG.scrollFactor.set(0.5, 0.5);
 		add(gridBG);
 
-		if (daAnim == 'bf')
-			isDad = false;
+		if (daAnim == 'bf') isDad = false;
 
 		if (isDad)
 		{
@@ -98,8 +97,7 @@ class AnimationDebug extends FlxState
 			text.color = FlxColor.BLUE;
 			dumbTexts.add(text);
 
-			if (pushList)
-				animList.push(anim);
+			if (pushList) animList.push(anim);
 
 			daLoop++;
 		}
@@ -107,8 +105,7 @@ class AnimationDebug extends FlxState
 
 	function updateTexts():Void
 	{
-		dumbTexts.forEach(function(text:FunkinText)
-		{
+		dumbTexts.forEach(function(text:FunkinText) {
 			text.kill();
 			dumbTexts.remove(text, true);
 		});
@@ -118,24 +115,18 @@ class AnimationDebug extends FlxState
 	{
 		textAnim.text = char.animation.curAnim?.name;
 
-		if (FlxG.keys.justPressed.E)
-			FlxG.camera.zoom += 0.25;
-		if (FlxG.keys.justPressed.Q)
-			FlxG.camera.zoom -= 0.25;
+		if (FlxG.keys.justPressed.E) FlxG.camera.zoom += 0.25;
+		if (FlxG.keys.justPressed.Q) FlxG.camera.zoom -= 0.25;
 
 		if (FlxG.keys.pressed.I || FlxG.keys.pressed.J || FlxG.keys.pressed.K || FlxG.keys.pressed.L)
 		{
-			if (FlxG.keys.pressed.I)
-				camFollow.velocity.y = -90;
-			else if (FlxG.keys.pressed.K)
-				camFollow.velocity.y = 90;
+			if (FlxG.keys.pressed.I) camFollow.velocity.y = -90;
+			else if (FlxG.keys.pressed.K) camFollow.velocity.y = 90;
 			else
 				camFollow.velocity.y = 0;
 
-			if (FlxG.keys.pressed.J)
-				camFollow.velocity.x = -90;
-			else if (FlxG.keys.pressed.L)
-				camFollow.velocity.x = 90;
+			if (FlxG.keys.pressed.J) camFollow.velocity.x = -90;
+			else if (FlxG.keys.pressed.L) camFollow.velocity.x = 90;
 			else
 				camFollow.velocity.x = 0;
 		}
@@ -154,11 +145,9 @@ class AnimationDebug extends FlxState
 			curAnim += 1;
 		}
 
-		if (curAnim < 0)
-			curAnim = animList.length - 1;
+		if (curAnim < 0) curAnim = animList.length - 1;
 
-		if (curAnim >= animList.length)
-			curAnim = 0;
+		if (curAnim >= animList.length) curAnim = 0;
 
 		if (FlxG.keys.justPressed.S || FlxG.keys.justPressed.W || FlxG.keys.justPressed.SPACE)
 		{
@@ -175,20 +164,15 @@ class AnimationDebug extends FlxState
 
 		var holdShift = FlxG.keys.pressed.SHIFT;
 		var multiplier = 1;
-		if (holdShift)
-			multiplier = 10;
+		if (holdShift) multiplier = 10;
 
 		if (upP || rightP || downP || leftP)
 		{
 			updateTexts();
-			if (upP)
-				char.animOffsets.get(animList[curAnim])[1] += 1 * multiplier;
-			if (downP)
-				char.animOffsets.get(animList[curAnim])[1] -= 1 * multiplier;
-			if (leftP)
-				char.animOffsets.get(animList[curAnim])[0] += 1 * multiplier;
-			if (rightP)
-				char.animOffsets.get(animList[curAnim])[0] -= 1 * multiplier;
+			if (upP) char.animOffsets.get(animList[curAnim])[1] += 1 * multiplier;
+			if (downP) char.animOffsets.get(animList[curAnim])[1] -= 1 * multiplier;
+			if (leftP) char.animOffsets.get(animList[curAnim])[0] += 1 * multiplier;
+			if (rightP) char.animOffsets.get(animList[curAnim])[0] -= 1 * multiplier;
 
 			updateTexts();
 			genBoyOffsets(false);

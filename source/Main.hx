@@ -90,7 +90,6 @@ class Main extends Sprite
 		addChild(fpsCounter);
 		#end
 
-		
 		// trace('Characters: ${CharacterRegistry.characterList}');
 		trace('Weeks: ${WeekRegistry.weekList}');
 		// trace('Songs: ${SongRegistry.songList}');

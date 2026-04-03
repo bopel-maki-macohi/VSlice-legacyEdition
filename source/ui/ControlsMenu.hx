@@ -98,8 +98,7 @@ class ControlsMenu extends ui.OptionsState.Page
 				y += spacer;
 			}
 
-			if (currentHeader != null && name.indexOf(currentHeader) == 0)
-				name = name.substr(currentHeader.length);
+			if (currentHeader != null && name.indexOf(currentHeader) == 0) name = name.substr(currentHeader.length);
 
 			var label = labels.add(new BoldText(150, y, name));
 			label.alpha = 0.6;
@@ -123,8 +122,7 @@ class ControlsMenu extends ui.OptionsState.Page
 		var margin = 100;
 		menuCamera.deadzone.set(0, margin, menuCamera.width, menuCamera.height - margin * 2);
 		menuCamera.minScrollY = 0;
-		controlGrid.onChange.add(function(selected)
-		{
+		controlGrid.onChange.add(function(selected) {
 			camFollow.y = selected.y;
 
 			labels.forEach((label) -> label.alpha = 0.6);
@@ -144,8 +142,7 @@ class ControlsMenu extends ui.OptionsState.Page
 		var item = new InputItem(x, y, currentDevice, control, index, onSelect);
 		for (i in 0...controlGroups.length)
 		{
-			if (controlGroups[i].contains(control))
-				itemGroups[i].push(item);
+			if (controlGroups[i].contains(control)) itemGroups[i].push(item);
 		}
 
 		return controlGrid.addItem(item.name, item);
@@ -179,8 +176,7 @@ class ControlsMenu extends ui.OptionsState.Page
 		var inputName = device == Keys ? "key" : "button";
 		var cancel = device == Keys ? "Escape" : "Back";
 		// todo: alignment
-		if (device == Keys)
-			prompt.setText('\nPress any key to rebind\n\n\n\n    $cancel to cancel');
+		if (device == Keys) prompt.setText('\nPress any key to rebind\n\n\n\n    $cancel to cancel');
 		else
 			prompt.setText('\nPress any button\n   to rebind\n\n\n $cancel to cancel');
 
@@ -197,8 +193,7 @@ class ControlsMenu extends ui.OptionsState.Page
 		super.update(elapsed);
 
 		var controls = PlayerSettings.player1.controls;
-		if (controlGrid.enabled && deviceList != null && deviceListSelected == false && controls.BACK)
-			goToDeviceList();
+		if (controlGrid.enabled && deviceList != null && deviceListSelected == false && controls.BACK) goToDeviceList();
 
 		if (prompt.exists)
 		{
@@ -210,8 +205,7 @@ class ControlsMenu extends ui.OptionsState.Page
 						var key = FlxG.keys.firstJustReleased();
 						if (key != NONE)
 						{
-							if (key != ESCAPE)
-								onInputSelect(key);
+							if (key != ESCAPE) onInputSelect(key);
 							closePrompt();
 						}
 					}
@@ -220,8 +214,7 @@ class ControlsMenu extends ui.OptionsState.Page
 						var button = FlxG.gamepads.getByID(id).firstJustReleasedID();
 						if (button != NONE)
 						{
-							if (button != BACK)
-								onInputSelect(button);
+							if (button != BACK) onInputSelect(button);
 							closePrompt();
 						}
 					}
@@ -237,8 +230,7 @@ class ControlsMenu extends ui.OptionsState.Page
 		var column0 = Math.floor(controlGrid.selectedIndex / 2) * 2;
 		for (i in 0...COLUMNS)
 		{
-			if (controlGrid.members[column0 + i].input == input)
-				return;
+			if (controlGrid.members[column0 + i].input == input) return;
 		}
 
 		// Check if items in the same group already have the new input
@@ -272,8 +264,7 @@ class ControlsMenu extends ui.OptionsState.Page
 	{
 		prompt.exists = false;
 		controlGrid.enabled = true;
-		if (deviceList == null)
-			canExit = true;
+		if (deviceList == null) canExit = true;
 	}
 
 	override function destroy()
@@ -282,8 +273,7 @@ class ControlsMenu extends ui.OptionsState.Page
 
 		itemGroups = null;
 
-		if (FlxG.cameras.list.contains(menuCamera))
-			FlxG.cameras.remove(menuCamera);
+		if (FlxG.cameras.list.contains(menuCamera)) FlxG.cameras.remove(menuCamera);
 	}
 
 	override function set_enabled(value:Bool)
@@ -291,14 +281,12 @@ class ControlsMenu extends ui.OptionsState.Page
 		if (value == false)
 		{
 			controlGrid.enabled = false;
-			if (deviceList != null)
-				deviceList.enabled = false;
+			if (deviceList != null) deviceList.enabled = false;
 		}
 		else
 		{
 			controlGrid.enabled = !deviceListSelected;
-			if (deviceList != null)
-				deviceList.enabled = deviceListSelected;
+			if (deviceList != null) deviceList.enabled = deviceListSelected;
 		}
 		return super.set_enabled(value);
 	}
@@ -336,11 +324,9 @@ class InputItem extends TextMenuItem
 		var list = PlayerSettings.player1.controls.getInputsFor(control, device);
 		if (list.length > index)
 		{
-			if (list[index] != FlxKey.ESCAPE || list[index] != FlxGamepadInputID.BACK)
-				return list[index];
+			if (list[index] != FlxKey.ESCAPE || list[index] != FlxGamepadInputID.BACK) return list[index];
 
-			if (list.length > ControlsMenu.COLUMNS)
-				// Escape isn't mappable, show a third option, instead.
+			if (list.length > ControlsMenu.COLUMNS) // Escape isn't mappable, show a third option, instead.
 				return list[ControlsMenu.COLUMNS];
 		}
 

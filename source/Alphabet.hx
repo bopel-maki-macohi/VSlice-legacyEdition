@@ -77,8 +77,7 @@ class Alphabet extends FlxSpriteGroup
 				lastWasSpace = true;
 			}
 
-			if (AlphaCharacter.alphabet.indexOf(character.toLowerCase()) != -1)
-				// if (AlphaCharacter.alphabet.contains(character.toLowerCase()))
+			if (AlphaCharacter.alphabet.indexOf(character.toLowerCase()) != -1) // if (AlphaCharacter.alphabet.contains(character.toLowerCase()))
 			{
 				if (lastSprite != null)
 				{
@@ -94,8 +93,7 @@ class Alphabet extends FlxSpriteGroup
 				// var letter:AlphaCharacter = new AlphaCharacter(30 * loopNum, 0);
 				var letter:AlphaCharacter = new AlphaCharacter(xPos, 0);
 
-				if (isBold)
-					letter.createBold(character);
+				if (isBold) letter.createBold(character);
 				else
 				{
 					letter.createLetter(character);
@@ -129,8 +127,7 @@ class Alphabet extends FlxSpriteGroup
 		var xPos:Float = 0;
 		var curRow:Int = 0;
 
-		new FlxTimer().start(0.05, function(tmr:FlxTimer)
-		{
+		new FlxTimer().start(0.05, function(tmr:FlxTimer) {
 			// trace(_finalText.fastCodeAt(loopNum) + " " + _finalText.charAt(loopNum));
 			if (_finalText.fastCodeAt(loopNum) == "\n".code)
 			{
@@ -153,9 +150,9 @@ class Alphabet extends FlxSpriteGroup
 			var isSymbol:Bool = AlphaCharacter.symbols.indexOf(splitWords[loopNum]) != -1;
 			#end
 
-			if (AlphaCharacter.alphabet.indexOf(splitWords[loopNum].toLowerCase()) != -1 || isNumber || isSymbol)
-				// if (AlphaCharacter.alphabet.contains(splitWords[loopNum].toLowerCase()) || isNumber || isSymbol)
-
+			if (AlphaCharacter.alphabet.indexOf(splitWords[loopNum].toLowerCase()) != -1
+				|| isNumber
+				|| isSymbol) // if (AlphaCharacter.alphabet.contains(splitWords[loopNum].toLowerCase()) || isNumber || isSymbol)
 			{
 				if (lastSprite != null && !xPosResetted)
 				{
@@ -247,8 +244,6 @@ class AlphaCharacter extends FlxSprite
 		super(x, y);
 		var tex = Paths.getSparrowAtlas('alphabet');
 		frames = tex;
-
-		
 	}
 
 	public function createBold(letter:String)

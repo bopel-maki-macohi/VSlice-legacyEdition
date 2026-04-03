@@ -31,18 +31,14 @@ class ModMenu extends ui.OptionsState.Page
 
 	override function update(elapsed:Float)
 	{
-		if (FlxG.keys.justPressed.R)
-			refreshModList();
+		if (FlxG.keys.justPressed.R) refreshModList();
 
 		selections();
 
-		if (controls.UI_UP_P)
-			selections(-1);
-		if (controls.UI_DOWN_P)
-			selections(1);
+		if (controls.UI_UP_P) selections(-1);
+		if (controls.UI_DOWN_P) selections(1);
 
-		if (FlxG.keys.justPressed.SPACE)
-			grpMods.members[curSelected].modEnabled = !grpMods.members[curSelected].modEnabled;
+		if (FlxG.keys.justPressed.SPACE) grpMods.members[curSelected].modEnabled = !grpMods.members[curSelected].modEnabled;
 
 		if (FlxG.keys.justPressed.I && curSelected != 0)
 		{
@@ -67,10 +63,8 @@ class ModMenu extends ui.OptionsState.Page
 	{
 		curSelected += change;
 
-		if (curSelected >= modFolders.length)
-			curSelected = 0;
-		if (curSelected < 0)
-			curSelected = modFolders.length - 1;
+		if (curSelected >= modFolders.length) curSelected = 0;
+		if (curSelected < 0) curSelected = modFolders.length - 1;
 
 		for (txt in 0...grpMods.length)
 		{
@@ -86,6 +80,7 @@ class ModMenu extends ui.OptionsState.Page
 	}
 
 	inline static var MOD_PATH = "./mods";
+
 	private function refreshModList():Void
 	{
 		while (grpMods.members.length > 0)
@@ -96,23 +91,22 @@ class ModMenu extends ui.OptionsState.Page
 		#if desktop
 		var modList = [];
 		modFolders = [];
-		
+
 		trace("mods path:" + FileSystem.absolutePath(MOD_PATH));
 		if (!FileSystem.exists(MOD_PATH))
 		{
 			FlxG.log.warn("missing mods folder, expected: " + FileSystem.absolutePath(MOD_PATH));
 			return;
 		}
-		
+
 		for (file in FileSystem.readDirectory(MOD_PATH))
 		{
-			if (FileSystem.isDirectory(MOD_PATH + file))
-				modFolders.push(file);
+			if (FileSystem.isDirectory(MOD_PATH + file)) modFolders.push(file);
 		}
 
 		enabledMods = [];
 
-#if polymod
+		#if polymod
 		modList = Polymod.scan(MOD_PATH);
 		#else
 		modList = [];
@@ -153,8 +147,7 @@ class ModMenuItem extends FlxText
 
 	override function update(elapsed:Float)
 	{
-		if (modEnabled)
-			alpha = 1;
+		if (modEnabled) alpha = 1;
 		else
 			alpha = 0.5;
 

@@ -16,8 +16,7 @@ class WeekRegistry
 
 		for (week in Assets.getText(Paths.txt('weekList')).split('\n'))
 		{
-			if (loadFromJson(week.trim()) == null)
-				continue;
+			if (loadFromJson(week.trim()) == null) continue;
 
 			w.push(week.trim());
 		}
@@ -29,8 +28,8 @@ class WeekRegistry
 	{
 		if (week == null || week == '') return null;
 
-        var path = Paths.json('ui/storymode/levels/' + week);
-        if (!Assets.exists(path)) return null;
+		var path = Paths.json('ui/storymode/levels/' + week);
+		if (!Assets.exists(path)) return null;
 
 		var rawJson = Assets.getText(path);
 		var weekJson:WeekData = null;

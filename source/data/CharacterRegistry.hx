@@ -18,8 +18,7 @@ class CharacterRegistry
 		{
 			var char = Path.withoutExtension(Path.withoutDirectory(asset));
 
-			if (loadFromJson(char, 'characters/') == null)
-				continue;
+			if (loadFromJson(char, 'characters/') == null) continue;
 
 			c.push(char);
 		}
@@ -29,12 +28,10 @@ class CharacterRegistry
 
 	public static function loadFromJson(character:String, dataFolder:String = ''):CharacterData
 	{
-		if (character == null || character == '')
-			return null;
+		if (character == null || character == '') return null;
 
 		var path = Paths.json(dataFolder + character);
-		if (!Assets.exists(path))
-			return null;
+		if (!Assets.exists(path)) return null;
 
 		var rawJson = Assets.getText(path);
 		var characterJson:CharacterData = null;

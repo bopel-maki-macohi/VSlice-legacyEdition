@@ -71,13 +71,11 @@ class OptionsState extends MusicBeatState
 
 	function setPage(name:PageName)
 	{
-		if (pages.exists(currentName))
-			currentPage.exists = false;
+		if (pages.exists(currentName)) currentPage.exists = false;
 
 		currentName = name;
 
-		if (pages.exists(currentName))
-			currentPage.exists = true;
+		if (pages.exists(currentName)) currentPage.exists = true;
 	}
 
 	override function finishTransIn()
@@ -130,8 +128,7 @@ class Page extends FlxGroup
 	{
 		super.update(elapsed);
 
-		if (enabled)
-			updateEnabled(elapsed);
+		if (enabled) updateEnabled(elapsed);
 	}
 
 	function updateEnabled(elapsed:Float)
@@ -151,11 +148,9 @@ class Page extends FlxGroup
 	function openPrompt(prompt:Prompt, onClose:Void->Void)
 	{
 		enabled = false;
-		prompt.closeCallback = function()
-		{
+		prompt.closeCallback = function() {
 			enabled = true;
-			if (onClose != null)
-				onClose();
+			if (onClose != null) onClose();
 		}
 
 		FlxG.state.openSubState(prompt);

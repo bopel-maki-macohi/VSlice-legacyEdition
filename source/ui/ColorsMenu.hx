@@ -43,15 +43,11 @@ class ColorsMenu extends ui.OptionsState.Page
 
 	override function update(elapsed:Float)
 	{
-		if (controls.UI_RIGHT_P)
-			curSelected += 1;
-		if (controls.UI_LEFT_P)
-			curSelected -= 1;
+		if (controls.UI_RIGHT_P) curSelected += 1;
+		if (controls.UI_LEFT_P) curSelected -= 1;
 
-		if (curSelected < 0)
-			curSelected = grpNotes.members.length - 1;
-		if (curSelected >= grpNotes.members.length)
-			curSelected = 0;
+		if (curSelected < 0) curSelected = grpNotes.members.length - 1;
+		if (curSelected >= grpNotes.members.length) curSelected = 0;
 
 		if (controls.UI_UP)
 		{

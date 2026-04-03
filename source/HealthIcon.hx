@@ -21,7 +21,7 @@ class HealthIcon extends FlxSprite
 		this.isPlayer = isPlayer;
 
 		changeIcon(char);
-		
+
 		scrollFactor.set();
 	}
 
@@ -31,16 +31,14 @@ class HealthIcon extends FlxSprite
 	{
 		isOldIcon = !isOldIcon;
 
-		if (isOldIcon)
-			changeIcon('bf-old');
+		if (isOldIcon) changeIcon('bf-old');
 		else
 			changeIcon(PlayState.SONG.player1);
 	}
 
 	public function changeIcon(newChar:String):Void
 	{
-		if (newChar != 'bf-pixel' && newChar != 'bf-old')
-			newChar = newChar.split('-')[0].trim();
+		if (newChar != 'bf-pixel' && newChar != 'bf-old') newChar = newChar.split('-')[0].trim();
 
 		if (newChar != char)
 		{
@@ -58,7 +56,6 @@ class HealthIcon extends FlxSprite
 	{
 		super.update(elapsed);
 
-		if (sprTracker != null)
-			setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y - 30);
+		if (sprTracker != null) setPosition(sprTracker.x + sprTracker.width + 10, sprTracker.y - 30);
 	}
 }

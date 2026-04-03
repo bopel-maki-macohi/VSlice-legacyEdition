@@ -16,7 +16,7 @@ class MenuItem extends FlxSpriteGroup
 	public function new(x:Float, y:Float, weekFile:String = 'tutorial')
 	{
 		super(x, y);
-		
+
 		week = new FlxSprite().loadGraphic(Paths.image('storymenu/titles/' + weekFile));
 		add(week);
 	}
@@ -39,11 +39,9 @@ class MenuItem extends FlxSpriteGroup
 		super.update(elapsed);
 		y = CoolUtil.coolLerp(y, (targetY * 120) + 480, 0.17);
 
-		if (isFlashing)
-			flashingInt += 1;
+		if (isFlashing) flashingInt += 1;
 
-		if (flashingInt % fakeFramerate >= Math.floor(fakeFramerate / 2))
-			week.color = 0xFF33ffff;
+		if (flashingInt % fakeFramerate >= Math.floor(fakeFramerate / 2)) week.color = 0xFF33ffff;
 		else
 			week.color = FlxColor.WHITE;
 	}

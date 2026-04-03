@@ -53,11 +53,9 @@ class DialogueBox extends FlxSpriteGroup
 		bgFade.alpha = 0;
 		add(bgFade);
 
-		new FlxTimer().start(0.83, function(tmr:FlxTimer)
-		{
+		new FlxTimer().start(0.83, function(tmr:FlxTimer) {
 			bgFade.alpha += (1 / 5) * 0.7;
-			if (bgFade.alpha > 0.7)
-				bgFade.alpha = 0.7;
+			if (bgFade.alpha > 0.7) bgFade.alpha = 0.7;
 		}, 5);
 
 		portraitLeft = new FlxSprite(-20, 40);
@@ -79,7 +77,7 @@ class DialogueBox extends FlxSpriteGroup
 		portraitRight.visible = false;
 
 		box = new FlxSprite(-20, 45);
-		
+
 		var hasDialog = false;
 		switch (PlayState.SONG.song.toLowerCase())
 		{
@@ -108,10 +106,9 @@ class DialogueBox extends FlxSpriteGroup
 		}
 
 		this.dialogueList = dialogueList;
-		
-		if (!hasDialog)
-			return;
-		
+
+		if (!hasDialog) return;
+
 		box.animation.play('normalOpen');
 		box.setGraphicSize(Std.int(box.width * PlayState.daPixelZoom * 0.9));
 		box.updateHitbox();
@@ -125,7 +122,6 @@ class DialogueBox extends FlxSpriteGroup
 		handSelect.updateHitbox();
 		handSelect.visible = false;
 		add(handSelect);
-
 
 		if (!talkingRight)
 		{
@@ -158,8 +154,7 @@ class DialogueBox extends FlxSpriteGroup
 	override function update(elapsed:Float)
 	{
 		// HARD CODING CUZ IM STUPDI
-		if (PlayState.SONG.song.toLowerCase() == 'roses')
-			portraitLeft.visible = false;
+		if (PlayState.SONG.song.toLowerCase() == 'roses') portraitLeft.visible = false;
 		if (PlayState.SONG.song.toLowerCase() == 'thorns')
 		{
 			portraitLeft.color = FlxColor.BLACK;
@@ -187,7 +182,7 @@ class DialogueBox extends FlxSpriteGroup
 		if (FlxG.keys.justPressed.ANY && dialogueEnded)
 		{
 			remove(dialogue);
-				
+
 			FlxG.sound.play(Paths.sound('clickText'), 0.8);
 
 			if (dialogueList[1] == null && dialogueList[0] != null)
@@ -196,11 +191,10 @@ class DialogueBox extends FlxSpriteGroup
 				{
 					isEnding = true;
 
-					if (PlayState.SONG.song.toLowerCase() == 'senpai' || PlayState.SONG.song.toLowerCase() == 'thorns')
-						FlxG.sound.music.fadeOut(2.2, 0);
+					if (PlayState.SONG.song.toLowerCase() == 'senpai'
+						|| PlayState.SONG.song.toLowerCase() == 'thorns') FlxG.sound.music.fadeOut(2.2, 0);
 
-					new FlxTimer().start(0.2, function(tmr:FlxTimer)
-					{
+					new FlxTimer().start(0.2, function(tmr:FlxTimer) {
 						box.alpha -= 1 / 5;
 						bgFade.alpha -= 1 / 5 * 0.7;
 						portraitLeft.visible = false;
@@ -210,8 +204,7 @@ class DialogueBox extends FlxSpriteGroup
 						dropText.alpha = swagDialogue.alpha;
 					}, 5);
 
-					new FlxTimer().start(1.2, function(tmr:FlxTimer)
-					{
+					new FlxTimer().start(1.2, function(tmr:FlxTimer) {
 						finishThing();
 						kill();
 					});
@@ -223,9 +216,8 @@ class DialogueBox extends FlxSpriteGroup
 				startDialogue();
 			}
 		}
-		else if (FlxG.keys.justPressed.ANY && dialogueStarted)
-			swagDialogue.skip();
-		
+		else if (FlxG.keys.justPressed.ANY && dialogueStarted) swagDialogue.skip();
+
 		super.update(elapsed);
 	}
 
@@ -241,8 +233,7 @@ class DialogueBox extends FlxSpriteGroup
 		// swagDialogue.text = ;
 		swagDialogue.resetText(dialogueList[0]);
 		swagDialogue.start(0.04);
-		swagDialogue.completeCallback = function()
-		{
+		swagDialogue.completeCallback = function() {
 			trace("dialogue finish");
 			handSelect.visible = true;
 			dialogueEnded = true;

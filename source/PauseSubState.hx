@@ -8,7 +8,6 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.input.keyboard.FlxKey;
 import flixel.sound.FlxSound;
-
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
@@ -121,8 +120,7 @@ class PauseSubState extends MusicBeatSubstate
 
 	override function update(elapsed:Float)
 	{
-		if (pauseMusic.volume < 0.5)
-			pauseMusic.volume += 0.01 * elapsed;
+		if (pauseMusic.volume < 0.5) pauseMusic.volume += 0.01 * elapsed;
 
 		super.update(elapsed);
 
@@ -170,8 +168,7 @@ class PauseSubState extends MusicBeatSubstate
 				case "Exit to menu":
 					PlayState.seenCutscene = false;
 					PlayState.deathCounter = 0;
-					if (PlayState.isStoryMode)
-						FlxG.switchState(() -> new StoryMenuState());
+					if (PlayState.isStoryMode) FlxG.switchState(() -> new StoryMenuState());
 					else
 						FlxG.switchState(() -> new FreeplayState());
 			}
@@ -197,10 +194,8 @@ class PauseSubState extends MusicBeatSubstate
 
 		curSelected += change;
 
-		if (curSelected < 0)
-			curSelected = menuItems.length - 1;
-		if (curSelected >= menuItems.length)
-			curSelected = 0;
+		if (curSelected < 0) curSelected = menuItems.length - 1;
+		if (curSelected >= menuItems.length) curSelected = 0;
 
 		var bullShit:Int = 0;
 

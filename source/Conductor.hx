@@ -42,14 +42,15 @@ class Conductor
 			if (song.notes[i].changeBPM && song.notes[i].bpm != curBPM)
 			{
 				curBPM = song.notes[i].bpm;
-				
+
 				if (iwantthebpmMap)
 				{
-					var event:BPMChangeEvent = {
-						stepTime: totalSteps,
-						songTime: totalPos,
-						bpm: curBPM
-					};
+					var event:BPMChangeEvent =
+						{
+							stepTime: totalSteps,
+							songTime: totalPos,
+							bpm: curBPM
+						};
 					bpmChangeMap.push(event);
 				}
 			}
@@ -58,8 +59,7 @@ class Conductor
 			totalSteps += deltaSteps;
 			totalPos += ((60 / curBPM) * 1000 / 4) * deltaSteps;
 		}
-		if (iwantthebpmMap)
-			trace("new BPM map BUDDY " + bpmChangeMap);
+		if (iwantthebpmMap) trace("new BPM map BUDDY " + bpmChangeMap);
 
 		return totalPos;
 	}

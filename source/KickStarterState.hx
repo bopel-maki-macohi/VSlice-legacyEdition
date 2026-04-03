@@ -18,8 +18,7 @@ class KickStarterState extends MusicBeatState
 		FlxG.save.data.seenVideo = true;
 		FlxG.save.flush();
 
-		if (FlxG.sound.music != null)
-			FlxG.sound.music.stop();
+		if (FlxG.sound.music != null) FlxG.sound.music.stop();
 
 		video = new VideoCutscene();
 		add(video);
@@ -30,8 +29,7 @@ class KickStarterState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (controls.ACCEPT)
-			finishVideo();
+		if (controls.ACCEPT) finishVideo();
 
 		super.update(elapsed);
 	}

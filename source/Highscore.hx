@@ -16,8 +16,7 @@ class Highscore
 
 		if (songScores.exists(formattedSong))
 		{
-			if (songScores.get(formattedSong) < score)
-				setScore(formattedSong, score);
+			if (songScores.get(formattedSong) < score) setScore(formattedSong, score);
 		}
 		else
 			setScore(formattedSong, score);
@@ -29,8 +28,7 @@ class Highscore
 
 		if (songScores.exists(formattedSong))
 		{
-			if (songScores.get(formattedSong) < score)
-				setScore(formattedSong, score);
+			if (songScores.get(formattedSong) < score) setScore(formattedSong, score);
 		}
 		else
 			setScore(formattedSong, score);
@@ -46,7 +44,7 @@ class Highscore
 		 * is because switch doesn't use NGio, or because switch has a different saving method.
 		 * I moved the compiler flag here, rather than using it everywhere else.
 		 */
-		#if !switch
+		#if ! switch
 		// Reminder that I don't need to format this song, it should come formatted!
 		songScores.set(formattedSong, score);
 		FlxG.save.data.songScores = songScores;
@@ -80,8 +78,7 @@ class Highscore
 		{
 			var songJson:SongData = SongRegistry.loadFromJson(formatSong(song, i), song);
 
-			if (songJson != null)
-				difficulties.push(i);
+			if (songJson != null) difficulties.push(i);
 		}
 
 		return difficulties;
@@ -99,16 +96,14 @@ class Highscore
 
 	public static function getScore(song:String, diff:Int):Int
 	{
-		if (!songScores.exists(formatSong(song, diff)))
-			setScore(formatSong(song, diff), 0);
+		if (!songScores.exists(formatSong(song, diff))) setScore(formatSong(song, diff), 0);
 
 		return songScores.get(formatSong(song, diff));
 	}
 
 	public static function getWeekScore(week:String, diff:Int):Int
 	{
-		if (!songScores.exists(formatSong(week, diff)))
-			setScore(formatSong(week, diff), 0);
+		if (!songScores.exists(formatSong(week, diff))) setScore(formatSong(week, diff), 0);
 
 		return songScores.get(formatSong(week, diff));
 	}

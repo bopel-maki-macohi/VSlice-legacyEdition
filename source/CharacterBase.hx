@@ -71,14 +71,11 @@ class CharacterBase extends FlxSprite
 
 	public function dance()
 	{
-		if (animation.curAnim == null || debugMode)
-			return;
+		if (animation.curAnim == null || debugMode) return;
 
-		if (danceCallback == null)
-			danceCallback = () -> return true;
+		if (danceCallback == null) danceCallback = () -> return true;
 
-		if (danceCallback())
-			playAnim('idle');
+		if (danceCallback()) playAnim('idle');
 	}
 
 	public function playAnim(AnimName:String, Force:Bool = false, Reversed:Bool = false, Frame:Int = 0):Void
@@ -104,8 +101,7 @@ class CharacterBase extends FlxSprite
 	{
 		offset.set(0, 0);
 
-		if (data?.offsets != null)
-			offset.set(data?.offsets[0] ?? 0, data?.offsets[1] ?? 0);
+		if (data?.offsets != null) offset.set(data?.offsets[0] ?? 0, data?.offsets[1] ?? 0);
 
 		// trace(offset.toString());
 	}
@@ -131,39 +127,31 @@ class CharacterBase extends FlxSprite
 
 		var tex:FlxAtlasFrames = null;
 
-		if (data.packer)
-			tex = Paths.getPackerAtlas(data?.path ?? '$dataPath/$c');
+		if (data.packer) tex = Paths.getPackerAtlas(data?.path ?? '$dataPath/$c');
 		else
 			tex = Paths.getSparrowAtlas(data?.path ?? '$dataPath/$c');
 		frames = tex;
 
-		if (frames == null)
-			return;
+		if (frames == null) return;
 
 		for (n in this.animation.getNameList())
 			animation.remove(n);
 
 		for (a in data.animations)
 		{
-			if (a.name == null)
-				continue;
+			if (a.name == null) continue;
 
-			if (a.indices != null)
-				animation.addByIndices(a.name, a.prefix, a.indices, a.postfix, 24, a?.looping ?? true);
-			else if (a.prefix != null)
-				animation.addByPrefix(a.name, a.prefix, 24, a?.looping ?? true);
+			if (a.indices != null) animation.addByIndices(a.name, a.prefix, a.indices, a.postfix, 24, a?.looping ?? true);
+			else if (a.prefix != null) animation.addByPrefix(a.name, a.prefix, 24, a?.looping ?? true);
 
-			if (a.offsets != null)
-				addOffset(a.name, a.offsets[0] ?? 0, a.offsets[1] ?? 0);
+			if (a.offsets != null) addOffset(a.name, a.offsets[0] ?? 0, a.offsets[1] ?? 0);
 		}
 
-		if (data.scale != null)
-			this.scale.set(data?.scale[0] ?? 1, data?.scale[0] ?? 1);
+		if (data.scale != null) this.scale.set(data?.scale[0] ?? 1, data?.scale[0] ?? 1);
 		else
 			this.scale.set(1, 1);
 
-		if (data.isPixel)
-			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
+		if (data.isPixel) setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 
 		flipX = data?.flipX;
 		flipY = data?.flipY;
@@ -171,8 +159,7 @@ class CharacterBase extends FlxSprite
 
 		loadOffsetFile(data?.offsetFile ?? c);
 
-		if (animation.getNameList().contains(data.startingAnim))
-			playAnim(data.startingAnim);
+		if (animation.getNameList().contains(data.startingAnim)) playAnim(data.startingAnim);
 		updateHitbox();
 	}
 }

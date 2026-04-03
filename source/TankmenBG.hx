@@ -21,7 +21,7 @@ class TankmenBG extends FlxSprite
 		// makeGraphic(200, 200);
 
 		frames = Paths.getSparrowAtlas('tankmanKilled1');
-		
+
 		animation.addByPrefix('run', 'tankman running', 24, true);
 		animation.addByPrefix('shot', 'John Shot ' + FlxG.random.int(1, 2), 24, false);
 
@@ -41,16 +41,14 @@ class TankmenBG extends FlxSprite
 		endingOffset = FlxG.random.float(50, 200);
 		tankSpeed = FlxG.random.float(0.6, 1);
 
-		if (goingRight)
-			flipX = true;
+		if (goingRight) flipX = true;
 	}
 
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (x >= FlxG.width * 1.2 || x <= FlxG.width * -0.5)
-			visible = false;
+		if (x >= FlxG.width * 1.2 || x <= FlxG.width * -0.5) visible = false;
 		else
 			visible = true;
 

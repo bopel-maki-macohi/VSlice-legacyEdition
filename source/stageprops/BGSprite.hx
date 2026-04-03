@@ -21,8 +21,7 @@ class BGSprite extends FlxSprite
 				animation.addByPrefix(anims, anims, 24, loopingAnim);
 				animation.play(anims);
 
-				if (idleAnim == null)
-					idleAnim = anims;
+				if (idleAnim == null) idleAnim = anims;
 			}
 		}
 		else
@@ -32,12 +31,10 @@ class BGSprite extends FlxSprite
 		}
 
 		scrollFactor.set(parX, parY);
-		
 	}
 
 	public function dance():Void
 	{
-		if (idleAnim != null)
-			animation.play(idleAnim);
+		if (idleAnim != null) animation.play(idleAnim);
 	}
 }

@@ -63,8 +63,7 @@ class Note extends FlxSprite
 	{
 		super();
 
-		if (prevNote == null)
-			prevNote = this;
+		if (prevNote == null) prevNote = this;
 
 		this.debugMode = debugMode;
 
@@ -166,8 +165,7 @@ class Note extends FlxSprite
 			noteScore * 0.2;
 			alpha = 0.6;
 
-			if (PreferencesMenu.getPref('downscroll'))
-				angle = 180;
+			if (PreferencesMenu.getPref('downscroll')) angle = 180;
 
 			x += width / 2;
 
@@ -187,8 +185,7 @@ class Note extends FlxSprite
 
 			x -= width / 2;
 
-			if (PlayState.curStage.startsWith('school'))
-				x += 30;
+			if (PlayState.curStage.startsWith('school')) x += 30;
 
 			if (prevNote.isSustainNote)
 			{
@@ -232,8 +229,7 @@ class Note extends FlxSprite
 			{
 				if (strumTime > Conductor.songPosition - Conductor.safeZoneOffset)
 				{ // The * 0.5 is so that it's easier to hit them too late, instead of too early
-					if (strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5))
-						canBeHit = true;
+					if (strumTime < Conductor.songPosition + (Conductor.safeZoneOffset * 0.5)) canBeHit = true;
 				}
 				else
 				{
@@ -246,14 +242,12 @@ class Note extends FlxSprite
 		{
 			canBeHit = false;
 
-			if (strumTime <= Conductor.songPosition)
-				wasGoodHit = true;
+			if (strumTime <= Conductor.songPosition) wasGoodHit = true;
 		}
 
 		if (tooLate)
 		{
-			if (alpha > 0.3)
-				alpha = 0.3;
+			if (alpha > 0.3) alpha = 0.3;
 		}
 	}
 }

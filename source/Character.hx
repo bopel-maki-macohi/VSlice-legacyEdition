@@ -22,11 +22,9 @@ class Character extends CharacterBase
 				playAnim('shoot1');
 		}
 
-		if (curCharacter == 'dad')
-			dadVar = 6.1;
+		if (curCharacter == 'dad') dadVar = 6.1;
 
-		danceCallback = function()
-		{
+		danceCallback = function() {
 			switch (curCharacter)
 			{
 				case 'gf' | 'gf-christmas' | 'gf-car' | 'gf-pixel' | 'gf-tankmen':
@@ -34,8 +32,7 @@ class Character extends CharacterBase
 					{
 						danced = !danced;
 
-						if (danced)
-							playAnim('danceRight');
+						if (danced) playAnim('danceRight');
 						else
 							playAnim('danceLeft');
 					}
@@ -47,8 +44,7 @@ class Character extends CharacterBase
 				case 'spooky':
 					danced = !danced;
 
-					if (danced)
-						playAnim('danceRight');
+					if (danced) playAnim('danceRight');
 					else
 						playAnim('danceLeft');
 					return false;
@@ -81,7 +77,7 @@ class Character extends CharacterBase
 	}
 
 	public var dadVar:Float = 4;
-	
+
 	public var startedDeath:Bool = false;
 
 	override function update(elapsed:Float)
@@ -90,22 +86,18 @@ class Character extends CharacterBase
 
 		if (!debugMode)
 		{
-			if (animation.curAnim?.name.startsWith('sing'))
-				holdTimer += elapsed;
+			if (animation.curAnim?.name.startsWith('sing')) holdTimer += elapsed;
 			else
 				holdTimer = 0;
 
-			if (animation.curAnim?.name.endsWith('miss') && animation.curAnim?.finished && !debugMode)
-				playAnim('idle', true, false, 10);
+			if (animation.curAnim?.name.endsWith('miss') && animation.curAnim?.finished && !debugMode) playAnim('idle', true, false, 10);
 
-			if (animation.curAnim?.name == 'firstDeath' && animation.curAnim?.finished && startedDeath)
-				playAnim('deathLoop');
+			if (animation.curAnim?.name == 'firstDeath' && animation.curAnim?.finished && startedDeath) playAnim('deathLoop');
 		}
 
 		if (!isPlayer)
 		{
-			if (animation.curAnim?.name.startsWith('sing'))
-				holdTimer += elapsed;
+			if (animation.curAnim?.name.startsWith('sing')) holdTimer += elapsed;
 
 			if (holdTimer >= Conductor.stepCrochet * dadVar * 0.001)
 			{
@@ -117,15 +109,13 @@ class Character extends CharacterBase
 		if (curCharacter.endsWith('-car'))
 		{
 			// looping hair anims after idle finished
-			if (!animation.curAnim?.name.startsWith('sing') && animation.curAnim?.finished)
-				playAnim('idleHair');
+			if (!animation.curAnim?.name.startsWith('sing') && animation.curAnim?.finished) playAnim('idleHair');
 		}
 
 		switch (curCharacter)
 		{
 			case 'gf':
-				if (animation.curAnim?.name == 'hairFall' && animation.curAnim?.finished)
-					playAnim('danceRight');
+				if (animation.curAnim?.name == 'hairFall' && animation.curAnim?.finished) playAnim('danceRight');
 			case "pico-speaker":
 				// for pico??
 				if (animationNotes.length > 0)
@@ -134,8 +124,7 @@ class Character extends CharacterBase
 					{
 						var shootAnim:Int = 1;
 
-						if (animationNotes[0][1] >= 2)
-							shootAnim = 3;
+						if (animationNotes[0][1] >= 2) shootAnim = 3;
 
 						shootAnim += FlxG.random.int(0, 1);
 
@@ -146,8 +135,7 @@ class Character extends CharacterBase
 					}
 				}
 
-				if (animation.curAnim?.finished)
-					playAnim(animation.curAnim?.name, false, false, animation.curAnim?.numFrames - 3);
+				if (animation.curAnim?.finished) playAnim(animation.curAnim?.name, false, false, animation.curAnim?.numFrames - 3);
 		}
 	}
 
@@ -157,13 +145,10 @@ class Character extends CharacterBase
 
 		if (curCharacter == 'gf')
 		{
-			if (AnimName == 'singLEFT')
-				danced = true;
-			else if (AnimName == 'singRIGHT')
-				danced = false;
+			if (AnimName == 'singLEFT') danced = true;
+			else if (AnimName == 'singRIGHT') danced = false;
 
-			if (AnimName == 'singUP' || AnimName == 'singDOWN')
-				danced = !danced;
+			if (AnimName == 'singUP' || AnimName == 'singDOWN') danced = !danced;
 		}
 	}
 

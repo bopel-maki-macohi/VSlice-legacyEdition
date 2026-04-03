@@ -1,4 +1,5 @@
 package;
+
 import lime.app.Application;
 import shaderslmfao.ColorSwap;
 import flixel.FlxG;
@@ -82,11 +83,9 @@ class TitleState extends MusicBeatState
 		PlayerSettings.init();
 		Highscore.load();
 
-		if (FlxG.save.data.seenVideo != null)
-			KickStarterState.seenVideo = FlxG.save.data.seenVideo;
+		if (FlxG.save.data.seenVideo != null) KickStarterState.seenVideo = FlxG.save.data.seenVideo;
 
-		FlxG.signals.postUpdate.add(function()
-		{
+		FlxG.signals.postUpdate.add(function() {
 			if (FlxG.keys.justReleased.F3)
 			{
 				@:privateAccess
@@ -117,8 +116,7 @@ class TitleState extends MusicBeatState
 		#elseif STORYMODE
 		FlxG.switchState(() -> new StoryMenuState());
 		#else
-		new FlxTimer().start(1, function(tmr:FlxTimer)
-		{
+		new FlxTimer().start(1, function(tmr:FlxTimer) {
 			startIntro();
 		});
 		#end
@@ -126,8 +124,7 @@ class TitleState extends MusicBeatState
 		#if discord_rpc
 		DiscordClient.initialize();
 
-		Application.current.onExit.add(function(exitCode)
-		{
+		Application.current.onExit.add(function(exitCode) {
 			DiscordClient.shutdown();
 		});
 		#end
@@ -236,13 +233,11 @@ class TitleState extends MusicBeatState
 
 		FlxG.mouse.visible = false;
 
-		if (initialized)
-			skipIntro();
+		if (initialized) skipIntro();
 		else
 			initialized = true;
 
-		if (FlxG.sound.music != null)
-			FlxG.sound.music.onComplete = function() FlxG.switchState(() -> new KickStarterState());
+		if (FlxG.sound.music != null) FlxG.sound.music.onComplete = function() FlxG.switchState(() -> new KickStarterState());
 
 		startedIntro = true;
 		// credGroup.add(credTextShit);
@@ -267,19 +262,16 @@ class TitleState extends MusicBeatState
 
 	override function update(elapsed:Float)
 	{
-		if (FlxG.sound.music != null)
-			Conductor.songPosition = FlxG.sound.music.time;
+		if (FlxG.sound.music != null) Conductor.songPosition = FlxG.sound.music.time;
 
-		if (FlxG.keys.justPressed.F)
-			FlxG.fullscreen = !FlxG.fullscreen;
+		if (FlxG.keys.justPressed.F) FlxG.fullscreen = !FlxG.fullscreen;
 
 		var pressedEnter:Bool = FlxG.keys.justPressed.ENTER;
 
 		#if mobile
 		for (touch in FlxG.touches.list)
 		{
-			if (touch.justPressed)
-				pressedEnter = true;
+			if (touch.justPressed) pressedEnter = true;
 		}
 		#end
 
@@ -287,19 +279,16 @@ class TitleState extends MusicBeatState
 
 		if (gamepad != null)
 		{
-			if (gamepad.justPressed.START)
-				pressedEnter = true;
+			if (gamepad.justPressed.START) pressedEnter = true;
 
 			#if switch
-			if (gamepad.justPressed.B)
-				pressedEnter = true;
+			if (gamepad.justPressed.B) pressedEnter = true;
 			#end
 		}
 
 		if (pressedEnter && !transitioning && skippedIntro)
 		{
-			if (FlxG.sound.music != null)
-				FlxG.sound.music.onComplete = null;
+			if (FlxG.sound.music != null) FlxG.sound.music.onComplete = null;
 			// netStream.play(Paths.file('music/kickstarterTrailer.mp4'));
 
 			titleText.animation.play('press');
@@ -314,14 +303,11 @@ class TitleState extends MusicBeatState
 			// FlxG.sound.play(Paths.music('titleShoot'), 0.7);
 		}
 
-		if (pressedEnter && !skippedIntro && initialized)
-			skipIntro();
+		if (pressedEnter && !skippedIntro && initialized) skipIntro();
 
-		if (controls.UI_LEFT)
-			swagShader.update(-elapsed * 0.1);
+		if (controls.UI_LEFT) swagShader.update(-elapsed * 0.1);
 
-		if (controls.UI_RIGHT)
-			swagShader.update(elapsed * 0.1);
+		if (controls.UI_RIGHT) swagShader.update(elapsed * 0.1);
 
 		super.update(elapsed);
 	}
@@ -362,8 +348,7 @@ class TitleState extends MusicBeatState
 	{
 		super.beatHit();
 
-		if (!startedIntro)
-			return;
+		if (!startedIntro) return;
 
 		if (skippedIntro)
 		{
@@ -371,8 +356,7 @@ class TitleState extends MusicBeatState
 
 			danceLeft = !danceLeft;
 
-			if (danceLeft)
-				gfDance.animation.play('danceRight');
+			if (danceLeft) gfDance.animation.play('danceRight');
 			else
 				gfDance.animation.play('danceLeft');
 		}

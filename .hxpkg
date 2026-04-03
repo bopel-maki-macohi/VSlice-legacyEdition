@@ -39,6 +39,9 @@
 			{
 				"name": "openfl",
 				"version": "9.5.1"
+			},
+			{
+				"name": "formatter"
 			}
 		]
 	}

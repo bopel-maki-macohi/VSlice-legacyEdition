@@ -10,7 +10,6 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
-
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
@@ -55,16 +54,14 @@ class StoryMenuState extends MusicBeatState
 
 		if (FlxG.sound.music != null)
 		{
-			if (!FlxG.sound.music.playing)
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			if (!FlxG.sound.music.playing) FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
 		for (i => week in WeekRegistry.weekList)
 		{
 			final parsedWeek = WeekRegistry.loadFromJson(week);
 
-			if (parsedWeek == null || parsedWeek.storymodeVisible == false)
-				continue;
+			if (parsedWeek == null || parsedWeek.storymodeVisible == false) continue;
 
 			weekTitle.push(week);
 			weekData.push(parsedWeek.songs);
@@ -189,8 +186,7 @@ class StoryMenuState extends MusicBeatState
 
 		difficultySelectors.visible = weekUnlocked[curWeek];
 
-		grpLocks.forEach(function(lock:FlxSprite)
-		{
+		grpLocks.forEach(function(lock:FlxSprite) {
 			lock.y = grpWeekText.members[lock.ID].y;
 		});
 
@@ -208,24 +204,19 @@ class StoryMenuState extends MusicBeatState
 					changeWeek(1);
 				}
 
-				if (controls.UI_RIGHT)
-					rightArrow.animation.play('press')
+				if (controls.UI_RIGHT) rightArrow.animation.play('press')
 				else
 					rightArrow.animation.play('idle');
 
-				if (controls.UI_LEFT)
-					leftArrow.animation.play('press');
+				if (controls.UI_LEFT) leftArrow.animation.play('press');
 				else
 					leftArrow.animation.play('idle');
 
-				if (controls.UI_RIGHT_P)
-					changeDifficulty(1);
-				if (controls.UI_LEFT_P)
-					changeDifficulty(-1);
+				if (controls.UI_RIGHT_P) changeDifficulty(1);
+				if (controls.UI_LEFT_P) changeDifficulty(-1);
 			}
 
-			if (controls.ACCEPT)
-				selectWeek();
+			if (controls.ACCEPT) selectWeek();
 		}
 
 		if (controls.BACK && !movedBack && !selectedWeek)
@@ -244,8 +235,7 @@ class StoryMenuState extends MusicBeatState
 
 	function selectWeek()
 	{
-		if (!weekUnlocked[curWeek])
-			return;
+		if (!weekUnlocked[curWeek]) return;
 
 		if (!stopspamming)
 		{
@@ -254,8 +244,7 @@ class StoryMenuState extends MusicBeatState
 			grpWeekText.members[curWeek].startFlashing();
 
 			for (character in grpWeekCharacters.members)
-				if (character.animation.getNameList().contains('confirm'))
-					character.animation.play('confirm');
+				if (character.animation.getNameList().contains('confirm')) character.animation.play('confirm');
 			stopspamming = true;
 		}
 
@@ -278,8 +267,7 @@ class StoryMenuState extends MusicBeatState
 		PlayState.SONG = SongRegistry.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
 		PlayState.storyWeek = weekTitle[curWeek];
 		PlayState.campaignScore = 0;
-		new FlxTimer().start(1, function(tmr:FlxTimer)
-		{
+		new FlxTimer().start(1, function(tmr:FlxTimer) {
 			LoadingState.loadAndSwitchState(new PlayState(), true);
 		});
 	}
@@ -288,10 +276,8 @@ class StoryMenuState extends MusicBeatState
 	{
 		curDifficulty += change;
 
-		if (curDifficulty < 0)
-			curDifficulty = 2;
-		if (curDifficulty > 2)
-			curDifficulty = 0;
+		if (curDifficulty < 0) curDifficulty = 2;
+		if (curDifficulty > 2) curDifficulty = 0;
 
 		sprDifficulty.offset.x = 0;
 
@@ -324,18 +310,15 @@ class StoryMenuState extends MusicBeatState
 	{
 		curWeek += change;
 
-		if (curWeek >= weekData.length)
-			curWeek = 0;
-		if (curWeek < 0)
-			curWeek = weekData.length - 1;
+		if (curWeek >= weekData.length) curWeek = 0;
+		if (curWeek < 0) curWeek = weekData.length - 1;
 
 		var bullShit:Int = 0;
 
 		for (item in grpWeekText.members)
 		{
 			item.targetY = bullShit - curWeek;
-			if (item.targetY == Std.int(0) && weekUnlocked[curWeek])
-				item.alpha = 1;
+			if (item.targetY == Std.int(0) && weekUnlocked[curWeek]) item.alpha = 1;
 			else
 				item.alpha = 0.6;
 			bullShit++;
@@ -376,15 +359,13 @@ class StoryMenuState extends MusicBeatState
 				}
 			}
 
-			if (char == null || char == '' || addedOldChar)
-				continue;
+			if (char == null || char == '' || addedOldChar) continue;
 
 			var weekCharacterThing:MenuCharacter = new MenuCharacter((FlxG.width * 0.25) * (1 + i) - 150, char);
 			weekCharacterThing.y += 70;
 			weekCharacterThing.ID = i;
 
-			if (weekCharacterThing.graphic == null)
-				continue;
+			if (weekCharacterThing.graphic == null) continue;
 
 			weekCharacterThing.playAnim('idle');
 			grpWeekCharacters.add(weekCharacterThing);

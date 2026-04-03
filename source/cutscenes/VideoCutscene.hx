@@ -37,8 +37,7 @@ class VideoCutscene extends FlxSpriteGroup
 
 		vid.bitmap.onEndReached.add(finishVideo.bind(0.5));
 
-		vid.bitmap.onFormatSetup.add(function():Void
-		{
+		vid.bitmap.onFormatSetup.add(function():Void {
 			if (vid.bitmap != null && vid.bitmap.bitmapData != null)
 			{
 				final scale:Float = Math.min(FlxG.width / vid.bitmap.bitmapData.width, FlxG.height / vid.bitmap.bitmapData.height);
@@ -49,8 +48,7 @@ class VideoCutscene extends FlxSpriteGroup
 			}
 		});
 
-		vid.bitmap.onEncounteredError.add(function(msg:String):Void
-		{
+		vid.bitmap.onEncounteredError.add(function(msg:String):Void {
 			trace('Video error: $msg');
 			finishVideo(0.5);
 		});
@@ -61,14 +59,12 @@ class VideoCutscene extends FlxSpriteGroup
 	{
 		FlxTween.cancelTweensOf(blackScreen);
 		blackScreen.alpha = 1;
-		if (!members.contains(blackScreen))
-			add(blackScreen);
+		if (!members.contains(blackScreen)) add(blackScreen);
 
 		#if VIDEOS_ALLOWED
 		if (vid != null)
 		{
-			if (!members.contains(vid))
-				add(vid);
+			if (!members.contains(vid)) add(vid);
 
 			final fileOptions:Array<String> = [];
 
@@ -93,30 +89,26 @@ class VideoCutscene extends FlxSpriteGroup
 		if (vid != null)
 		{
 			vid.stop();
-			if (members.contains(vid))
-				remove(vid);
+			if (members.contains(vid)) remove(vid);
 			vid.destroy();
 		}
 		vid = null;
 		#end
 
-		FlxTween.tween(blackScreen, {alpha: 0}, transitionTime, {
-			onComplete: t ->
+		FlxTween.tween(blackScreen, {alpha: 0}, transitionTime,
 			{
-				if (members.contains(blackScreen))
-					remove(blackScreen);
+				onComplete: t -> {
+					if (members.contains(blackScreen)) remove(blackScreen);
 
-				if (finishCallback != null)
-					finishCallback.dispatch();
-			}
-		});
+					if (finishCallback != null) finishCallback.dispatch();
+				}
+			});
 	}
 
 	public function restartVideo(resume:Bool = true):Void
 	{
 		#if VIDEOS_ALLOWED
-		if (vid == null)
-			return;
+		if (vid == null) return;
 
 		// Seek to the start of the video.
 		vid.bitmap.time = 0;
@@ -133,8 +125,7 @@ class VideoCutscene extends FlxSpriteGroup
 	public function pauseVideo():Void
 	{
 		#if VIDEOS_ALLOWED
-		if (vid == null)
-			return;
+		if (vid == null) return;
 
 		vid.pause();
 		#end
@@ -147,8 +138,7 @@ class VideoCutscene extends FlxSpriteGroup
 		blackScreen.visible = false;
 
 		#if VIDEOS_ALLOWED
-		if (vid == null)
-			return;
+		if (vid == null) return;
 
 		vid.visible = false;
 		#end
@@ -159,8 +149,7 @@ class VideoCutscene extends FlxSpriteGroup
 		blackScreen.visible = true;
 
 		#if VIDEOS_ALLOWED
-		if (vid == null)
-			return;
+		if (vid == null) return;
 
 		vid.visible = true;
 		#end
@@ -169,8 +158,7 @@ class VideoCutscene extends FlxSpriteGroup
 	public function resumeVideo():Void
 	{
 		#if VIDEOS_ALLOWED
-		if (vid == null)
-			return;
+		if (vid == null) return;
 
 		vid.resume();
 		#end

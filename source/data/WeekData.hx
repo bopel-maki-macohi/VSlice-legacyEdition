@@ -6,8 +6,8 @@ typedef WeekData =
 	songs:Array<String>,
 	message:String,
 
-    ?freeplayChars:Array<String>,
-    ?color:String,
+	?freeplayChars:Array<String>,
+	?color:String,
 
 	?storymodeVisible:Bool,
 }

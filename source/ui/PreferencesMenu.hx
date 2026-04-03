@@ -38,16 +38,14 @@ class PreferencesMenu extends ui.OptionsState.Page
 		createPrefItem('Auto Pause', 'auto-pause', false);
 
 		camFollow = new FlxObject(FlxG.width / 2, 0, 140, 70);
-		if (items != null)
-			camFollow.y = items.selectedItem.y;
+		if (items != null) camFollow.y = items.selectedItem.y;
 
 		menuCamera.follow(camFollow, null, 0.06);
 		var margin = 160;
 		menuCamera.deadzone.set(0, margin, menuCamera.width, 40);
 		menuCamera.minScrollY = 0;
 
-		items.onChange.add(function(selected)
-		{
+		items.onChange.add(function(selected) {
 			camFollow.y = selected.y;
 		});
 	}
@@ -78,16 +76,14 @@ class PreferencesMenu extends ui.OptionsState.Page
 		FlxG.sound.muted = true;
 		#end
 
-		if (!getPref('fps-counter'))
-			FlxG.stage.removeChild(Main.fpsCounter);
+		if (!getPref('fps-counter')) FlxG.stage.removeChild(Main.fpsCounter);
 
 		FlxG.autoPause = getPref('auto-pause');
 	}
 
 	private function createPrefItem(prefName:String, prefString:String, prefValue:Dynamic):Void
 	{
-		items.createItem(120, (120 * items.length) + 30, prefName, AtlasFont.Bold, function()
-		{
+		items.createItem(120, (120 * items.length) + 30, prefName, AtlasFont.Bold, function() {
 			preferenceCheck(prefString, prefValue);
 
 			switch (Type.typeof(prefValue).getName())
@@ -133,8 +129,7 @@ class PreferencesMenu extends ui.OptionsState.Page
 		switch (prefName)
 		{
 			case 'fps-counter':
-				if (getPref('fps-counter'))
-					FlxG.stage.addChild(Main.fpsCounter);
+				if (getPref('fps-counter')) FlxG.stage.addChild(Main.fpsCounter);
 				else
 					FlxG.stage.removeChild(Main.fpsCounter);
 			case 'auto-pause':
@@ -150,10 +145,8 @@ class PreferencesMenu extends ui.OptionsState.Page
 
 		// menuCamera.followLerp = CoolUtil.camLerpShit(0.05);
 
-		items.forEach(function(daItem:TextMenuItem)
-		{
-			if (items.selectedItem == daItem)
-				daItem.x = 150;
+		items.forEach(function(daItem:TextMenuItem) {
+			if (items.selectedItem == daItem) daItem.x = 150;
 			else
 				daItem.x = 120;
 		});
@@ -185,8 +178,6 @@ class CheckboxThingie extends FlxSprite
 		animation.addByPrefix('static', 'Check Box unselected', 24, false);
 		animation.addByPrefix('checked', 'Check Box selecting animation', 24, false);
 
-		
-
 		setGraphicSize(Std.int(width * 0.7));
 		updateHitbox();
 
@@ -208,8 +199,7 @@ class CheckboxThingie extends FlxSprite
 
 	function set_daValue(value:Bool):Bool
 	{
-		if (value)
-			animation.play('checked', true);
+		if (value) animation.play('checked', true);
 		else
 			animation.play('static');
 

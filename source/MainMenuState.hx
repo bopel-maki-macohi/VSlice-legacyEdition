@@ -8,7 +8,6 @@ import flixel.addons.transition.FlxTransitionableState;
 import flixel.effects.FlxFlicker;
 import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
-
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.ui.FlxButton;
@@ -71,15 +70,13 @@ class MainMenuState extends MusicBeatState
 		magenta.y = bg.y;
 		magenta.visible = false;
 		magenta.color = 0xFFfd719b;
-		if (PreferencesMenu.preferences.get('flashing-menu'))
-			add(magenta);
+		if (PreferencesMenu.preferences.get('flashing-menu')) add(magenta);
 		// magenta.scrollFactor.set();
 
 		menuItems = new MainMenuList();
 		add(menuItems);
 		menuItems.onChange.add(onMenuItemChange);
-		menuItems.onAcceptPress.add(function(_)
-		{
+		menuItems.onAcceptPress.add(function(_) {
 			FlxFlicker.flicker(magenta, 1.1, 0.15, false, true);
 		});
 
@@ -90,8 +87,7 @@ class MainMenuState extends MusicBeatState
 		#if CAN_OPEN_LINKS
 		var hasPopupBlocker = #if web true #else false #end;
 
-		if (KickStarterState.seenVideo)
-			menuItems.createItem('kickstarter', selectDonate, hasPopupBlocker);
+		if (KickStarterState.seenVideo) menuItems.createItem('kickstarter', selectDonate, hasPopupBlocker);
 		else
 			menuItems.createItem('donate', selectDonate, hasPopupBlocker);
 		#end
@@ -151,11 +147,9 @@ class MainMenuState extends MusicBeatState
 	public function openPrompt(prompt:Prompt, onClose:Void->Void)
 	{
 		menuItems.enabled = false;
-		prompt.closeCallback = function()
-		{
+		prompt.closeCallback = function() {
 			menuItems.enabled = true;
-			if (onClose != null)
-				onClose();
+			if (onClose != null) onClose();
 		}
 
 		openSubState(prompt);
@@ -165,8 +159,7 @@ class MainMenuState extends MusicBeatState
 	{
 		menuItems.enabled = false; // disable for exit
 		var duration = 0.4;
-		menuItems.forEach(function(item)
-		{
+		menuItems.forEach(function(item) {
 			if (menuItems.selectedIndex != item.ID)
 			{
 				FlxTween.tween(item, {alpha: 0}, duration, {ease: FlxEase.quadOut});
@@ -189,8 +182,7 @@ class MainMenuState extends MusicBeatState
 			FlxG.sound.music.volume += 0.5 * FlxG.elapsed;
 		}
 
-		if (_exiting)
-			menuItems.enabled = false;
+		if (_exiting) menuItems.enabled = false;
 
 		if (controls.BACK && menuItems.enabled && !menuItems.busy)
 		{

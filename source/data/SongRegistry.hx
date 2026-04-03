@@ -20,8 +20,7 @@ class SongRegistry
 		{
 			final parsedWeek = WeekRegistry.loadFromJson(week);
 
-			if (parsedWeek == null)
-				continue;
+			if (parsedWeek == null) continue;
 
 			for (song in parsedWeek.songs)
 				s.push(song);
@@ -32,14 +31,11 @@ class SongRegistry
 
 	public static function loadFromJson(jsonInput:String, ?folder:String):SongData
 	{
-		if (folder == null || folder == '')
-			return null;
-		if (jsonInput == null || jsonInput == '')
-			return null;
+		if (folder == null || folder == '') return null;
+		if (jsonInput == null || jsonInput == '') return null;
 
 		var path = Paths.json('songs/' + folder.toLowerCase() + '/' + jsonInput.toLowerCase());
-		if (!Assets.exists(path))
-			return null;
+		if (!Assets.exists(path)) return null;
 
 		var rawJson = Assets.getText(path).trim();
 

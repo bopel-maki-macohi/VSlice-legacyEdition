@@ -53,21 +53,18 @@ class FreeplayState extends MusicBeatState
 
 		if (FlxG.sound.music != null)
 		{
-			if (!FlxG.sound.music.playing)
-				FlxG.sound.playMusic(Paths.music('freakyMenu'));
+			if (!FlxG.sound.music.playing) FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
 		for (i => week in WeekRegistry.weekList)
 		{
 			final parsedWeek = WeekRegistry.loadFromJson(week);
 
-			if (parsedWeek == null)
-				continue;
+			if (parsedWeek == null) continue;
 
 			addWeek(parsedWeek.songs, i, parsedWeek?.freeplayChars ?? null, week);
 
-			if (parsedWeek.color != null)
-				coolColors.push(FlxColor.fromString(parsedWeek.color));
+			if (parsedWeek.color != null) coolColors.push(FlxColor.fromString(parsedWeek.color));
 			else
 				coolColors.push(coolColors[coolColors.length - 1] ?? 0xFFFFFF);
 		}
@@ -118,16 +115,14 @@ class FreeplayState extends MusicBeatState
 
 	public function addWeek(songs:Array<String>, ID:Int, ?songCharacters:Array<String>, week:String)
 	{
-		if (songCharacters == null)
-			songCharacters = ['bf'];
+		if (songCharacters == null) songCharacters = ['bf'];
 
 		var num:Int = 0;
 		for (song in songs)
 		{
 			addSong(song, ID, songCharacters[num], week);
 
-			if (songCharacters.length - 1 > num)
-				num++;
+			if (songCharacters.length - 1 > num) num++;
 		}
 	}
 
@@ -154,18 +149,13 @@ class FreeplayState extends MusicBeatState
 		var downP = controls.UI_DOWN_P;
 		var accepted = controls.ACCEPT;
 
-		if (upP)
-			changeSelection(-1);
-		if (downP)
-			changeSelection(1);
+		if (upP) changeSelection(-1);
+		if (downP) changeSelection(1);
 
-		if (FlxG.mouse.wheel != 0)
-			changeSelection(-Math.round(FlxG.mouse.wheel / 4));
+		if (FlxG.mouse.wheel != 0) changeSelection(-Math.round(FlxG.mouse.wheel / 4));
 
-		if (controls.UI_LEFT_P)
-			changeDiff(-1);
-		if (controls.UI_RIGHT_P)
-			changeDiff(1);
+		if (controls.UI_LEFT_P) changeDiff(-1);
+		if (controls.UI_RIGHT_P) changeDiff(1);
 
 		if (controls.BACK)
 		{
@@ -190,10 +180,8 @@ class FreeplayState extends MusicBeatState
 	{
 		curDifficulty += change;
 
-		if (curDifficulty < 0)
-			curDifficulty = songs[curSelected].difficulties.length - 1;
-		if (curDifficulty > songs[curSelected].difficulties.length - 1)
-			curDifficulty = 0;
+		if (curDifficulty < 0) curDifficulty = songs[curSelected].difficulties.length - 1;
+		if (curDifficulty > songs[curSelected].difficulties.length - 1) curDifficulty = 0;
 
 		intendedScore = Highscore.getScore(songs[curSelected].songName, songs[curSelected].difficulties[curDifficulty]);
 
@@ -201,7 +189,7 @@ class FreeplayState extends MusicBeatState
 
 		diffText.text = "< " + CoolUtil.difficultyString() + " >";
 		positionHighscore();
-		
+
 		playTrack();
 	}
 
@@ -211,10 +199,8 @@ class FreeplayState extends MusicBeatState
 
 		curSelected += change;
 
-		if (curSelected < 0)
-			curSelected = songs.length - 1;
-		if (curSelected >= songs.length)
-			curSelected = 0;
+		if (curSelected < 0) curSelected = songs.length - 1;
+		if (curSelected >= songs.length) curSelected = 0;
 
 		// selector.y = (70 * curSelected) + 30;
 
@@ -255,7 +241,7 @@ class FreeplayState extends MusicBeatState
 		#if !PRELOAD_ALL
 		return;
 		#end
-		
+
 		final wantedTrack = Paths.inst(songs[curSelected].songName, songs[curSelected].difficulties[curDifficulty]);
 
 		if (curTrack == wantedTrack) return;
