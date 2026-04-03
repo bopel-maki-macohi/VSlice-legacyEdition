@@ -865,6 +865,10 @@ class PlayState extends MusicBeatState
 		#if PLAYTESTING_BUILD
 		versionShit.text += ' (Playtesting build)';
 		#end
+
+		dad.dance();
+		boyfriend.dance();
+		gf.dance();
 	}
 
 	function defaultCutsceneFinishcallback()
