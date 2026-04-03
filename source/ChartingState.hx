@@ -135,8 +135,9 @@ class ChartingState extends MusicBeatState
 		Conductor.changeBPM(_song.bpm);
 		Conductor.mapBPMChanges(_song);
 
-		bpmTxt = new FunkinText(1000, 50, 0, "", 16);
+		bpmTxt = new FunkinText(0, 10, 0, "", 16);
 		bpmTxt.scrollFactor.set();
+		bpmTxt.alignment = RIGHT;
 		add(bpmTxt);
 
 		strumLine = new FlxSprite(0, 50).makeGraphic(Std.int(FlxG.width / 2), 4);
@@ -511,6 +512,13 @@ class ChartingState extends MusicBeatState
 		FlxG.watch.addQuick('daBeat', curBeat);
 		FlxG.watch.addQuick('daStep', curStep);
 
+		final overNoteGrid = FlxG.mouse.x > gridBG.x
+			&& FlxG.mouse.x < gridBG.x + gridBG.width
+			&& FlxG.mouse.y > gridBG.y
+			&& FlxG.mouse.y < gridBG.y + (GRID_SIZE * _song.notes[curSection].lengthInSteps);
+
+		var overANote = false;
+
 		if (FlxG.mouse.justPressed)
 			if (FlxG.mouse.overlaps(curRenderedNotes))
 			{
@@ -518,6 +526,8 @@ class ChartingState extends MusicBeatState
 				{
 					if (!FlxG.mouse.overlaps(note))
 						return;
+
+					overANote = true;
 
 					if (FlxG.keys.pressed.CONTROL)
 						selectNote(note);
@@ -530,20 +540,11 @@ class ChartingState extends MusicBeatState
 			}
 			else
 			{
-				if (FlxG.mouse.x > gridBG.x
-					&& FlxG.mouse.x < gridBG.x + gridBG.width
-					&& FlxG.mouse.y > gridBG.y
-					&& FlxG.mouse.y < gridBG.y + (GRID_SIZE * _song.notes[curSection].lengthInSteps))
-				{
-					FlxG.log.add('added note');
+				if (overNoteGrid)
 					addNote();
-				}
 			}
 
-		if (FlxG.mouse.x > gridBG.x
-			&& FlxG.mouse.x < gridBG.x + gridBG.width
-			&& FlxG.mouse.y > gridBG.y
-			&& FlxG.mouse.y < gridBG.y + (GRID_SIZE * _song.notes[curSection].lengthInSteps))
+		if (overNoteGrid)
 		{
 			dummyArrow.x = Math.floor(FlxG.mouse.x / GRID_SIZE) * GRID_SIZE;
 			if (FlxG.keys.pressed.SHIFT)
@@ -551,6 +552,15 @@ class ChartingState extends MusicBeatState
 			else
 				dummyArrow.y = Math.floor(FlxG.mouse.y / GRID_SIZE) * GRID_SIZE;
 		}
+
+		var daTime:Float = 700 * FlxG.elapsed;
+
+		if (FlxG.keys.pressed.SHIFT)
+			daTime = Conductor.stepCrochet * 2;
+
+		var shiftThing:Int = 1;
+		if (FlxG.keys.pressed.SHIFT)
+			shiftThing = 4;
 
 		if (!typingShit.hasFocus)
 		{
@@ -566,63 +576,64 @@ class ChartingState extends MusicBeatState
 					vocals.play();
 					FlxG.sound.music.play();
 				}
+			}
 
-				if (FlxG.keys.justPressed.R)
-				{
-					if (FlxG.keys.pressed.SHIFT)
-						resetSection(true);
-					else
-						resetSection();
-				}
-
-				var daTime:Float = 700 * FlxG.elapsed;
+			if (FlxG.keys.justPressed.R)
+			{
 				if (FlxG.keys.pressed.SHIFT)
-					daTime = Conductor.stepCrochet * 2;
+					resetSection(true);
+				else
+					resetSection();
+			}
 
-				if (FlxG.keys.pressed.W || FlxG.keys.pressed.S)
+			if (FlxG.keys.pressed.W || FlxG.keys.pressed.S)
+			{
+				FlxG.sound.music.pause();
+				vocals.pause();
+
+				if (FlxG.keys.pressed.W)
+					FlxG.sound.music.time -= daTime;
+				else
+					FlxG.sound.music.time += daTime;
+
+				vocals.time = FlxG.sound.music.time;
+			}
+
+			if (FlxG.keys.justPressed.ENTER)
+			{
+				lastSection = curSection;
+
+				PlayState.SONG = _song;
+				FlxG.sound.music.stop();
+				vocals.stop();
+				FlxG.switchState(() -> new PlayState());
+			}
+
+			if (FlxG.keys.justPressed.E)
+				changeNoteSustain(Conductor.stepCrochet);
+			if (FlxG.keys.justPressed.Q)
+				changeNoteSustain(-Conductor.stepCrochet);
+
+			if (FlxG.keys.justPressed.TAB)
+			{
+				if (FlxG.keys.pressed.SHIFT)
 				{
-					FlxG.sound.music.pause();
-					vocals.pause();
-
-					if (FlxG.keys.pressed.W)
-						FlxG.sound.music.time -= daTime;
-					else
-						FlxG.sound.music.time += daTime;
-
-					vocals.time = FlxG.sound.music.time;
+					UI_box.selected_tab -= 1;
+					if (UI_box.selected_tab < 0)
+						UI_box.selected_tab = UI_box.numTabs - 1;
 				}
-
-				if (FlxG.keys.justPressed.ENTER)
+				else
 				{
-					lastSection = curSection;
-
-					PlayState.SONG = _song;
-					FlxG.sound.music.stop();
-					vocals.stop();
-					FlxG.switchState(() -> new PlayState());
-				}
-
-				if (FlxG.keys.justPressed.E)
-					changeNoteSustain(Conductor.stepCrochet);
-				if (FlxG.keys.justPressed.Q)
-					changeNoteSustain(-Conductor.stepCrochet);
-
-				if (FlxG.keys.justPressed.TAB)
-				{
-					if (FlxG.keys.pressed.SHIFT)
-					{
-						UI_box.selected_tab -= 1;
-						if (UI_box.selected_tab < 0)
-							UI_box.selected_tab = UI_box.numTabs - 1;
-					}
-					else
-					{
-						UI_box.selected_tab += 1;
-						if (UI_box.selected_tab >= UI_box.numTabs)
-							UI_box.selected_tab = 0;
-					}
+					UI_box.selected_tab += 1;
+					if (UI_box.selected_tab >= UI_box.numTabs)
+						UI_box.selected_tab = 0;
 				}
 			}
+
+			if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
+				changeSection(curSection + shiftThing);
+			if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
+				changeSection(curSection - shiftThing);
 
 			if (FlxG.mouse.wheel != 0)
 			{
@@ -636,26 +647,71 @@ class ChartingState extends MusicBeatState
 
 		_song.bpm = tempBpm;
 
-		var shiftThing:Int = 1;
-		if (FlxG.keys.pressed.SHIFT)
-			shiftThing = 4;
-		if (FlxG.keys.justPressed.RIGHT || FlxG.keys.justPressed.D)
-			changeSection(curSection + shiftThing);
-		if (FlxG.keys.justPressed.LEFT || FlxG.keys.justPressed.A)
-			changeSection(curSection - shiftThing);
-
 		final songTime = FlxMath.roundDecimal(Conductor.songPosition / 1000, 2);
 		final songLength = FlxMath.roundDecimal(FlxG.sound.music.length / 1000, 2);
 
-		bpmTxt.text = ''
-			+ 'Song: ${_song.song}'
-			+ '\nDifficulty: ${difficultyDropDown.selectedLabel.toLowerCase()}'
+		bpmTxt.text = '';
 
-			+ '\n\nTime: $songTime / $songLength'
-			+ '\nBeat: $curBeat'
-			+ '\nStep: $curStep'
-			+ '\nSection: $curSection / ${_song.notes.length}';
+		function addLine(l:String)
+			bpmTxt.text += '\n$l';
+
+		addLine('Song: ${_song.song}');
+		addLine('Difficulty: ${difficultyDropDown.selectedLabel.toLowerCase()}');
+
+		addLine('\n');
+		addLine('Time: $songTime / $songLength');
+		addLine('Beat: $curBeat');
+		addLine('Step: $curStep');
+		addLine('Section: $curSection / ${_song.notes.length}');
+
+		addLine('\n');
+		if (overNoteGrid)
+		{
+			if (!overANote)
+			{
+				addLine('Click : Place note aligned to grid');
+				addLine('  + SHIFT : Remove grid limits');
+				addLine('  + CONTROL : Place on both sides');
+			}
+			else
+			{
+				addLine('Click : Delete Note');
+				addLine('Click + CONTROL : Select Note');
+			}
+		}
+		else
+		{
+			addLine('Can\'t place note');
+		}
+
+		addLine('\n');
+
+		if (!typingShit.hasFocus)
+		{
+			addLine('A / LEFT : Go back ${shiftThing} section(s)');
+			addLine('D / RIGHT : Go back ${shiftThing} section(s)');
+			addLine('W / UP : Rewind a little bit');
+			addLine('S / DOWN : Forward a little bit');
+			addLine('\n');
+
+			addLine('SPACE : ${(FlxG.sound?.music?.playing) ? 'Pause' : 'Resume'} music');
+			addLine('R : Refresh section');
+			addLine('ENTER : Playtest');
+			addLine('E / Q : Increase / Decrease hold note length');
+			addLine('\n');
+
+			addLine('TAB : Switch forward a tab');
+			addLine(' + SHIFT : Go backwards');
+			addLine('X : Toggle Alt-Anim note');
+		}
+		else
+		{
+			addLine('Type you fool');
+		}
+
 		super.update(elapsed);
+
+		bpmTxt.x = FlxG.width - bpmTxt.width - bpmTxt.y;
 
 		hitSounds();
 	}

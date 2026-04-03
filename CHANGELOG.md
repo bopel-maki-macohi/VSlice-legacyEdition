@@ -11,6 +11,12 @@ This is VSlice Legacy Edition now!
 
 ### Added
 - Chart Editor
+    - The chart editor "bpmText" now has:
+        - Song Name
+        - Song Difficulty
+        - Current Beat
+        - Current Step
+        - A dynamic keybind list that changes depending on different conditions
     - Chart Editor hitsounds (this code yoinked from psych)!
     - Chart Editor SOUNDS (sfx themselves yoinked from VSlice)!
 
@@ -22,7 +28,7 @@ This is VSlice Legacy Edition now!
 
 ### Changed
 - Chart Editor
-    - The chart editor "bpmText" has had modifications
+    - The chart editor "bpmText" had some QOL things changed (atleast with the stuff that was already there)
     - You can no longer scroll with the scroll wheel in the chart editor while an input box has focus
     - All chart editor keyboard shortcuts no longer work while an input box has focus
 
