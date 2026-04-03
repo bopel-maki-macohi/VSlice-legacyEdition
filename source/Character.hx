@@ -500,7 +500,6 @@ class Character extends CharacterBase
 		}
 
 		dance();
-		animation.finish();
 	}
 
 	override function update(elapsed:Float)

@@ -9,7 +9,7 @@ typedef CharacterData =
 			prefix:String,
 
 			?looping:Bool,
-			?offsets:Array<Null<Float>>,
+			?offsets:Array<Float>,
 		}>,
 	?offsets:Array<Float>,
 	?scale:Array<Float>,
