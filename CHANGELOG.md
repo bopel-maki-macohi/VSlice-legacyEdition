@@ -10,12 +10,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This is VSlice Legacy Edition now!
 
 ### Added
+- Chart Editor hitsounds (this code yoinked from psych)!
+- Chart Editor SOUNDS (sfx themselves yoinked from VSlice)!
 - Difficulty dropdown to chart editor (looks for the song jsons)
 - BOPEEBO ERECT!
 - Censored roses cutscene!
 - Censored stress cutscene!
 
 ### Changed
+- The notes fade when u've passed them now in the chart editor so thats cool too
 - Moved character offset files to "data/characters"
     - There are plans to soon depricate offset text files, keep this in mind
 - The following are driven by data JSON files now:

@@ -486,6 +486,7 @@ class ChartingState extends MusicBeatState
 	{
 		curStep = recalculateSteps();
 
+		lastTime = Conductor.songPosition;
 		Conductor.songPosition = FlxG.sound.music.time;
 		_song.song = typingShit.text;
 
@@ -666,11 +667,6 @@ class ChartingState extends MusicBeatState
 
 		_song.bpm = tempBpm;
 
-		/* if (FlxG.keys.justPressed.UP)
-				Conductor.changeBPM(Conductor.bpm + 1);
-			if (FlxG.keys.justPressed.DOWN)
-				Conductor.changeBPM(Conductor.bpm - 1); */
-
 		var shiftThing:Int = 1;
 		if (FlxG.keys.pressed.SHIFT)
 			shiftThing = 4;
@@ -685,6 +681,8 @@ class ChartingState extends MusicBeatState
 			+ "\nSection: "
 			+ curSection;
 		super.update(elapsed);
+
+		hitSounds();
 	}
 
 	function changeNoteSustain(value:Float):Void
@@ -997,7 +995,7 @@ class ChartingState extends MusicBeatState
 	{
 		return FlxMath.remapToRange(strumTime, 0, 16 * Conductor.stepCrochet, gridBG.y, gridBG.y + gridBG.height);
 	}
-	
+
 	private var daSpacing:Float = 0.3;
 
 	function loadLevel():Void
@@ -1091,5 +1089,37 @@ class ChartingState extends MusicBeatState
 	function playChartingSound(sound:String)
 	{
 		FlxG.sound.play(Paths.sound('chartingSounds/$sound'));
+	}
+
+	var lastTime:Float = 0;
+
+	function hitSounds()
+	{
+		var canPlayHitSound:Bool = (FlxG.sound.music != null && FlxG.sound.music.playing && lastTime < Conductor.songPosition);
+		var hitSoundPlayer:Bool = true;
+		var hitSoundOpp:Bool = true;
+		for (note in curRenderedNotes)
+		{
+			if (note == null)
+				continue;
+
+			note.alpha = (note.strumTime >= Conductor.songPosition) ? 1 : 0.6;
+			if (Conductor.songPosition > note.strumTime && lastTime <= note.strumTime)
+			{
+				if (canPlayHitSound)
+				{
+					if (hitSoundPlayer && note.mustPress)
+					{
+						playChartingSound('hitNotePlayer');
+						hitSoundPlayer = false;
+					}
+					else if (hitSoundOpp && !note.mustPress)
+					{
+						playChartingSound('hitNoteOpponent');
+						hitSoundOpp = false;
+					}
+				}
+			}
+		}
 	}
 }
