@@ -87,7 +87,6 @@ class PlayState extends MusicBeatState
 	public static var seenCutscene:Bool = false;
 
 	var halloweenBG:FlxSprite;
-	var isHalloween:Bool = false;
 
 	var phillyCityLights:FlxTypedGroup<FlxSprite>;
 	var phillyTrain:FlxSprite;
@@ -205,8 +204,6 @@ class PlayState extends MusicBeatState
 				halloweenBG.animation.play('idle');
 
 				add(halloweenBG);
-
-				isHalloween = true;
 			case 'pico' | 'blammed' | 'philly':
 				curStage = 'philly';
 
@@ -2519,23 +2516,15 @@ class PlayState extends MusicBeatState
 		super.beatHit();
 
 		if (generatedMusic)
-		{
 			notes.sort(sortNotes, FlxSort.DESCENDING);
-		}
 
 		if (SONG.notes[Math.floor(curStep / 16)] != null)
-		{
 			if (SONG.notes[Math.floor(curStep / 16)].changeBPM)
 			{
 				Conductor.changeBPM(SONG.notes[Math.floor(curStep / 16)].bpm);
-				FlxG.log.add('CHANGED BPM!');
+				FlxG.log.add('CHANGED BPM(${SONG.notes[Math.floor(curStep / 16)].bpm})!');
 			}
-			// else
-			// Conductor.changeBPM(SONG.bpm);
-		}
 		// FlxG.log.add('change bpm' + SONG.notes[Std.int(curStep / 16)].changeBPM);
-
-		// HARDCODING FOR MILF ZOOMS!
 
 		if (PreferencesMenu.getPref('camera-zoom'))
 		{
@@ -2569,15 +2558,11 @@ class PlayState extends MusicBeatState
 				dad.dance();
 		}
 		else if (dad.curCharacter == 'spooky')
-		{
 			if (!dad.animation.curAnim?.name.startsWith("sing"))
 				dad.dance();
-		}
 
-		if (curBeat % 8 == 7 && curSong == 'Bopeebo')
-		{
+		if (curBeat % 8 == 7 && curSong == 'Bopeebo' && storyDifficulty <= 2)
 			boyfriend.playAnim('hey', true);
-		}
 
 		if (curBeat % 16 == 15 && SONG.song == 'Tutorial' && dad.curCharacter == 'gf' && curBeat > 16 && curBeat < 48)
 		{
@@ -2602,10 +2587,7 @@ class PlayState extends MusicBeatState
 				santa.animation.play('idle', true);
 
 			case 'limo':
-				grpLimoDancers.forEach(function(dancer:BackgroundDancer)
-				{
-					dancer.dance();
-				});
+				grpLimoDancers.forEach((dancer:BackgroundDancer) -> dancer.dance());
 
 				if (FlxG.random.bool(10) && fastCarCanDrive)
 					fastCarDrive();
@@ -2617,15 +2599,11 @@ class PlayState extends MusicBeatState
 				{
 					lightFadeShader.reset();
 
-					phillyCityLights.forEach(function(light:FlxSprite)
-					{
-						light.visible = false;
-					});
+					phillyCityLights.forEach((light:FlxSprite) -> light.visible = false);
 
 					curLight = FlxG.random.int(0, phillyCityLights.length - 1);
 
 					phillyCityLights.members[curLight].visible = true;
-					// phillyCityLights.members[curLight].alpha = 1;
 				}
 
 				if (curBeat % 8 == 4 && FlxG.random.bool(30) && !trainMoving && trainCooldown > 8)
@@ -2637,10 +2615,8 @@ class PlayState extends MusicBeatState
 				tankWatchtower.dance();
 		}
 
-		if (isHalloween && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset)
-		{
+		if (curStage == 'spooky' && FlxG.random.bool(10) && curBeat > lightningStrikeBeat + lightningOffset)
 			lightningStrikeShit();
-		}
 	}
 
 	var curLight:Int = 0;
