@@ -101,10 +101,10 @@ class CharacterBase extends FlxSprite
 	{
 		offset.set(0, 0);
 
-		if (data.offsets != null)
+		if (data?.offsets != null)
 			offset.set(data?.offsets[0] ?? 0, data?.offsets[1] ?? 0);
 
-		trace(offset.toString());
+		// trace(offset.toString());
 	}
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
