@@ -24,9 +24,9 @@ class Highscore
 			setScore(formattedSong, score);
 	}
 
-	public static function saveWeekScore(week:Int = 1, score:Int = 0, ?diff:Int = 0):Void
+	public static function saveWeekScore(week:String, score:Int = 0, ?diff:Int = 0):Void
 	{
-		var formattedSong:String = formatSong('week' + week, diff);
+		var formattedSong:String = formatSong( week, diff);
 
 		if (songScores.exists(formattedSong))
 		{
@@ -76,12 +76,12 @@ class Highscore
 		return songScores.get(formatSong(song, diff));
 	}
 
-	public static function getWeekScore(week:Int, diff:Int):Int
+	public static function getWeekScore(week:String, diff:Int):Int
 	{
-		if (!songScores.exists(formatSong('week' + week, diff)))
-			setScore(formatSong('week' + week, diff), 0);
+		if (!songScores.exists(formatSong(week, diff)))
+			setScore(formatSong(week, diff), 0);
 
-		return songScores.get(formatSong('week' + week, diff));
+		return songScores.get(formatSong(week, diff));
 	}
 
 	public static function load():Void

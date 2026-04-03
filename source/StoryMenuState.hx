@@ -276,7 +276,7 @@ class StoryMenuState extends MusicBeatState
 		PlayState.storyDifficulty = curDifficulty;
 
 		PlayState.SONG = SongRegistry.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + diffic, PlayState.storyPlaylist[0].toLowerCase());
-		PlayState.storyWeek = curWeek;
+		PlayState.storyWeek = weekTitle[curWeek];
 		PlayState.campaignScore = 0;
 		new FlxTimer().start(1, function(tmr:FlxTimer)
 		{
@@ -312,7 +312,7 @@ class StoryMenuState extends MusicBeatState
 
 		// USING THESE WEIRD VALUES SO THAT IT DOESNT FLOAT UP
 		sprDifficulty.y = leftArrow.y - 15;
-		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
+		intendedScore = Highscore.getWeekScore(weekTitle[curWeek], curDifficulty);
 
 		FlxTween.tween(sprDifficulty, {y: leftArrow.y + 15, alpha: 1}, 0.07);
 	}
@@ -402,6 +402,6 @@ class StoryMenuState extends MusicBeatState
 		txtTracklist.screenCenter(X);
 		txtTracklist.x -= FlxG.width * 0.35;
 
-		intendedScore = Highscore.getWeekScore(curWeek, curDifficulty);
+		intendedScore = Highscore.getWeekScore(weekTitle[curWeek], curDifficulty);
 	}
 }
