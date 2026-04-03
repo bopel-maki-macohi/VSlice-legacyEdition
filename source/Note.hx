@@ -40,12 +40,16 @@ class Note extends FlxSprite
 
 	public static var arrowColors:Array<Float> = [1, 1, 1, 1];
 
-	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false)
+	public var debugMode:Bool = false;
+
+	public function new(strumTime:Float, noteData:Int, ?prevNote:Note, ?sustainNote:Bool = false, ?debugMode:Bool = true)
 	{
 		super();
 
 		if (prevNote == null)
 			prevNote = this;
+
+		this.debugMode = debugMode;
 
 		this.prevNote = prevNote;
 		isSustainNote = sustainNote;
