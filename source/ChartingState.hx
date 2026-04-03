@@ -245,7 +245,7 @@ class ChartingState extends MusicBeatState
 
 		var diffs = Highscore.difficultiesStrArray(_song.song);
 
-		difficultyDropDown = new FlxUIDropDownMenu(270, check_mute_inst.y, FlxUIDropDownMenu.makeStrIdLabelArray(diffs, true), function(difficulty:String)
+		difficultyDropDown = new FlxUIDropDownMenu(270, 100, FlxUIDropDownMenu.makeStrIdLabelArray(diffs, true), function(difficulty:String)
 		{
 			var difficultyStr = diffs[Std.parseInt(difficulty)];
 			PlayState.storyDifficulty = CoolUtil.difficultyArray.indexOf(difficultyStr);
