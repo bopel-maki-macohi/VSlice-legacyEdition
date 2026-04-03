@@ -805,6 +805,7 @@ class ChartingState extends MusicBeatState
 		}
 
 		updateGrid();
+		playChartingSound('openWindow');
 	}
 
 	function updateSectionUI():Void
@@ -920,6 +921,7 @@ class ChartingState extends MusicBeatState
 		};
 
 		_song.notes.push(sec);
+		playChartingSound('openWindow');
 	}
 
 	function selectNote(note:Note):Void
@@ -944,10 +946,16 @@ class ChartingState extends MusicBeatState
 	{
 		for (i in _song.notes[curSection].sectionNotes)
 		{
+			final otherSideNote = gridBG.x + gridBG.width / 2;
+
+			trace(i[1]);
+			trace(note.x > otherSideNote);
+
 			if (i[0] == note.strumTime && i[1] % 4 == note.noteData)
 			{
 				FlxG.log.add('FOUND EVIL NUMBER');
 				_song.notes[curSection].sectionNotes.remove(i);
+				playChartingSound('noteErase');
 			}
 		}
 
@@ -994,6 +1002,7 @@ class ChartingState extends MusicBeatState
 		updateNoteUI();
 
 		autosaveSong();
+		playChartingSound('noteLay');
 	}
 
 	function getStrumTime(yPos:Float):Float
@@ -1117,5 +1126,10 @@ class ChartingState extends MusicBeatState
 		_file.removeEventListener(IOErrorEvent.IO_ERROR, onSaveError);
 		_file = null;
 		FlxG.log.error("Problem saving Level data");
+	}
+
+	function playChartingSound(sound:String)
+	{
+		FlxG.sound.play(Paths.sound('chartingSounds/$sound'));
 	}
 }
