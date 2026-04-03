@@ -1,5 +1,6 @@
 package;
 
+import lime.app.Application;
 import cutscenes.*;
 import stageprops.*;
 import flixel.FlxCamera;
