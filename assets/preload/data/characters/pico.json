@@ -16,55 +16,55 @@
 			"prefix": "Pico Idle Dance",
 			"name": "idle",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "pico Up note0",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Pico Down Note0",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Pico Note Right0",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Pico NOTE LEFT0",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Pico NOTE LEFT miss",
 			"name": "singRIGHTmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Pico Note Right Miss",
 			"name": "singLEFTmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "pico Up note miss",
 			"name": "singUPmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Pico Down Note MISS",
 			"name": "singDOWNmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

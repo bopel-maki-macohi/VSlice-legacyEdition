@@ -16,31 +16,31 @@
 			"prefix": "Angry Senpai Idle",
 			"name": "idle",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Angry Senpai UP NOTE",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Angry Senpai LEFT NOTE",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Angry Senpai RIGHT NOTE",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Angry Senpai DOWN NOTE",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

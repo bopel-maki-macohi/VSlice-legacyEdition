@@ -16,13 +16,13 @@
 			"prefix": "BF Dead with GF Loop",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF Dies with GF",
 			"name": "firstDeath",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF Dead with GF Loop",
@@ -34,7 +34,7 @@
 			"prefix": "RETRY confirm holding gf",
 			"name": "deathConfirm",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

@@ -16,31 +16,31 @@
 			"prefix": "GF Cheer",
 			"name": "cheer",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "GF left note",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "GF Right Note",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "GF Up Note",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "GF Down Note",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "gf sad",

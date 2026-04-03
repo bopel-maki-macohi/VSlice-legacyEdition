@@ -16,61 +16,61 @@
 			"prefix": "BF idle dance",
 			"name": "idle",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF NOTE DOWN0",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF NOTE LEFT0",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF NOTE RIGHT0",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF NOTE UP0",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF NOTE DOWN MISS",
 			"name": "singDOWNmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF NOTE LEFT MISS",
 			"name": "singLEFTmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF NOTE RIGHT MISS",
 			"name": "singRIGHTmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF NOTE UP MISS",
 			"name": "singUPmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF catches GF",
 			"name": "bfCatch",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

@@ -16,67 +16,67 @@
 			"prefix": "Tankman Idle Dance",
 			"name": "idle",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Tankman Right Note ",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Tankman Note Left ",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Tankman Right Note MISS",
 			"name": "singLEFTmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Tankman Note Left MISS",
 			"name": "singRIGHTmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Tankman UP note ",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Tankman DOWN note ",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Tankman UP note MISS",
 			"name": "singUPmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Tankman DOWN note MISS",
 			"name": "singDOWNmiss",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "PRETTY GOOD",
 			"name": "singDOWN-alt",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "TANKMAN UGH",
 			"name": "singUP-alt",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

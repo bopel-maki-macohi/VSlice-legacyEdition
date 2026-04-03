@@ -16,31 +16,31 @@
 			"prefix": "Dad idle dance",
 			"name": "idle",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Dad Sing Note UP",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Dad Sing Note RIGHT",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Dad Sing Note DOWN",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Dad Sing Note LEFT",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

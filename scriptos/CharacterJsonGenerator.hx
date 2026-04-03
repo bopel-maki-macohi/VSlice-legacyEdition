@@ -59,7 +59,7 @@ class CharacterJsonGenerator
 			});
 
 		function quickAnimAdd(a:String, b:String)
-			addByPrefix(a, b, 24, true);
+			addByPrefix(a, b, 24, false);
 
 		function addByIndices(a:String, b:String, c:Array<Int>, d:String = '', e:Int = 24, f:Bool = false)
 			animations.push({

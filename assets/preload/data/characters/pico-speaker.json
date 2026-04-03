@@ -16,25 +16,25 @@
 			"prefix": "Pico shoot 1",
 			"name": "shoot1",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Pico shoot 2",
 			"name": "shoot2",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Pico shoot 3",
 			"name": "shoot3",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Pico shoot 4",
 			"name": "shoot4",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

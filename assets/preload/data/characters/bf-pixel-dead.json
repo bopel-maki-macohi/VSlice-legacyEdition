@@ -16,13 +16,13 @@
 			"prefix": "BF Dies pixel",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "BF Dies pixel",
 			"name": "firstDeath",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Retry Loop",
@@ -34,7 +34,7 @@
 			"prefix": "RETRY CONFIRM",
 			"name": "deathConfirm",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

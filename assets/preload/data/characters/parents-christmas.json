@@ -16,55 +16,55 @@
 			"prefix": "Parent Christmas Idle",
 			"name": "idle",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Parent Up Note Dad",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Parent Down Note Dad",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Parent Left Note Dad",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Parent Right Note Dad",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Parent Up Note Mom",
 			"name": "singUP-alt",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Parent Down Note Mom",
 			"name": "singDOWN-alt",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Parent Left Note Mom",
 			"name": "singLEFT-alt",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Parent Right Note Mom",
 			"name": "singRIGHT-alt",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

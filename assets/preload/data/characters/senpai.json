@@ -16,31 +16,31 @@
 			"prefix": "Senpai Idle",
 			"name": "idle",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "SENPAI UP NOTE",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "SENPAI LEFT NOTE",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "SENPAI RIGHT NOTE",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "SENPAI DOWN NOTE",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

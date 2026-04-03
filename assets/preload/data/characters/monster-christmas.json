@@ -16,31 +16,31 @@
 			"prefix": "monster idle",
 			"name": "idle",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "monster up note",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "monster down",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Monster left note",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Monster Right note",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }

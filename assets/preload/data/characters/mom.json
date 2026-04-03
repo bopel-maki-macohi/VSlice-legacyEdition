@@ -16,31 +16,31 @@
 			"prefix": "Mom Idle",
 			"name": "idle",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Mom Up Pose",
 			"name": "singUP",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "MOM DOWN POSE",
 			"name": "singDOWN",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Mom Left Pose",
 			"name": "singLEFT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		},
 		{
 			"prefix": "Mom Pose Left",
 			"name": "singRIGHT",
 			"fps": 24,
-			"looping": true
+			"looping": false
 		}
 	]
 }
