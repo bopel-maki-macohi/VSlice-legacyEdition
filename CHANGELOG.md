@@ -28,7 +28,6 @@ This is VSlice Legacy Edition now!
     - Censored stress cutscene!
 
 ### Changed
-- Opponent notes glow when they hit their notes now!
 - [The input system has been upgraded!](https://github.com/FunkinCrew/Funkin/tree/720b428bcfe7371c0fd76f804e90bef4ec94239b)
 - Chart Editor
     - You can now go to the previous section when scrolling (Mouse wheel? Keybinds? Both work)

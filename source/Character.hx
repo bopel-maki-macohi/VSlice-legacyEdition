@@ -22,7 +22,6 @@ class Character extends CharacterBase
 				playAnim('shoot1');
 		}
 
-		dadVar = 4;
 		if (curCharacter == 'dad') dadVar = 6.1;
 
 		danceCallback = function() {
