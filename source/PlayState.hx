@@ -779,8 +779,6 @@ class PlayState extends MusicBeatState
 		// cameras = [FlxG.cameras.list[1]];
 		startingSong = true;
 
-		add(videoCutscene);
-
 		if (isStoryMode && !seenCutscene)
 		{
 			seenCutscene = true;
@@ -799,7 +797,7 @@ class PlayState extends MusicBeatState
 						FlxG.sound.play(Paths.sound('Lights_Turn_On'));
 						camFollow.y = -2050;
 						camFollow.x += 200;
-						FlxG.camera.focusOn(camFollow.getPosition());
+						FlxG.camera.scroll.set(camFollow.x, camFollow.y);
 						FlxG.camera.zoom = 1.5;
 
 						new FlxTimer().start(0.8, function(tmr:FlxTimer)
@@ -816,6 +814,9 @@ class PlayState extends MusicBeatState
 						});
 					});
 				case 'senpai' | 'roses' | 'thorns':
+					camFollow.setPosition(camPos.x - 280, camPos.y - 430);
+					FlxG.camera.focusOn(camFollow.getPosition());
+
 					schoolIntro(doof);
 				case 'ugh':
 					startCutscene('ughCutscene');
@@ -873,6 +874,8 @@ class PlayState extends MusicBeatState
 		dad.dance();
 		boyfriend.dance();
 		gf.dance();
+
+		add(videoCutscene);
 	}
 
 	function defaultCutsceneFinishcallback()
@@ -949,9 +952,6 @@ class PlayState extends MusicBeatState
 		senpaiEvil.updateHitbox();
 		senpaiEvil.screenCenter();
 		senpaiEvil.x += senpaiEvil.width / 5;
-
-		camFollow.setPosition(camPos.x, camPos.y);
-		FlxG.camera.focusOn(camFollow.getPosition());
 
 		if (SONG.song.toLowerCase() == 'roses' || SONG.song.toLowerCase() == 'thorns')
 		{
