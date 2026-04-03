@@ -501,7 +501,7 @@ class ChartingState extends MusicBeatState
 
 		strumLine.y = getYfromStrum((Conductor.songPosition - sectionStartTime()) % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps));
 
-		if (strumLine.y < gridBG.y)
+		if (strumLine.y < gridBG.y - strumLine.height)
 		{
 			changeSection(curSection - 1, false);
 			strumLine.y = gridBG.height - strumLine.height * 2;
