@@ -11,7 +11,9 @@
     ],
     "message": "RED SNOW",
     "freeplayChars": [
-        "parents-christmas"
+        "parents-christmas",
+        "parents-christmas",
+        "monster"
     ],
     "color": "0xFFa0d1ff"
 }
