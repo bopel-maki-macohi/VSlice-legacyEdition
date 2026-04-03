@@ -2169,17 +2169,21 @@ class PlayState extends MusicBeatState
 					if (pressArray[shit]) ghostNoteHit(shit);
 		}
 
-		if (boyfriend?.holdTimer > Conductor.stepCrochet * boyfriend.dadVar * 0.001
-			&& !holdArray.contains(true)) if (boyfriend?.animation?.curAnim.name.startsWith('sing')
-				&& !boyfriend?.animation?.curAnim.name.endsWith('miss')) boyfriend.playAnim('idle');
+		if (boyfriend.holdTimer >= Conductor.stepCrochet * boyfriend.dadVar * 0.001 && !holdArray.contains(true))
+		{
+			if (boyfriend.animation?.name?.startsWith('sing') && !boyfriend.animation?.name?.endsWith('miss'))
+			{
+				boyfriend.dance();
+			}
+		}
 
 		playerStrums.forEach(function(spr:FlxSprite) {
-			if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm') spr.animation.play('pressed');
+			if (pressArray[spr.ID] && spr.animation.curAnim?.name != 'confirm') spr.animation.play('pressed');
 			if (!holdArray[spr.ID]) spr.animation.play('static');
 
+			spr.centerOffsets();
 			if (spr.animation.curAnim.name == 'confirm' && !curStage.startsWith('school'))
 			{
-				spr.centerOffsets();
 				spr.offset.x -= 13;
 				spr.offset.y -= 13;
 			}
