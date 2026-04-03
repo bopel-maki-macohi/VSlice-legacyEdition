@@ -146,6 +146,9 @@ class DialogueBox extends FlxSpriteGroup
 		dialogue = new Alphabet(0, 80, "", false, true);
 		// dialogue.x = 90;
 		// add(dialogue);
+
+		for (sprite in members)
+			sprite.antialiasing = false;
 	}
 
 	var dialogueOpened:Bool = false;
