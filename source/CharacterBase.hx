@@ -82,17 +82,8 @@ class CharacterBase extends FlxSprite
 	{
 		animation.play(AnimName, Force, Reversed, Frame);
 
-
 		var ox = 0.0;
 		var oy = 0.0;
-
-		if (data.offsets != null)
-		{
-			trace(data.offsets);
-
-			ox += data?.offsets[0] ?? 0;
-			oy += data?.offsets[1] ?? 0;
-		}
 
 		if (animOffsets.exists(AnimName))
 		{
@@ -102,7 +93,14 @@ class CharacterBase extends FlxSprite
 			oy += daOffset[1];
 		}
 
-		offset.set(ox, oy);
+		applyBaseOffset();
+		offset.add(ox, oy);
+	}
+
+	public function applyBaseOffset()
+	{
+		offset.set(0, 0);
+		offset.set(data?.offsets[0] ?? 0, data?.offsets[1] ?? 0);
 	}
 
 	public function addOffset(name:String, x:Float = 0, y:Float = 0)
