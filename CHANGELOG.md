@@ -11,6 +11,7 @@ This is VSlice Legacy Edition now!
 
 ### Added
 
+- Censored roses cutscene!
 - Censored stress cutscene!
 
 ### Changed

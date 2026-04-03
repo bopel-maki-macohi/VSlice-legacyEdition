@@ -1,5 +1,6 @@
 package;
 
+import lime.utils.Assets;
 import lime.app.Application;
 import cutscenes.*;
 import stageprops.*;
@@ -168,15 +169,26 @@ class PlayState extends MusicBeatState
 
 		foregroundSprites = new FlxTypedGroup<BGSprite>();
 
-		switch (SONG.song.toLowerCase())
+		function setDialogue(suffix:String = '')
 		{
-			case 'senpai':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('songs/senpai/senpaiDialogue'));
-			case 'roses':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('songs/roses/rosesDialogue'));
-			case 'thorns':
-				dialogue = CoolUtil.coolTextFile(Paths.txt('songs/thorns/thornsDialogue'));
+			final song = SONG.song.toLowerCase();
+
+			final basePath = 'dialogue/$song$suffix';
+			final path = Paths.txt(basePath);
+			final pathCensored = Paths.txt('$basePath-censored');
+
+			if (Assets.exists(pathCensored) && !PreferencesMenu.getPref('censor-naughty'))
+			{
+				dialogue = CoolUtil.coolTextFile(pathCensored);
+				return;
+			}
+
+			if (Assets.exists(path))
+				dialogue = CoolUtil.coolTextFile(path);
 		}
+
+		setDialogue('');
+		setDialogue(Highscore.formatSong('', storyDifficulty));
 
 		#if discord_rpc
 		initDiscord();
