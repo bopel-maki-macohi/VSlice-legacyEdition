@@ -57,8 +57,6 @@ class Character extends CharacterBase
 		{
 			flipX = !flipX;
 
-			dadVar += 1;
-
 			// Doesn't flip for BF, since his are already in the right place???
 			if (!curCharacter.startsWith('bf'))
 			{
@@ -86,7 +84,16 @@ class Character extends CharacterBase
 	{
 		super.update(elapsed);
 
-		if (debugMode) return;
+		if (!debugMode)
+		{
+			if (animation.curAnim?.name.startsWith('sing')) holdTimer += elapsed;
+			else
+				holdTimer = 0;
+
+			if (animation.curAnim?.name.endsWith('miss') && animation.curAnim?.finished && !debugMode) playAnim('idle', true, false, 10);
+
+			if (animation.curAnim?.name == 'firstDeath' && animation.curAnim?.finished && startedDeath) playAnim('deathLoop');
+		}
 
 		if (!isPlayer)
 		{
@@ -97,16 +104,6 @@ class Character extends CharacterBase
 				dance();
 				holdTimer = 0;
 			}
-		}
-		else
-		{
-			if (animation.curAnim?.name.startsWith('sing')) holdTimer += elapsed;
-			else
-				holdTimer = 0;
-
-			if (animation.curAnim?.name.endsWith('miss') && animation.curAnim?.finished) playAnim('idle', true, false, 10);
-
-			if (animation.curAnim?.name == 'firstDeath' && animation.curAnim?.finished && startedDeath) playAnim('deathLoop');
 		}
 
 		if (curCharacter.endsWith('-car'))
