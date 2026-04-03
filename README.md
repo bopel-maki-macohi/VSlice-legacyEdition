@@ -4,6 +4,10 @@ This is the repository for VSlice Legacy Edition, FNF if they released the updat
 
 IF YOU MAKE A MOD AND DISTRIBUTE A MODIFIED / RECOMPILED VERSION, YOU MUST OPEN SOURCE YOUR MOD AS WELL
 
+## Links
+
+- [Gamejolt Link](https://gamejolt.com/games/fnf_vslice_legacy/1061047)
+
 ## Build instructions
 
 Do note that I am on windows so uh, yeah no I can't really test mac and linux...
