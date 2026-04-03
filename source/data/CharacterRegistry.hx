@@ -18,7 +18,7 @@ class CharacterRegistry
 		{
 			var char = Path.withoutExtension(Path.withoutDirectory(asset));
 
-			if (loadFromJson(char) == null)
+			if (loadFromJson(char, 'characters/') == null)
 				continue;
 
 			c.push(char);

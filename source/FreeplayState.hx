@@ -296,14 +296,6 @@ class SongMetadata
 
 	public function recalcDifficulties()
 	{
-		difficulties = [];
-
-		for (i in 0...5)
-		{
-			var songJson:SongData = SongRegistry.loadFromJson(Highscore.formatSong(songName, i), songName);
-
-			if (songJson != null)
-				difficulties.push(i);
-		}
+		difficulties = Highscore.calcSongDifficulties(songName);
 	}
 }

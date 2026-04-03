@@ -90,14 +90,9 @@ class Main extends Sprite
 		addChild(fpsCounter);
 		#end
 
-		#if debug
-		trace('Weeks: ');
-		for (week in WeekRegistry.weeks)
-		{
-			final parsedWeek = WeekRegistry.loadFromJson(week);
-
-			trace(' * $week : ${parsedWeek.songs}');
-		}
-		#end
+		
+		// trace('Characters: ${CharacterRegistry.characterList}');
+		trace('Weeks: ${WeekRegistry.weekList}');
+		// trace('Songs: ${SongRegistry.songList}');
 	}
 }

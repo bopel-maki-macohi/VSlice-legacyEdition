@@ -8,9 +8,9 @@ using StringTools;
 
 class SongRegistry
 {
-	public static var songs(get, never):Array<String>;
+	public static var songList(get, never):Array<String>;
 
-	static function get_songs():Array<String>
+	static function get_songList():Array<String>
 	{
 		// var s = Assets.list().filter(f -> return haxe.io.Path.directory(f) == 'assets/data/songs/');
 

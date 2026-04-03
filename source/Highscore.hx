@@ -10,7 +10,6 @@ class Highscore
 	public static var songScores:Map<String, Int> = new Map<String, Int>();
 	#end
 
-
 	public static function saveScore(song:String, score:Int = 0, ?diff:Int = 0):Void
 	{
 		var formattedSong:String = formatSong(song, diff);
@@ -26,7 +25,7 @@ class Highscore
 
 	public static function saveWeekScore(week:String, score:Int = 0, ?diff:Int = 0):Void
 	{
-		var formattedSong:String = formatSong( week, diff);
+		var formattedSong:String = formatSong(week, diff);
 
 		if (songScores.exists(formattedSong))
 		{
@@ -48,7 +47,6 @@ class Highscore
 		 * I moved the compiler flag here, rather than using it everywhere else.
 		 */
 		#if !switch
-		
 		// Reminder that I don't need to format this song, it should come formatted!
 		songScores.set(formattedSong, score);
 		FlxG.save.data.songScores = songScores;
@@ -60,16 +58,43 @@ class Highscore
 	{
 		var daSong:String = song;
 
-		if (diff == 0)
-			daSong += '-easy';
-		else if (diff == 2)
-			daSong += '-hard';
-		else if (diff == 3)
-			daSong += '-erect';
-		else if (diff == 4)
-			daSong += '-nightmare';
+		// Difficulty Array Diff
+		var dad = CoolUtil.difficultyArray[diff];
+
+		switch (dad)
+		{
+			case 'EASY', 'HARD', 'ERECT', 'NIGHTMARE':
+				daSong += '-${dad.toLowerCase()}';
+		}
 
 		return daSong;
+	}
+
+	public static function calcSongDifficulties(song:String)
+	{
+		var difficulties = [];
+
+		song = song.toLowerCase();
+
+		for (i in 0...5)
+		{
+			var songJson:SongData = SongRegistry.loadFromJson(formatSong(song, i), song);
+
+			if (songJson != null)
+				difficulties.push(i);
+		}
+
+		return difficulties;
+	}
+
+	public static function difficultiesStrArray(song:String)
+	{
+		var diffs = [];
+
+		for (d in Highscore.calcSongDifficulties(song))
+			diffs.push(CoolUtil.difficultyArray[d]);
+
+		return diffs;
 	}
 
 	public static function getScore(song:String, diff:Int):Int

@@ -18,7 +18,6 @@ import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.sound.FlxSound;
-
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 import flixel.util.FlxColor;
@@ -202,15 +201,15 @@ class ChartingState extends MusicBeatState
 			saveLevel();
 		});
 
-		var reloadSong:FlxButton = new FlxButton(saveButton.x + saveButton.width + 10, saveButton.y, "Reload Audio", function()
+		function reloadSongFunc()
 		{
-			loadSong(_song.song);
-		});
+			autosaveSong();
+			loadSong(Highscore.formatSong(_song.song, PlayState.storyDifficulty));
+		}
 
-		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", function()
-		{
-			loadJson(_song.song.toLowerCase());
-		});
+		var reloadSong:FlxButton = new FlxButton(saveButton.x + saveButton.width + 10, saveButton.y, "Reload Audio", reloadSongFunc);
+
+		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", reloadSongFunc);
 
 		var loadAutosaveBtn:FlxButton = new FlxButton(reloadSongJson.x, reloadSongJson.y + 30, 'load autosave', loadAutosave);
 
@@ -222,19 +221,29 @@ class ChartingState extends MusicBeatState
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 
-		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(CharacterRegistry.characterList, true), function(character:String)
-		{
-			_song.player1 = CharacterRegistry.characterList[Std.parseInt(character)];
-			updateHeads();
-		});
+		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(CharacterRegistry.characterList, true),
+			function(character:String)
+			{
+				_song.player1 = CharacterRegistry.characterList[Std.parseInt(character)];
+				updateHeads();
+			});
 		player1DropDown.selectedLabel = _song.player1;
 
-		var player2DropDown = new FlxUIDropDownMenu(140, 100, FlxUIDropDownMenu.makeStrIdLabelArray(CharacterRegistry.characterList, true), function(character:String)
-		{
-			_song.player2 = CharacterRegistry.characterList[Std.parseInt(character)];
-			updateHeads();
-		});
+		var player2DropDown = new FlxUIDropDownMenu(140, 100, FlxUIDropDownMenu.makeStrIdLabelArray(CharacterRegistry.characterList, true),
+			function(character:String)
+			{
+				_song.player2 = CharacterRegistry.characterList[Std.parseInt(character)];
+				updateHeads();
+			});
 		player2DropDown.selectedLabel = _song.player2;
+
+		var difficultyDropDown = new FlxUIDropDownMenu(270, 100, FlxUIDropDownMenu.makeStrIdLabelArray(Highscore.difficultiesStrArray(_song.song), true),
+			function(character:String)
+			{
+				PlayState.storyDifficulty = Std.parseInt(character);
+				reloadSongFunc();
+			});
+		difficultyDropDown.selectedLabel = _song.player2;
 
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";
@@ -250,6 +259,7 @@ class ChartingState extends MusicBeatState
 		tab_group_song.add(stepperSpeed);
 		tab_group_song.add(player1DropDown);
 		tab_group_song.add(player2DropDown);
+		tab_group_song.add(difficultyDropDown);
 
 		UI_box.addGroup(tab_group_song);
 		UI_box.scrollFactor.set();
@@ -1033,7 +1043,7 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
-		PlayState.SONG = SongRegistry.loadFromJson(song.toLowerCase(), song.toLowerCase());
+		PlayState.SONG = SongRegistry.loadFromJson(Highscore.formatSong(song.toLowerCase(), PlayState.storyDifficulty), song.toLowerCase());
 		LoadingState.loadAndSwitchState(new ChartingState());
 	}
 
