@@ -870,20 +870,6 @@ class ChartingState extends MusicBeatState
 			Conductor.changeBPM(daBPM);
 		}
 
-		/* // PORT BULLSHIT, INCASE THERE'S NO SUSTAIN DATA FOR A NOTE
-			for (sec in 0..._song.notes.length)
-			{
-				for (notesse in 0..._song.notes[sec].sectionNotes.length)
-				{
-					if (_song.notes[sec].sectionNotes[notesse][2] == null)
-					{
-						trace('SUS NULL');
-						_song.notes[sec].sectionNotes[notesse][2] = 0;
-					}
-				}
-			}
-		 */
-
 		for (i in sectionInfo)
 		{
 			var daNoteInfo = i[1];
@@ -896,6 +882,7 @@ class ChartingState extends MusicBeatState
 			note.updateHitbox();
 			note.x = Math.floor(daNoteInfo * GRID_SIZE);
 			note.y = Math.floor(getYfromStrum((daStrumTime - sectionStartTime()) % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps)));
+			note.ID = daNoteInfo;
 
 			curRenderedNotes.add(note);
 
@@ -921,7 +908,9 @@ class ChartingState extends MusicBeatState
 		};
 
 		_song.notes.push(sec);
-		playChartingSound('openWindow');
+
+		if (!FlxG.sound.music?.playing)
+			playChartingSound('openWindow');
 	}
 
 	function selectNote(note:Note):Void
@@ -946,14 +935,8 @@ class ChartingState extends MusicBeatState
 	{
 		for (i in _song.notes[curSection].sectionNotes)
 		{
-			final otherSideNote = gridBG.x + gridBG.width / 2;
-
-			trace(i[1]);
-			trace(note.x > otherSideNote);
-
-			if (i[0] == note.strumTime && i[1] % 4 == note.noteData)
+			if (i[0] == note.strumTime && i[1] == note.ID)
 			{
-				FlxG.log.add('FOUND EVIL NUMBER');
 				_song.notes[curSection].sectionNotes.remove(i);
 				playChartingSound('noteErase');
 			}
@@ -1014,30 +997,7 @@ class ChartingState extends MusicBeatState
 	{
 		return FlxMath.remapToRange(strumTime, 0, 16 * Conductor.stepCrochet, gridBG.y, gridBG.y + gridBG.height);
 	}
-
-	/*
-		function calculateSectionLengths(?sec:SectionData):Int
-		{
-			var daLength:Int = 0;
-
-			for (i in _song.notes)
-			{
-				var swagLength = i.lengthInSteps;
-
-				if (i.typeOfSection == Section.COPYCAT)
-					swagLength * 2;
-
-				daLength += swagLength;
-
-				if (sec != null && sec == i)
-				{
-					trace('swag loop??');
-					break;
-				}
-			}
-
-			return daLength;
-	}*/
+	
 	private var daSpacing:Float = 0.3;
 
 	function loadLevel():Void
