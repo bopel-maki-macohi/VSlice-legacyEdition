@@ -654,7 +654,7 @@ class ChartingState extends MusicBeatState
 			+ '\n\nTime: $songTime / $songLength'
 			+ '\nBeat: $curBeat'
 			+ '\nStep: $curStep'
-			+ '\nSection: $curSection / ${_song.notes}';
+			+ '\nSection: $curSection / ${_song.notes.length}';
 		super.update(elapsed);
 
 		hitSounds();
