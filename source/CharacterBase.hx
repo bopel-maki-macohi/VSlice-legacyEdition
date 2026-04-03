@@ -38,10 +38,13 @@ class CharacterBase extends FlxSprite
 
 	private function loadOffsetFile(offsetCharacter:String)
 	{
-		final path = Paths.txt('$dataPath/${offsetCharacter}Offsets');
+		final path = Paths.txt('$dataPath${offsetCharacter}Offsets');
 
 		if (!Assets.exists(path))
+		{
+			trace('Couldnt find offsets path: $path');
 			return;
+		}
 
 		var daFile:Array<String> = CoolUtil.coolTextFile(path);
 
@@ -127,7 +130,7 @@ class CharacterBase extends FlxSprite
 		var path = Paths.json('$dataPath$c');
 		if (!Assets.exists(path))
 		{
-			trace('Couldnt find path: $path');
+			trace('Couldnt find data path: $path');
 			return;
 		}
 
