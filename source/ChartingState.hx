@@ -122,7 +122,6 @@ class ChartingState extends MusicBeatState
 		}
 
 		FlxG.mouse.visible = true;
-		FlxG.save.bind('funkin', 'ninjamuffin99');
 
 		tempBpm = _song.bpm;
 
@@ -170,6 +169,8 @@ class ChartingState extends MusicBeatState
 		super.create();
 	}
 
+	var difficultyDropDown:FlxUIDropDownMenu;
+
 	function addSongUI():Void
 	{
 		var UI_songTitle = new FlxUIInputText(10, 10, 70, _song.song, 8);
@@ -204,10 +205,13 @@ class ChartingState extends MusicBeatState
 		function reloadSongFunc()
 		{
 			autosaveSong();
-			loadSong(Highscore.formatSong(_song.song, PlayState.storyDifficulty));
+			loadJson(_song.song);
 		}
 
-		var reloadSong:FlxButton = new FlxButton(saveButton.x + saveButton.width + 10, saveButton.y, "Reload Audio", reloadSongFunc);
+		var reloadSong:FlxButton = new FlxButton(saveButton.x + saveButton.width + 10, saveButton.y, "Reload Audio", () ->
+		{
+			loadSong(Highscore.formatSong(_song.song, PlayState.storyDifficulty));
+		});
 
 		var reloadSongJson:FlxButton = new FlxButton(reloadSong.x, saveButton.y + 30, "Reload JSON", reloadSongFunc);
 
@@ -237,13 +241,16 @@ class ChartingState extends MusicBeatState
 			});
 		player2DropDown.selectedLabel = _song.player2;
 
-		var difficultyDropDown = new FlxUIDropDownMenu(270, 100, FlxUIDropDownMenu.makeStrIdLabelArray(Highscore.difficultiesStrArray(_song.song), true),
-			function(character:String)
-			{
-				PlayState.storyDifficulty = Std.parseInt(character);
-				reloadSongFunc();
-			});
-		difficultyDropDown.selectedLabel = _song.player2;
+		var diffs = Highscore.difficultiesStrArray(_song.song);
+
+		difficultyDropDown = new FlxUIDropDownMenu(270, 100, FlxUIDropDownMenu.makeStrIdLabelArray(diffs, true), function(difficulty:String)
+		{
+			var difficultyStr = diffs[Std.parseInt(difficulty)];
+			PlayState.storyDifficulty = CoolUtil.difficultyArray.indexOf(difficultyStr);
+
+			reloadSongFunc();
+		});
+		difficultyDropDown.selectedLabel = diffs[diffs.indexOf(CoolUtil.difficultyArray[PlayState.storyDifficulty])];
 
 		var tab_group_song = new FlxUI(null, UI_box);
 		tab_group_song.name = "Song";
@@ -1043,6 +1050,7 @@ class ChartingState extends MusicBeatState
 
 	function loadJson(song:String):Void
 	{
+		// trace('Loading song JSON: $song');
 		PlayState.SONG = SongRegistry.loadFromJson(Highscore.formatSong(song.toLowerCase(), PlayState.storyDifficulty), song.toLowerCase());
 		LoadingState.loadAndSwitchState(new ChartingState());
 	}
