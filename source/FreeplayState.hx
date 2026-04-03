@@ -9,7 +9,7 @@ import flixel.FlxSprite;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.math.FlxMath;
-import flixel.text.FlxText;
+
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import lime.utils.Assets;
@@ -20,12 +20,12 @@ class FreeplayState extends MusicBeatState
 {
 	var songs:Array<SongMetadata> = [];
 
-	// var selector:FlxText;
+	// var selector:FunkinText;
 	var curSelected:Int = 0;
 	var curDifficulty:Int = 1;
 
-	var scoreText:FlxText;
-	var diffText:FlxText;
+	var scoreText:FunkinText;
+	var diffText:FunkinText;
 	var lerpScore:Float = 0;
 	var intendedScore:Int = 0;
 
@@ -93,14 +93,14 @@ class FreeplayState extends MusicBeatState
 			add(icon);
 		}
 
-		scoreText = new FlxText(FlxG.width * 0.7, 5, 0, "", 32);
+		scoreText = new FunkinText(FlxG.width * 0.7, 5, 0, "", 32);
 		scoreText.setFormat(Paths.font("vcr.ttf"), 32, FlxColor.WHITE, RIGHT);
 
 		scoreBG = new FlxSprite(scoreText.x - 6, 0).makeGraphic(1, 66, 0x99000000);
 		scoreBG.antialiasing = false;
 		add(scoreBG);
 
-		diffText = new FlxText(scoreText.x, scoreText.y + 36, 0, "", 24);
+		diffText = new FunkinText(scoreText.x, scoreText.y + 36, 0, "", 24);
 		diffText.font = scoreText.font;
 		add(diffText);
 

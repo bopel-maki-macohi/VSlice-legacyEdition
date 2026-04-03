@@ -15,10 +15,15 @@ class Character extends CharacterBase
 
 		this.isPlayer = isPlayer;
 
-		if (curCharacter == 'pico-speaker')
+		switch (curCharacter)
 		{
-			loadMappedAnims();
-			playAnim('shoot1');
+			case 'pico-speaker':
+				loadMappedAnims();
+				playAnim('shoot1');
+
+			case 'bf-pixel':
+				width -= 150;
+				height -= 125;
 		}
 
 		danceCallback = function()
@@ -123,7 +128,7 @@ class Character extends CharacterBase
 
 						playAnim('shoot$shootAnim', true);
 						animationNotes.shift();
-						
+
 						trace('played shoot anim $shootAnim');
 					}
 				}
@@ -182,5 +187,6 @@ class Character extends CharacterBase
 
 		dance();
 		animation.finish();
+		updateHitbox();
 	}
 }

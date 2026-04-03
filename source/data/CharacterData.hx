@@ -21,4 +21,6 @@ typedef CharacterData =
 	?offsetFile:String,
 	?packer:Bool,
 	?startingAnim:String,
+	?antialiasing:Bool,
+	?isPixel:Bool,
 }

@@ -18,7 +18,7 @@ import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.sound.FlxSound;
-import flixel.text.FlxText;
+
 import flixel.ui.FlxButton;
 import flixel.ui.FlxSpriteButton;
 import flixel.util.FlxColor;
@@ -46,7 +46,7 @@ class ChartingState extends MusicBeatState
 
 	public static var lastSection:Int = 0;
 
-	var bpmTxt:FlxText;
+	var bpmTxt:FunkinText;
 
 	var strumLine:FlxSprite;
 	var curSong:String = 'Dadbattle';
@@ -137,7 +137,7 @@ class ChartingState extends MusicBeatState
 		Conductor.changeBPM(_song.bpm);
 		Conductor.mapBPMChanges(_song);
 
-		bpmTxt = new FlxText(1000, 50, 0, "", 16);
+		bpmTxt = new FunkinText(1000, 50, 0, "", 16);
 		bpmTxt.scrollFactor.set();
 		add(bpmTxt);
 
@@ -376,7 +376,7 @@ class ChartingState extends MusicBeatState
 		}
 
 		// general shit
-		var title:FlxText = new FlxText(UI_box.x + 20, UI_box.y + 20, 0);
+		var title:FunkinText = new FunkinText(UI_box.x + 20, UI_box.y + 20, 0);
 		bullshitUI.add(title);
 		/* 
 			var loopCheck = new FlxUICheckBox(UI_box.x + 10, UI_box.y + 50, null, null, "Loops", 100, ['loop check']);

@@ -4,11 +4,11 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.text.FlxText;
+
 
 class LatencyState extends FlxState
 {
-	var offsetText:FlxText;
+	var offsetText:FunkinText;
 	var noteGrp:FlxTypedGroup<Note>;
 	var strumLine:FlxSprite;
 
@@ -25,7 +25,7 @@ class LatencyState extends FlxState
 			noteGrp.add(note);
 		}
 
-		offsetText = new FlxText();
+		offsetText = new FunkinText();
 		offsetText.screenCenter();
 		add(offsetText);
 

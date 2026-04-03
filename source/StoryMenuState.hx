@@ -10,7 +10,7 @@ import flixel.graphics.frames.FlxAtlasFrames;
 import flixel.group.FlxGroup.FlxTypedGroup;
 import flixel.group.FlxGroup;
 import flixel.math.FlxMath;
-import flixel.text.FlxText;
+
 import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
@@ -20,7 +20,7 @@ using StringTools;
 
 class StoryMenuState extends MusicBeatState
 {
-	var scoreText:FlxText;
+	var scoreText:FunkinText;
 
 	var curDifficulty:Int = 1;
 
@@ -32,11 +32,11 @@ class StoryMenuState extends MusicBeatState
 	public var weekNames:Array<String> = [];
 	public var weekTitle:Array<String> = [];
 
-	var txtWeekTitle:FlxText;
+	var txtWeekTitle:FunkinText;
 
 	var curWeek:Int = 0;
 
-	var txtTracklist:FlxText;
+	var txtTracklist:FunkinText;
 
 	var grpWeekText:FlxTypedGroup<MenuItem>;
 	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
@@ -75,14 +75,14 @@ class StoryMenuState extends MusicBeatState
 
 		persistentUpdate = persistentDraw = true;
 
-		scoreText = new FlxText(10, 10, 0, "SCORE: 49324858", 36);
+		scoreText = new FunkinText(10, 10, 0, "SCORE: 49324858", 36);
 		scoreText.setFormat("VCR OSD Mono", 32);
 
-		txtWeekTitle = new FlxText(FlxG.width * 0.7, 10, 0, "", 32);
+		txtWeekTitle = new FunkinText(FlxG.width * 0.7, 10, 0, "", 32);
 		txtWeekTitle.setFormat("VCR OSD Mono", 32, FlxColor.WHITE, RIGHT);
 		txtWeekTitle.alpha = 0.7;
 
-		var rankText:FlxText = new FlxText(0, 10);
+		var rankText:FunkinText = new FunkinText(0, 10);
 		rankText.text = 'RANK: GREAT';
 		rankText.setFormat(Paths.font("vcr.ttf"), 32);
 		rankText.size = scoreText.size;
@@ -161,7 +161,7 @@ class StoryMenuState extends MusicBeatState
 		add(yellowBG);
 		add(grpWeekCharacters);
 
-		txtTracklist = new FlxText(FlxG.width * 0.05, yellowBG.x + yellowBG.height + 100, 0, "Tracks", 32);
+		txtTracklist = new FunkinText(FlxG.width * 0.05, yellowBG.x + yellowBG.height + 100, 0, "Tracks", 32);
 		txtTracklist.alignment = CENTER;
 		txtTracklist.font = rankText.font;
 		txtTracklist.color = 0xFFe55777;

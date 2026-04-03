@@ -17,7 +17,6 @@ import flixel.math.FlxMath;
 import flixel.math.FlxPoint;
 import flixel.math.FlxRect;
 import flixel.sound.FlxSound;
-import flixel.text.FlxText;
 import flixel.tweens.FlxEase;
 import flixel.tweens.FlxTween;
 import flixel.ui.FlxBar;
@@ -115,7 +114,7 @@ class PlayState extends MusicBeatState
 
 	var talking:Bool = true;
 	var songScore:Int = 0;
-	var scoreTxt:FlxText;
+	var scoreTxt:FunkinText;
 
 	var grpNoteSplashes:FlxTypedGroup<NoteSplash>;
 
@@ -414,11 +413,11 @@ class PlayState extends MusicBeatState
 				bgGirls.setGraphicSize(Std.int(bgGirls.width * daPixelZoom));
 				bgGirls.updateHitbox();
 				add(bgGirls);
+
+				for (sprite in [bgSky, bgSchool, bgStreet, fgTrees, bgTrees, treeLeaves, bgGirls])
+					sprite.antialiasing = false;
 			case 'thorns':
 				curStage = 'schoolEvil';
-
-				var waveEffectBG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 3, 2);
-				var waveEffectFG = new FlxWaveEffect(FlxWaveMode.ALL, 2, -1, 5, 2);
 
 				var posX = 400;
 				var posY = 200;
@@ -430,6 +429,7 @@ class PlayState extends MusicBeatState
 				bg.scrollFactor.set(0.8, 0.9);
 				bg.scale.set(6, 6);
 				add(bg);
+				bg.antialiasing = false;
 
 			case 'guns' | 'stress' | 'ugh':
 				defaultCamZoom = 0.90;
@@ -748,7 +748,7 @@ class PlayState extends MusicBeatState
 		// healthBar
 		add(healthBar);
 
-		scoreTxt = new FlxText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
+		scoreTxt = new FunkinText(healthBarBG.x + healthBarBG.width - 190, healthBarBG.y + 30, 0, "", 20);
 		scoreTxt.setFormat(Paths.font("vcr.ttf"), 16, FlxColor.WHITE, RIGHT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		scoreTxt.scrollFactor.set();
 		add(scoreTxt);
@@ -852,8 +852,7 @@ class PlayState extends MusicBeatState
 
 		super.create();
 
-		
-		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "V-Slice : Legacy Edition v" + Application.current.meta.get('version'), 12);
+		var versionShit:FunkinText = new FunkinText(5, FlxG.height - 18, 0, "V-Slice : Legacy Edition", 12);
 		versionShit.scrollFactor.set();
 		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
 		versionShit.cameras = [camHUD];
@@ -864,6 +863,8 @@ class PlayState extends MusicBeatState
 
 		#if PLAYTESTING_BUILD
 		versionShit.text += ' (Playtesting build)';
+		#elseif debug
+		versionShit.text += ' (Debug build)';
 		#end
 
 		dad.dance();
@@ -1064,18 +1065,6 @@ class PlayState extends MusicBeatState
 				readySetGo(introSprPaths[swagCounter - 1]);
 			FlxG.sound.play(Paths.sound(introSndPaths[swagCounter]), 0.6);
 
-			/* switch (swagCounter)
-				{
-					case 0:
-						
-					case 1:
-						
-					case 2:
-						
-					case 3:
-						
-			}*/
-
 			swagCounter += 1;
 		}, 4);
 	}
@@ -1086,7 +1075,10 @@ class PlayState extends MusicBeatState
 		spr.scrollFactor.set();
 
 		if (curStage.startsWith('school'))
+		{
 			spr.setGraphicSize(Std.int(spr.width * daPixelZoom));
+			spr.antialiasing = false;
+		}
 
 		spr.updateHitbox();
 		spr.screenCenter();
@@ -2008,6 +2000,7 @@ class PlayState extends MusicBeatState
 		if (curStage.startsWith('school'))
 		{
 			rating.setGraphicSize(Std.int(rating.width * daPixelZoom * 0.7));
+			rating.antialiasing = false;
 		}
 		else
 		{
@@ -2056,6 +2049,7 @@ class PlayState extends MusicBeatState
 		if (curStage.startsWith('school'))
 		{
 			comboSpr.setGraphicSize(Std.int(comboSpr.width * daPixelZoom * 0.7));
+			comboSpr.antialiasing = false;
 		}
 		else
 		{
@@ -2093,6 +2087,7 @@ class PlayState extends MusicBeatState
 			if (curStage.startsWith('school'))
 			{
 				numScore.setGraphicSize(Std.int(numScore.width * daPixelZoom));
+				numScore.antialiasing = false;
 			}
 			else
 			{

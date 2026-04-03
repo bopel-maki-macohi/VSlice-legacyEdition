@@ -46,6 +46,7 @@ class CharacterJsonGenerator
 		var isPlayer = false;
 		var packer = false;
 		var startingAnim:String = '';
+		var isPixel = false;
 
 		function getSparrowAtlas(v:String)
 		{
@@ -193,7 +194,8 @@ class CharacterJsonGenerator
 
 				playAnim('danceRight');
 
-				setGraphicSize(Std.int(width * daPixelZoom));
+				// setGraphicSize(Std.int(width * daPixelZoom));
+				isPixel = true;
 				updateHitbox();
 				antialiasing = false;
 
@@ -367,13 +369,14 @@ class CharacterJsonGenerator
 
 				loadOffsetFile(character);
 
-				setGraphicSize(Std.int(width * 6));
+				// setGraphicSize(Std.int(width * 6));
+				isPixel = true;
 				updateHitbox();
 
 				playAnim('idle');
 
-				width -= 100;
-				height -= 100;
+				// width -= 100;
+				// height -= 100;
 
 				antialiasing = false;
 
@@ -390,7 +393,8 @@ class CharacterJsonGenerator
 
 				playAnim('firstDeath');
 				// pixel bullshit
-				setGraphicSize(Std.int(width * 6));
+				// setGraphicSize(Std.int(width * 6));
+				isPixel = true;
 				updateHitbox();
 				antialiasing = false;
 				flipX = true;
@@ -425,7 +429,8 @@ class CharacterJsonGenerator
 
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				// setGraphicSize(Std.int(width * 6));
+				isPixel = true;
 				updateHitbox();
 
 				antialiasing = false;
@@ -441,7 +446,8 @@ class CharacterJsonGenerator
 
 				playAnim('idle');
 
-				setGraphicSize(Std.int(width * 6));
+				// setGraphicSize(Std.int(width * 6));
+				isPixel = true;
 				updateHitbox();
 
 				antialiasing = false;
@@ -456,7 +462,8 @@ class CharacterJsonGenerator
 
 				loadOffsetFile(character);
 
-				setGraphicSize(Std.int(width * 6));
+				// setGraphicSize(Std.int(width * 6));
+				isPixel = true;
 				updateHitbox();
 
 				playAnim('idle');
@@ -555,6 +562,7 @@ class CharacterJsonGenerator
 			offsetFile: offsetFile,
 			packer: packer,
 			startingAnim: startingAnim,
+			isPixel: isPixel,
 		}, '\t'));
 	}
 }

@@ -1,12 +1,12 @@
 package;
 
+import objects.FunkinText;
 import flixel.FlxG;
 import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.addons.display.FlxGridOverlay;
 import flixel.group.FlxGroup.FlxTypedGroup;
-import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import openfl.events.Event;
 import openfl.events.IOErrorEvent;
@@ -22,8 +22,8 @@ class AnimationDebug extends FlxState
 	var bf:Boyfriend;
 	var dad:Character;
 	var char:Character;
-	var textAnim:FlxText;
-	var dumbTexts:FlxTypedGroup<FlxText>;
+	var textAnim:FunkinText;
+	var dumbTexts:FlxTypedGroup<FunkinText>;
 	var animList:Array<String> = [];
 	var curAnim:Int = 0;
 	var isDad:Bool = true;
@@ -68,10 +68,10 @@ class AnimationDebug extends FlxState
 			bf.flipX = false;
 		}
 
-		dumbTexts = new FlxTypedGroup<FlxText>();
+		dumbTexts = new FlxTypedGroup<FunkinText>();
 		add(dumbTexts);
 
-		textAnim = new FlxText(300, 16);
+		textAnim = new FunkinText(300, 16);
 		textAnim.size = 26;
 		textAnim.scrollFactor.set();
 		add(textAnim);
@@ -93,7 +93,7 @@ class AnimationDebug extends FlxState
 
 		for (anim => offsets in char.animOffsets)
 		{
-			var text:FlxText = new FlxText(10, 20 + (18 * daLoop), 0, anim + ": " + offsets, 15);
+			var text:FunkinText = new FunkinText(10, 20 + (18 * daLoop), 0, anim + ": " + offsets, 15);
 			text.scrollFactor.set();
 			text.color = FlxColor.BLUE;
 			dumbTexts.add(text);
@@ -107,7 +107,7 @@ class AnimationDebug extends FlxState
 
 	function updateTexts():Void
 	{
-		dumbTexts.forEach(function(text:FlxText)
+		dumbTexts.forEach(function(text:FunkinText)
 		{
 			text.kill();
 			dumbTexts.remove(text, true);

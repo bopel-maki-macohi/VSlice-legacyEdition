@@ -1,11 +1,6 @@
 package;
 
-import flixel.FlxG;
 import flixel.FlxSprite;
-import flixel.graphics.frames.FlxAtlasFrames;
-import flixel.math.FlxMath;
-import flixel.util.FlxColor;
-import flixel.util.FlxTimer;
 import shaderslmfao.ColorSwap;
 import ui.PreferencesMenu;
 
@@ -91,6 +86,8 @@ class Note extends FlxSprite
 
 				setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 				updateHitbox();
+
+				antialiasing = false;
 
 			default:
 				frames = Paths.getSparrowAtlas('NOTE_assets');

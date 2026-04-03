@@ -184,14 +184,18 @@ class CharacterBase extends FlxSprite
 			this.scale.set(data?.scale[0] ?? 1, data?.scale[0] ?? 1);
 		else
 			this.scale.set(1, 1);
-		updateHitbox();
+
+		if (data.isPixel)
+			setGraphicSize(Std.int(width * PlayState.daPixelZoom));
 
 		flipX = data?.flipX;
 		flipY = data?.flipY;
+		antialiasing = data?.antialiasing ?? true;
 
 		loadOffsetFile(data?.offsetFile ?? c);
 
 		if (animation.getNameList().contains(data.startingAnim))
 			playAnim(data.startingAnim);
+		updateHitbox();
 	}
 }

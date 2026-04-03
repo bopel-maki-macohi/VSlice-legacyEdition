@@ -1,9 +1,10 @@
 {
 	"flipX": false,
 	"scale": [
-		6,
-		6
+		1,
+		1
 	],
+	"isPixel": true,
 	"offsetFile": "senpai",
 	"offsets": [
 		0,
