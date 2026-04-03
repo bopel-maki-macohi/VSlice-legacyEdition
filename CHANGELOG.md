@@ -22,7 +22,6 @@ This is VSlice Legacy Edition now!
     - Chart Editor SOUNDS (sfx themselves yoinked from VSlice)!
 
 - Difficulty dropdown to chart editor (looks for the song jsons)
-- BOPEEBO ERECT!
 - Cutscenes
     - Censored roses cutscene!
     - Censored stress cutscene!
