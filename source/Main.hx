@@ -93,11 +93,11 @@ class Main extends Sprite
 		#if debug
 		trace('Weeks: ');
 		for (week in WeekRegistry.weeks)
-			trace(' * ' + week);
+		{
+			final parsedWeek = WeekRegistry.loadFromJson(week);
 
-		trace('Songs: ');
-		for (song in SongRegistry.songs)
-			trace(' * ' + song);
+			trace(' * $week : ${parsedWeek.songs}');
+		}
 		#end
 	}
 }
