@@ -2112,7 +2112,7 @@ class PlayState extends MusicBeatState
 		// PRESSES, check for note hits
 		if (pressArray.contains(true) && generatedMusic)
 		{
-			if (boyfriend != null) boyfriend.holdTimer = 0;
+			boyfriend.holdTimer = 0;
 
 			var possibleNotes:Array<Note> = []; // notes that can be hit
 			var directionList:Array<Int> = []; // directions that can be hit
@@ -2158,20 +2158,32 @@ class PlayState extends MusicBeatState
 			if (perfectMode) goodNoteHit(possibleNotes[0]);
 			else if (possibleNotes.length > 0)
 			{
-				// if a direction is hit that shouldn't be
 				for (shit in 0...pressArray.length)
-					if (pressArray[shit] && !directionList.contains(shit)) badNoteHit(shit);
+				{ // if a direction is hit that shouldn't be
+					if (pressArray[shit] && !directionList.contains(shit))
+						badNoteHit(shit);
+				}
 				for (coolNote in possibleNotes)
-					if (pressArray[coolNote.noteData]) goodNoteHit(coolNote);
+				{
+					if (pressArray[coolNote.noteData])
+						goodNoteHit(coolNote);
+				}
 			}
 			else
+			{
 				for (shit in 0...pressArray.length)
-					if (pressArray[shit]) ghostNoteHit(shit);
+					if (pressArray[shit])
+						ghostNoteHit(shit);
+			}
 		}
 
-		if (boyfriend?.holdTimer > Conductor.stepCrochet * boyfriend.dadVar * 0.001
-			&& !holdArray.contains(true)) if (boyfriend?.animation?.curAnim.name.startsWith('sing')
-				&& !boyfriend?.animation?.curAnim.name.endsWith('miss')) boyfriend.playAnim('idle');
+		if (boyfriend.holdTimer > Conductor.stepCrochet * boyfriend.dadVar * 0.001 && !holdArray.contains(true))
+		{
+			if (boyfriend.animation.curAnim?.name.startsWith('sing') && !boyfriend.animation.curAnim?.name.endsWith('miss'))
+			{
+				boyfriend.playAnim('idle');
+			}
+		}
 
 		playerStrums.forEach(function(spr:FlxSprite) {
 			if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm') spr.animation.play('pressed');
@@ -2235,7 +2247,6 @@ class PlayState extends MusicBeatState
 
 		generalNoteMiss(direction);
 	}
-
 	function goodNoteHit(note:Note):Void
 	{
 		if (!note.wasGoodHit)
@@ -2254,6 +2265,7 @@ class PlayState extends MusicBeatState
 
 			var curSection = curStep % 16;
 			if (SONG.notes[curSection] != null) if (SONG.notes[curSection].altAnim) altAnim = '-alt';
+			var altAnim = '';
 
 			if (note.altNote) altAnim = '-alt';
 
