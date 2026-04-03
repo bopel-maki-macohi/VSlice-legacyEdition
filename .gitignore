@@ -5,4 +5,7 @@ export/
 # filesize
 art/devvids/
 
+# thats just being extra
+scriptos/vsliceCharts/
+
 .DS_STORE
