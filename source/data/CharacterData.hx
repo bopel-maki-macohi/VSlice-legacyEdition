@@ -15,4 +15,5 @@ typedef CharacterData =
 	?scale:Array<Float>,
 	?flipX:Bool,
 	?flipY:Bool,
+	?offsetFile:String,
 }

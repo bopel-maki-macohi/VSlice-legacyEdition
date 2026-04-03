@@ -10,6 +10,7 @@ class CharacterJsonGenerator
 	{
 		for (char in [
 			'gf',
+			'bf',
 			'bf-car',
 			'bf-christmas',
 			'bf-holding-gf-dead',
@@ -76,7 +77,11 @@ class CharacterJsonGenerator
 			scale = [s, s];
 		}
 
-		function loadOffsetFile(v:String) {}
+		var offsetFile = character;
+		function loadOffsetFile(v:String) 
+		{
+			offsetFile = v;
+		}
 		function playAnim(v:String) {}
 		function updateHitbox() {}
 		function loadMappedAnims() {}
@@ -501,6 +506,31 @@ class CharacterJsonGenerator
 				playAnim('idle');
 
 				flipX = true;
+			case 'bf':
+				var tex = getSparrowAtlas('characters/BOYFRIEND');
+				path = tex;
+				quickAnimAdd('idle', 'BF idle dance');
+				quickAnimAdd('singUP', 'BF NOTE UP0');
+				quickAnimAdd('singLEFT', 'BF NOTE LEFT0');
+				quickAnimAdd('singRIGHT', 'BF NOTE RIGHT0');
+				quickAnimAdd('singDOWN', 'BF NOTE DOWN0');
+				quickAnimAdd('singUPmiss', 'BF NOTE UP MISS');
+				quickAnimAdd('singLEFTmiss', 'BF NOTE LEFT MISS');
+				quickAnimAdd('singRIGHTmiss', 'BF NOTE RIGHT MISS');
+				quickAnimAdd('singDOWNmiss', 'BF NOTE DOWN MISS');
+				quickAnimAdd('hey', 'BF HEY');
+
+				quickAnimAdd('firstDeath', "BF dies");
+				addByPrefix('deathLoop', "BF Dead Loop", 24, true);
+				quickAnimAdd('deathConfirm', "BF Dead confirm");
+
+				addByPrefix('scared', 'BF idle shaking', 24, true);
+
+				playAnim('idle');
+
+				flipX = true;
+				
+				loadOffsetFile(character);
 		}
 
 		File.saveContent('assets/preload/data/characters/$character.json', Json.stringify({
@@ -511,6 +541,7 @@ class CharacterJsonGenerator
 			flipX: flipX,
 			scale: scale,
 			offsets: [0, 0],
+			offsetFile: offsetFile,
 		}, '\t'));
 	}
 }

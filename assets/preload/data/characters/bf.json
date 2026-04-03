@@ -1,75 +1,101 @@
 {
-    "path": "characters/BOYFRIEND",
-    "flipX": true,
-    "animations": [
-        {
-            "name": "idle",
-            "prefix": "BF idle dance",
-            "looping": false
-        },
-        {
-            "name": "singLEFT",
-            "prefix": "BF NOTE LEFT0",
-            "looping": false
-        },
-        {
-            "name": "singDOWN",
-            "prefix": "BF NOTE DOWN0",
-            "looping": false
-        },
-        {
-            "name": "singUP",
-            "prefix": "BF NOTE UP0",
-            "looping": false
-        },
-        {
-            "name": "singRIGHT",
-            "prefix": "BF NOTE RIGHT0",
-            "looping": false
-        },
-        {
-            "name": "singLEFTmiss",
-            "prefix": "BF NOTE LEFT MISS0",
-            "looping": false
-        },
-        {
-            "name": "singDOWNmiss",
-            "prefix": "BF NOTE DOWN MISS0",
-            "looping": false
-        },
-        {
-            "name": "singUPmiss",
-            "prefix": "BF NOTE UP MISS0",
-            "looping": false
-        },
-        {
-            "name": "singRIGHTmiss",
-            "prefix": "BF NOTE RIGHT MISS0",
-            "looping": false
-        },
-        {
-            "name": "hey",
-            "prefix": "BF HEY",
-            "looping": false
-        },
-        {
-            "name": "firstDeath",
-            "prefix": "BF dies",
-            "looping": false
-        },
-        {
-            "name": "deathLoop",
-            "prefix": "BF Dead Loop",
-            "looping": false
-        },
-        {
-            "name": "deathConfirm",
-            "prefix": "BF Dead confirm",
-            "looping": false
-        },
-        {
-            "name": "scared",
-            "prefix": "BF idle shaking"
-        }
-    ]
+	"flipX": true,
+	"scale": [
+		1,
+		1
+	],
+	"offsetFile": "bf",
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/BOYFRIEND",
+	"flipY": false,
+	"antialiasing": true,
+	"animations": [
+		{
+			"prefix": "BF idle dance",
+			"name": "idle",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF NOTE UP0",
+			"name": "singUP",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF NOTE LEFT0",
+			"name": "singLEFT",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF NOTE RIGHT0",
+			"name": "singRIGHT",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF NOTE DOWN0",
+			"name": "singDOWN",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF NOTE UP MISS",
+			"name": "singUPmiss",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF NOTE LEFT MISS",
+			"name": "singLEFTmiss",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF NOTE RIGHT MISS",
+			"name": "singRIGHTmiss",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF NOTE DOWN MISS",
+			"name": "singDOWNmiss",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF HEY",
+			"name": "hey",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF dies",
+			"name": "firstDeath",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF Dead Loop",
+			"name": "deathLoop",
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "BF Dead confirm",
+			"name": "deathConfirm",
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "BF idle shaking",
+			"name": "scared",
+			"fps": 24,
+			"looping": true
+		}
+	]
 }
