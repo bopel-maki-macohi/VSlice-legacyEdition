@@ -26,7 +26,7 @@ class TankmenBG extends FlxSprite
 		animation.addByPrefix('shot', 'John Shot ' + FlxG.random.int(1, 2), 24, false);
 
 		animation.play('run');
-		animation.curAnim.curFrame = FlxG.random.int(0, animation.curAnim?.numFrames - 1);
+		animation.frameIndex = FlxG.random.int(0, animation.numFrames - 1);
 
 		updateHitbox();
 
