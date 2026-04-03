@@ -4,7 +4,7 @@ import flixel.FlxSprite;
 
 class MenuCharacter extends FlxSprite
 {
-	public var propData:StorymodePropData = null;
+	public var propData:CharacterData = null;
 
 	public var character(default, set):String;
 

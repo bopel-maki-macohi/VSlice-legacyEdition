@@ -1,6 +1,6 @@
 package data;
 
-typedef StorymodePropData =
+typedef CharacterData =
 {
 	?path:String,
 	animations:Array<

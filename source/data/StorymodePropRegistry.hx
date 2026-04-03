@@ -25,7 +25,7 @@ class StorymodePropRegistry
 		return p;
 	}
 
-	public static function loadFromJson(prop:String):StorymodePropData
+	public static function loadFromJson(prop:String):CharacterData
 	{
         if (prop == '' || prop == null) return null;
 
@@ -33,7 +33,7 @@ class StorymodePropRegistry
         if (!Assets.exists(path)) return null;
 
 		var rawJson = Assets.getText(path);
-		var propJson:StorymodePropData = null;
+		var propJson:CharacterData = null;
 
 		try
 		{
