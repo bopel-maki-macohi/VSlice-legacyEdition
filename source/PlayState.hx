@@ -1674,8 +1674,7 @@ class PlayState extends MusicBeatState
 
 					var altAnim:String = "";
 
-					if (SONG.notes[Math.floor(curStep / 16)] != null)
-						if (SONG.notes[Math.floor(curStep / 16)].altAnim) altAnim = '-alt';
+					if (SONG.notes[Math.floor(curStep / 16)] != null) if (SONG.notes[Math.floor(curStep / 16)].altAnim) altAnim = '-alt';
 
 					if (daNote.altNote) altAnim = '-alt';
 
@@ -2158,20 +2157,17 @@ class PlayState extends MusicBeatState
 			{
 				for (shit in 0...pressArray.length)
 				{ // if a direction is hit that shouldn't be
-					if (pressArray[shit] && !directionList.contains(shit))
-						badNoteHit(shit);
+					if (pressArray[shit] && !directionList.contains(shit)) badNoteHit(shit);
 				}
 				for (coolNote in possibleNotes)
 				{
-					if (pressArray[coolNote.noteData])
-						goodNoteHit(coolNote);
+					if (pressArray[coolNote.noteData]) goodNoteHit(coolNote);
 				}
 			}
 			else
 			{
 				for (shit in 0...pressArray.length)
-					if (pressArray[shit])
-						ghostNoteHit(shit);
+					if (pressArray[shit]) ghostNoteHit(shit);
 			}
 		}
 
@@ -2187,9 +2183,9 @@ class PlayState extends MusicBeatState
 			if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm') spr.animation.play('pressed');
 			if (!holdArray[spr.ID]) spr.animation.play('static');
 
+			spr.centerOffsets();
 			if (spr.animation.name == 'confirm' && !curStage.startsWith('school'))
 			{
-				spr.centerOffsets();
 				spr.offset.x -= 13;
 				spr.offset.y -= 13;
 			}
@@ -2252,6 +2248,7 @@ class PlayState extends MusicBeatState
 
 		generalNoteMiss(direction);
 	}
+
 	function goodNoteHit(note:Note):Void
 	{
 		if (!note.wasGoodHit)
