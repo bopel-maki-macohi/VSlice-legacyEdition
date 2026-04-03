@@ -8,7 +8,7 @@
         {
             "name": "confirm",
             "prefix": "Pico HEY!! Black outline",
-            "looped": false
+            "looping": false
         }
     ],
     "offsets": [
