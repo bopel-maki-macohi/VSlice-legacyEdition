@@ -21,6 +21,7 @@ class CharacterJsonGenerator
 			'gf-car',
 			'gf-christmas',
 			'gf-pixel',
+			'gf-tankmen',
 			'mom-car',
 			'mom',
 			'monster-christmas',

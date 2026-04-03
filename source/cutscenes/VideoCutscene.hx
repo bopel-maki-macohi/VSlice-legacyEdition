@@ -1,5 +1,7 @@
 package cutscenes;
 
+import flixel.tweens.FlxTween;
+import flixel.util.FlxTimer;
 import flixel.util.FlxColor;
 import flixel.FlxG;
 import flixel.util.FlxSignal;
@@ -57,11 +59,14 @@ class VideoCutscene extends FlxSpriteGroup
 
 	public function play(cutscene:String)
 	{
+		FlxTween.cancelTweensOf(blackScreen);
+		blackScreen.alpha = 1;
+		if (!members.contains(blackScreen))
+			add(blackScreen);
+
 		#if VIDEOS_ALLOWED
 		if (vid != null)
 		{
-			if (!members.contains(blackScreen))
-				add(blackScreen);
 			if (!members.contains(vid))
 				add(vid);
 
@@ -78,7 +83,7 @@ class VideoCutscene extends FlxSpriteGroup
 		}
 		#else
 		trace('ALERT: Video cutscenes unsupported!');
-		finishVideo(0);
+		finishVideo(0.5);
 		#end
 	}
 
@@ -94,12 +99,17 @@ class VideoCutscene extends FlxSpriteGroup
 		}
 		vid = null;
 		#end
-		
-		if (members.contains(blackScreen))
-			remove(blackScreen);
 
-		if (finishCallback != null)
-			finishCallback.dispatch();
+		FlxTween.tween(blackScreen, {alpha: 0}, transitionTime, {
+			onComplete: t ->
+			{
+				if (members.contains(blackScreen))
+					remove(blackScreen);
+
+				if (finishCallback != null)
+					finishCallback.dispatch();
+			}
+		});
 	}
 
 	public function restartVideo(resume:Bool = true):Void

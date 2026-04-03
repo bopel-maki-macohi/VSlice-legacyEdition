@@ -951,6 +951,7 @@ class PlayState extends MusicBeatState
 		senpaiEvil.x += senpaiEvil.width / 5;
 
 		camFollow.setPosition(camPos.x, camPos.y);
+		FlxG.camera.focusOn(camFollow.getPosition());
 
 		if (SONG.song.toLowerCase() == 'roses' || SONG.song.toLowerCase() == 'thorns')
 		{

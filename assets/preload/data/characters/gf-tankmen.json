@@ -1,0 +1,91 @@
+{
+	"flipX": false,
+	"scale": [
+		1,
+		1
+	],
+	"isPixel": false,
+	"offsetFile": "gf",
+	"offsets": [
+		0,
+		0
+	],
+	"path": "characters/gfTankmen",
+	"startingAnim": "danceRight",
+	"packer": false,
+	"flipY": false,
+	"antialiasing": true,
+	"animations": [
+		{
+			"prefix": "GF Crying at Gunpoint",
+			"name": "sad",
+			"postfix": "",
+			"indices": [
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12
+			],
+			"fps": 24,
+			"looping": true
+		},
+		{
+			"prefix": "GF Dancing at Gunpoint",
+			"name": "danceLeft",
+			"postfix": "",
+			"indices": [
+				30,
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7,
+				8,
+				9,
+				10,
+				11,
+				12,
+				13,
+				14
+			],
+			"fps": 24,
+			"looping": false
+		},
+		{
+			"prefix": "GF Dancing at Gunpoint",
+			"name": "danceRight",
+			"postfix": "",
+			"indices": [
+				15,
+				16,
+				17,
+				18,
+				19,
+				20,
+				21,
+				22,
+				23,
+				24,
+				25,
+				26,
+				27,
+				28,
+				29
+			],
+			"fps": 24,
+			"looping": false
+		}
+	]
+}
