@@ -23,7 +23,7 @@ class KickStarterState extends MusicBeatState
 
 		video = new VideoCutscene();
 		add(video);
-		video.play(Paths.video('kickstarterTrailer'));
+		video.play(Paths.mp4('kickstarterTrailer'));
 
 		video.finishCallback.add(done);
 	}

@@ -78,7 +78,7 @@ class VideoCutscene extends FlxSpriteGroup
 		}
 		#else
 		trace('ALERT: Video cutscenes unsupported!');
-		finishVideo(0.5);
+		finishVideo(0);
 		#end
 	}
 

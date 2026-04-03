@@ -55,10 +55,11 @@ class Paths
 		return getPath(file, type, library);
 	}
 
-	inline static public function video(key:String)
-	{
+	inline static public function mp4(key:String)
 		return getPreloadPath('videos/$key.mp4');
-	}
+
+	inline static public function mkv(key:String)
+		return getPreloadPath('videos/$key.mkv');
 
 	inline static public function txt(key:String, ?library:String)
 	{

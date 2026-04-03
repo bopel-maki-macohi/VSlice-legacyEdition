@@ -825,7 +825,10 @@ class PlayState extends MusicBeatState
 					camFollow.x += 100;
 					camFollow.y += 100;
 				case 'stress':
-					startCutscene('stressCutscene');
+					if (!PreferencesMenu.getPref('censor-naughty'))
+						startCutscene('stressCutscene-censored', true);
+					else
+						startCutscene('stressCutscene');
 				case 'guns':
 					startCutscene('gunsCutscene');
 
@@ -879,11 +882,14 @@ class PlayState extends MusicBeatState
 		cameraMovement();
 	}
 
-	function startCutscene(cutscene:String, ?defaultCallback:Bool = true)
+	function startCutscene(cutscene:String, ?mkv:Bool = false, ?defaultCallback:Bool = true)
 	{
 		inCutscene = true;
 
-		videoCutscene.play(Paths.video(cutscene));
+		if (mkv)
+			videoCutscene.play(Paths.mkv(cutscene));
+		else
+			videoCutscene.play(Paths.mp4(cutscene));
 
 		if (defaultCallback)
 			videoCutscene.finishCallback.add(defaultCutsceneFinishcallback);
