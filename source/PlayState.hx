@@ -1675,15 +1675,13 @@ class PlayState extends MusicBeatState
 					var altAnim:String = "";
 
 					if (SONG.notes[Math.floor(curStep / 16)] != null)
-					{
 						if (SONG.notes[Math.floor(curStep / 16)].altAnim) altAnim = '-alt';
-					}
 
 					if (daNote.altNote) altAnim = '-alt';
 
 					var singAnim = 'sing' + Note.getDirectionFromID(daNote.noteData) + altAnim;
 
-					if (!boyfriend.animation.getNameList().contains(singAnim)) singAnim = singAnim.substr(0, singAnim.length - altAnim.length);
+					if (!dad.animation.getNameList().contains(singAnim)) singAnim = singAnim.substr(0, singAnim.length - altAnim.length);
 
 					dad.playAnim(singAnim, true);
 
@@ -2188,6 +2186,13 @@ class PlayState extends MusicBeatState
 		playerStrums.forEach(function(spr:FlxSprite) {
 			if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm') spr.animation.play('pressed');
 			if (!holdArray[spr.ID]) spr.animation.play('static');
+
+			if (spr.animation.name == 'confirm' && !curStage.startsWith('school'))
+			{
+				spr.centerOffsets();
+				spr.offset.x -= 13;
+				spr.offset.y -= 13;
+			}
 		});
 	}
 
