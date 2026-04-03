@@ -9,6 +9,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This is VSlice Legacy Edition now!
 
+### Added
+
+- Censored stress cutscene!
+
 ### Changed
 - Moved character offset files to "data/characters"
     - There are plans to soon depricate offset text files, keep this in mind
