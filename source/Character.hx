@@ -114,8 +114,6 @@ class Character extends CharacterBase
 				{
 					if (Conductor.songPosition > animationNotes[0][0])
 					{
-						trace('played shoot anim ${Std.string(animationNotes[0][1])}');
-
 						var shootAnim:Int = 1;
 
 						if (animationNotes[0][1] >= 2)
@@ -125,6 +123,8 @@ class Character extends CharacterBase
 
 						playAnim('shoot$shootAnim', true);
 						animationNotes.shift();
+						
+						trace('played shoot anim $shootAnim');
 					}
 				}
 
