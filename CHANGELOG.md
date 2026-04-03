@@ -28,6 +28,7 @@ This is VSlice Legacy Edition now!
 
 ### Changed
 - Chart Editor
+    - You can now go to the previous section when scrolling (Mouse wheel? Keybinds? Both work)
     - The chart editor "bpmText" had some QOL things changed (atleast with the stuff that was already there)
     - You can no longer scroll with the scroll wheel in the chart editor while an input box has focus
     - All chart editor keyboard shortcuts no longer work while an input box has focus
@@ -51,7 +52,10 @@ This is VSlice Legacy Edition now!
 - Moved song files / folders to "data/songs"
 
 ### Fixed
-- Probably at least a couple o fixes I can't think about
+- Probably at least a couple more fixes I can't think about
+- Chart Editor
+    - You can no longer go into the negative song times in the chart editor
+    - You can no longer exceed the song length in the chart editor
 - When character offset files can't be found, it won't crash anymore :D
 - Video cutscenes work on desktop now!
 

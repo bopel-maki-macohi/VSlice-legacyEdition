@@ -489,13 +489,23 @@ class ChartingState extends MusicBeatState
 		curStep = recalculateSteps();
 
 		lastTime = Conductor.songPosition;
+
+		if (FlxG.sound.music.time < 0)
+			FlxG.sound.music.time = 0;
+
+		if (FlxG.sound.music.time > FlxG.sound.music.length)
+			FlxG.sound.music.time = FlxG.sound.music.length;
+
 		Conductor.songPosition = FlxG.sound.music.time;
 		_song.song = typingShit.text;
 
 		strumLine.y = getYfromStrum((Conductor.songPosition - sectionStartTime()) % (Conductor.stepCrochet * _song.notes[curSection].lengthInSteps));
 
-		if (FlxG.keys.justPressed.X)
-			toggleAltAnimNote();
+		if (strumLine.y < gridBG.y)
+		{
+			changeSection(curSection - 1, false);
+			strumLine.y = gridBG.height - strumLine.height * 2;
+		}
 
 		if (curBeat % 4 == 0 && curStep >= 16 * (curSection + 1))
 		{
@@ -564,6 +574,9 @@ class ChartingState extends MusicBeatState
 
 		if (!typingShit.hasFocus)
 		{
+			if (FlxG.keys.justPressed.X)
+				toggleAltAnimNote();
+
 			if (FlxG.keys.justPressed.SPACE)
 			{
 				if (FlxG.sound.music.playing)
@@ -655,6 +668,9 @@ class ChartingState extends MusicBeatState
 		function addLine(l:String)
 			bpmTxt.text += '\n$l';
 
+		if (curBeat < 0) curBeat = 0;
+		if (curStep < 0) curStep = 0;
+
 		addLine('Song: ${_song.song}');
 		addLine('Difficulty: ${difficultyDropDown.selectedLabel.toLowerCase()}');
 
@@ -662,7 +678,7 @@ class ChartingState extends MusicBeatState
 		addLine('Time: $songTime / $songLength');
 		addLine('Beat: $curBeat');
 		addLine('Step: $curStep');
-		addLine('Section: $curSection / ${_song.notes.length}');
+		addLine('Section: ${curSection + 1} / ${_song.notes.length}');
 
 		addLine('\n');
 		if (overNoteGrid)
