@@ -45,8 +45,6 @@ class PlayState extends MusicBeatState
 	public static var deathCounter:Int = 0;
 	public static var practiceMode:Bool = false;
 
-	var halloweenLevel:Bool = false;
-
 	private var vocals:FlxSound;
 	private var vocalsFinished:Bool = false;
 
@@ -198,8 +196,6 @@ class PlayState extends MusicBeatState
 		{
 			case 'spookeez' | 'monster' | 'south':
 				curStage = "spooky";
-				halloweenLevel = true;
-
 				var hallowTex = Paths.getSparrowAtlas('halloween_bg');
 
 				halloweenBG = new FlxSprite(-200, -100);
