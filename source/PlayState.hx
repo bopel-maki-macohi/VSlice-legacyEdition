@@ -866,6 +866,7 @@ class PlayState extends MusicBeatState
 
 		#if (debug || PLAYTESTING_BUILD)
 		var versionShit:VersionText = new VersionText(5, FlxG.height - 18);
+		versionShit.cameras = [camHUD];
 		add(versionShit);
 		#end
 
