@@ -9,7 +9,7 @@
 		0
 	],
 	"path": "characters/bfPixelsDEAD",
-	"flipY": true,
+	"flipY": false,
 	"antialiasing": false,
 	"animations": [
 		{

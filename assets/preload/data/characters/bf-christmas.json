@@ -8,8 +8,8 @@
 		0,
 		0
 	],
-	"path": "",
-	"flipY": true,
+	"path": "characters/bfChristmas",
+	"flipY": false,
 	"antialiasing": true,
 	"animations": [
 		{

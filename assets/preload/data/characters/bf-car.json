@@ -8,8 +8,8 @@
 		0,
 		0
 	],
-	"path": "",
-	"flipY": true,
+	"path": "characters/bfCar",
+	"flipY": false,
 	"antialiasing": true,
 	"animations": [
 		{

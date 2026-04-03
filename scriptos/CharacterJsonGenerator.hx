@@ -86,8 +86,8 @@ class CharacterJsonGenerator
 		var height = 1.0;
 
 		var path = '';
-		var flipX = true;
-		var flipY = true;
+		var flipX = false;
+		var flipY = false;
 		var antialiasing = true;
 
 		switch (character)
@@ -303,7 +303,7 @@ class CharacterJsonGenerator
 				loadMappedAnims();
 
 			case 'bf-christmas':
-				var path = getSparrowAtlas('characters/bfChristmas');
+				path = getSparrowAtlas('characters/bfChristmas');
 				quickAnimAdd('idle', 'BF idle dance');
 				quickAnimAdd('singUP', 'BF NOTE UP0');
 				quickAnimAdd('singLEFT', 'BF NOTE LEFT0');
@@ -321,7 +321,7 @@ class CharacterJsonGenerator
 
 				flipX = true;
 			case 'bf-car':
-				var path = getSparrowAtlas('characters/bfCar');
+				path = getSparrowAtlas('characters/bfCar');
 				quickAnimAdd('idle', 'BF idle dance');
 				quickAnimAdd('singUP', 'BF NOTE UP0');
 				quickAnimAdd('singLEFT', 'BF NOTE LEFT0');
@@ -505,11 +505,11 @@ class CharacterJsonGenerator
 		}
 
 		File.saveContent('assets/preload/data/characters/$character.json', Json.stringify({
+			path: path,
+			animations: animations,
 			antialiasing: antialiasing,
 			flipY: flipY,
 			flipX: flipX,
-			path: path,
-			animations: animations,
 			scale: scale,
 			offsets: [0, 0],
 		}, '\t'));

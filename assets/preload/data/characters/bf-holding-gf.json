@@ -9,7 +9,7 @@
 		0
 	],
 	"path": "characters/bfAndGF",
-	"flipY": true,
+	"flipY": false,
 	"antialiasing": true,
 	"animations": [
 		{

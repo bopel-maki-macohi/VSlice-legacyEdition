@@ -1,5 +1,5 @@
 {
-	"flipX": true,
+	"flipX": false,
 	"scale": [
 		6,
 		6
@@ -9,7 +9,7 @@
 		0
 	],
 	"path": "characters/gfPixel",
-	"flipY": true,
+	"flipY": false,
 	"antialiasing": false,
 	"animations": [
 		{
