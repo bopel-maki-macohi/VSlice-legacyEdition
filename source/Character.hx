@@ -20,10 +20,6 @@ class Character extends CharacterBase
 			case 'pico-speaker':
 				loadMappedAnims();
 				playAnim('shoot1');
-
-			case 'bf-pixel':
-				width -= 150;
-				height -= 125;
 		}
 
 		danceCallback = function()
