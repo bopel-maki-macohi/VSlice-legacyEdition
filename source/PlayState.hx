@@ -2044,7 +2044,7 @@ class PlayState extends MusicBeatState
 		comboSpr.velocity.y -= 150;
 		comboSpr.velocity.x += FlxG.random.int(1, 10);
 
-		add(comboSpr);
+		// add(comboSpr);
 
 		if (curStage.startsWith('school'))
 		{
