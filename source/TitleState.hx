@@ -1,5 +1,5 @@
 package;
-
+import lime.app.Application;
 import shaderslmfao.ColorSwap;
 import flixel.FlxG;
 import flixel.FlxSprite;
@@ -63,7 +63,21 @@ class TitleState extends MusicBeatState
 
 		super.create();
 
-		FlxG.save.bind('funkin', 'ninjamuffin99');
+		FlxG.save.bind('VSliceLegacyEdition', Application.current.meta.get('company'));
+
+		FlxG.save.data.allowMerge ??= true;
+
+		if (FlxG.save.data.allowMerge && FlxG.save.mergeDataFrom('funkin', 'ninjamuffin99', true, false))
+		{
+			trace('Merged old funkin save');
+
+			FlxG.save.data.allowMerge = false;
+		}
+		else
+		{
+			FlxG.save.data.allowMerge = true;
+		}
+
 		PreferencesMenu.initPrefs();
 		PlayerSettings.init();
 		Highscore.load();
