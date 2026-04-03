@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This is VSlice Legacy Edition now!
 
 ### Added
+- The player can now play alt animations when the conditions are right during gameplay! (alt note or alt anim section)
 - Chart Editor
     - The chart editor "bpmText" now has:
         - Song Name

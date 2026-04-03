@@ -1736,17 +1736,12 @@ class PlayState extends MusicBeatState
 					if (daNote.altNote)
 						altAnim = '-alt';
 
-					switch (Math.abs(daNote.noteData))
-					{
-						case 0:
-							dad.playAnim('singLEFT' + altAnim, true);
-						case 1:
-							dad.playAnim('singDOWN' + altAnim, true);
-						case 2:
-							dad.playAnim('singUP' + altAnim, true);
-						case 3:
-							dad.playAnim('singRIGHT' + altAnim, true);
-					}
+					var singAnim = 'sing' + Note.getDirectionFromID(daNote.noteData) + altAnim;
+
+					if (!boyfriend.animation.getNameList().contains(singAnim))
+						singAnim = singAnim.substr(0, singAnim.length - altAnim.length);
+
+					dad.playAnim(singAnim, true);
 
 					dad.holdTimer = 0;
 
@@ -2299,47 +2294,10 @@ class PlayState extends MusicBeatState
 		vocals.volume = 0;
 		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 
-		/* boyfriend.stunned = true;
-
-			// get stunned for 5 seconds
-			new FlxTimer().start(5 / 60, function(tmr:FlxTimer)
-			{
-				boyfriend.stunned = false;
-		});*/
-
-		switch (direction)
-		{
-			case 0:
-				boyfriend.playAnim('singLEFTmiss', true);
-			case 1:
-				boyfriend.playAnim('singDOWNmiss', true);
-			case 2:
-				boyfriend.playAnim('singUPmiss', true);
-			case 3:
-				boyfriend.playAnim('singRIGHTmiss', true);
-		}
+		var singAnim = 'sing' + Note.getDirectionFromID(direction);
+		boyfriend.playAnim(singAnim, true);
 	}
 
-	/* not used anymore lol
-
-		function badNoteHit()
-		{
-			// just double pasting this shit cuz fuk u
-			// REDO THIS SYSTEM!
-			var leftP = controls.NOTE_LEFT_P;
-			var downP = controls.NOTE_DOWN_P;
-			var upP = controls.NOTE_UP_P;
-			var rightP = controls.NOTE_RIGHT_P;
-
-			if (leftP)
-				noteMiss(0);
-			if (downP)
-				noteMiss(1);
-			if (upP)
-				noteMiss(2);
-			if (rightP)
-				noteMiss(3);
-	}*/
 	function goodNoteHit(note:Note):Void
 	{
 		if (!note.wasGoodHit)
@@ -2355,24 +2313,22 @@ class PlayState extends MusicBeatState
 			else
 				health += 0.004;
 
-			switch (note.noteData)
-			{
-				case 0:
-					boyfriend.playAnim('singLEFT', true);
-				case 1:
-					boyfriend.playAnim('singDOWN', true);
-				case 2:
-					boyfriend.playAnim('singUP', true);
-				case 3:
-					boyfriend.playAnim('singRIGHT', true);
-			}
+			var altAnim = '';
+
+			if (note.altNote)
+				altAnim = '-alt';
+
+			var singAnim = 'sing' + Note.getDirectionFromID(note.noteData) + altAnim;
+
+			if (!boyfriend.animation.getNameList().contains(singAnim))
+				singAnim = singAnim.substr(0, singAnim.length - altAnim.length);
+
+			boyfriend.playAnim(singAnim, true);
 
 			playerStrums.forEach(function(spr:FlxSprite)
 			{
 				if (Math.abs(note.noteData) == spr.ID)
-				{
 					spr.animation.play('confirm', true);
-				}
 			});
 
 			note.wasGoodHit = true;

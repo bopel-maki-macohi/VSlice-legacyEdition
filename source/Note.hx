@@ -12,6 +12,23 @@ import polymod.format.ParseRules.TargetSignatureElement;
 
 class Note extends FlxSprite
 {
+	public static function getDirectionFromID(id:Int):String
+	{
+		switch (id)
+		{
+			case 0:
+				return 'LEFT';
+			case 1:
+				return 'DOWN';
+			case 2:
+				return 'UP';
+			case 3:
+				return 'RIGHT';
+		}
+
+		return '$id';
+	}
+
 	public var strumTime:Float = 0;
 
 	public var mustPress:Bool = false;
@@ -113,7 +130,6 @@ class Note extends FlxSprite
 
 				setGraphicSize(Std.int(width * 0.7));
 				updateHitbox();
-				
 
 				// colorSwap.colorToReplace = 0xFFF9393F;
 				// colorSwap.newColor = 0xFF00FF00;
