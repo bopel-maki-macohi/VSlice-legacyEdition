@@ -3,6 +3,8 @@ package scriptos;
 import haxe.Json;
 import sys.io.File;
 
+using StringTools;
+
 // haxe -m scriptos.CharacterJsonGenerator --interp
 class CharacterJsonGenerator
 {
@@ -35,12 +37,12 @@ class CharacterJsonGenerator
 			'spooky',
 			'tankman',
 		])
-			switchStatement(char);
+			switchStatement(char, char.startsWith('bf'));
 	}
 
 	static var daPixelZoom = 6;
 
-	static function switchStatement(character:String)
+	static function switchStatement(character:String, isPlayer:Bool)
 	{
 		var animations:Array<Dynamic> = [];
 		var scale:Array<Float> = [1, 1];
@@ -551,6 +553,8 @@ class CharacterJsonGenerator
 
 				loadOffsetFile(character);
 		}
+
+		if (isPlayer) flipX = !flipX;
 
 		File.saveContent('assets/preload/data/characters/$character.json', Json.stringify({
 			path: path,

@@ -50,7 +50,7 @@ class PlayState extends MusicBeatState
 
 	private var dad:Character;
 	private var gf:Character;
-	private var boyfriend:Boyfriend;
+	private var boyfriend:Character;
 
 	private var notes:FlxTypedGroup<Note>;
 	private var unspawnNotes:Array<Note> = [];
@@ -617,7 +617,7 @@ class PlayState extends MusicBeatState
 				dad.y += 180;
 		}
 
-		boyfriend = new Boyfriend(770, 450, SONG.player1);
+		boyfriend = new Character(770, 450, SONG.player1);
 
 		// REPOSITIONING PER STAGE
 		switch (curStage)
@@ -2157,7 +2157,7 @@ class PlayState extends MusicBeatState
 		}
 	}
 
-	private function keyShit():Void
+	public function keyShit():Void
 	{
 		// control arrays, order L D R U
 		var holdArray:Array<Bool> = [controls.NOTE_LEFT, controls.NOTE_DOWN, controls.NOTE_UP, controls.NOTE_RIGHT];
@@ -2175,7 +2175,7 @@ class PlayState extends MusicBeatState
 		];
 
 		// HOLDS, check for sustain notes
-		if (holdArray.contains(true) && /*!boyfriend.stunned && */ generatedMusic)
+		if (holdArray.contains(true) && generatedMusic)
 		{
 			notes.forEachAlive(function(daNote:Note)
 			{
@@ -2185,9 +2185,10 @@ class PlayState extends MusicBeatState
 		}
 
 		// PRESSES, check for note hits
-		if (pressArray.contains(true) && /*!boyfriend.stunned && */ generatedMusic)
+		if (pressArray.contains(true) && generatedMusic)
 		{
-			boyfriend.holdTimer = 0;
+			if (boyfriend != null)
+				boyfriend.holdTimer = 0;
 
 			var possibleNotes:Array<Note> = []; // notes that can be hit
 			var directionList:Array<Int> = []; // directions that can be hit
@@ -2226,9 +2227,7 @@ class PlayState extends MusicBeatState
 			for (note in dumbNotes)
 			{
 				FlxG.log.add("killing dumb ass note at " + note.strumTime);
-				note.kill();
-				notes.remove(note, true);
-				note.destroy();
+				endNote(note);
 			}
 
 			possibleNotes.sort((a, b) -> Std.int(a.strumTime - b.strumTime));
@@ -2237,65 +2236,91 @@ class PlayState extends MusicBeatState
 				goodNoteHit(possibleNotes[0]);
 			else if (possibleNotes.length > 0)
 			{
+				// if a direction is hit that shouldn't be
 				for (shit in 0...pressArray.length)
-				{ // if a direction is hit that shouldn't be
 					if (pressArray[shit] && !directionList.contains(shit))
-						noteMiss(shit);
-				}
+						badNoteHit(shit);
 				for (coolNote in possibleNotes)
-				{
 					if (pressArray[coolNote.noteData])
 						goodNoteHit(coolNote);
-				}
 			}
 			else
-			{
 				for (shit in 0...pressArray.length)
 					if (pressArray[shit])
-						noteMiss(shit);
-			}
+						ghostNoteHit(shit);
 		}
 
-		if (boyfriend.holdTimer > Conductor.stepCrochet * 4 * 0.001 && !holdArray.contains(true))
-		{
-			if (boyfriend.animation.curAnim?.name.startsWith('sing') && !boyfriend.animation.curAnim?.name.endsWith('miss'))
-			{
+		if (boyfriend?.holdTimer > Conductor.stepCrochet * boyfriend.dadVar * 0.001 && !holdArray.contains(true))
+			if (boyfriend?.animation?.curAnim.name.startsWith('sing') && !boyfriend?.animation?.curAnim.name.endsWith('miss'))
 				boyfriend.playAnim('idle');
-			}
-		}
 
 		playerStrums.forEach(function(spr:FlxSprite)
 		{
-			if (pressArray[spr.ID] && spr.animation.curAnim?.name != 'confirm')
+			if (pressArray[spr.ID] && spr.animation.curAnim.name != 'confirm')
 				spr.animation.play('pressed');
 			if (!holdArray[spr.ID])
 				spr.animation.play('static');
-
-			if (spr.animation.curAnim?.name == 'confirm' && !curStage.startsWith('school'))
-			{
-				spr.centerOffsets();
-				spr.offset.x -= 13;
-				spr.offset.y -= 13;
-			}
-			else
-				spr.centerOffsets();
 		});
 	}
 
-	function noteMiss(direction:Int = 1):Void
+	public function endNote(daNote:Note)
 	{
-		// whole function used to be encased in if (!boyfriend.stunned)
-		health -= 0.04;
-		killCombo();
+		daNote.kill();
+		notes.remove(daNote, true);
+		daNote.destroy();
+	}
 
-		if (!practiceMode)
-			songScore -= 10;
-
-		vocals.volume = 0;
+	/**
+		This is what happens with
+		ALL note misses n shit
+	**/
+	function generalNoteMiss(direction:Int = 1):Void
+	{
 		FlxG.sound.play(Paths.soundRandom('missnote', 1, 3), FlxG.random.float(0.1, 0.2));
 
-		var singAnim = 'sing' + Note.getDirectionFromID(direction);
+		var singAnim = 'sing' + Note.getDirectionFromID(direction) + 'miss';
 		boyfriend.playAnim(singAnim, true);
+	}
+
+	/**
+		Hit a note when there
+		are NO NOTES.
+	**/
+	function ghostNoteHit(direction:Int):Void
+	{
+		#if GHOST_TAPPING
+		return;
+		#end
+
+		health -= 0.08;
+		songScore -= 5;
+
+		FlxG.log.add('ghost');
+
+		generalNoteMiss(direction);
+	}
+
+	/**
+		Hit a note that isn't there
+		when there ARE nots near
+	**/
+	function badNoteHit(direction:Int):Void
+	{
+		health -= 0.04;
+		songScore -= 10;
+
+		if (gf != null)
+			if (combo > 5)
+				gf.playAnim('sad');
+
+		if (combo > 0)
+			combo = 0;
+
+		vocals.volume = 0;
+
+		FlxG.log.add('non-ghost');
+
+		generalNoteMiss(direction);
 	}
 
 	function goodNoteHit(note:Note):Void
@@ -2304,8 +2329,8 @@ class PlayState extends MusicBeatState
 		{
 			if (!note.isSustainNote)
 			{
-				combo += 1;
 				popUpScore(note.strumTime, note);
+				combo += 1;
 			}
 
 			if (note.noteData >= 0)
@@ -2313,7 +2338,12 @@ class PlayState extends MusicBeatState
 			else
 				health += 0.004;
 
-			var altAnim = '';
+			var altAnim:String = "";
+
+			var curSection = curStep % 16;
+			if (SONG.notes[curSection] != null)
+				if (SONG.notes[curSection].altAnim)
+					altAnim = '-alt';
 
 			if (note.altNote)
 				altAnim = '-alt';
@@ -2335,11 +2365,7 @@ class PlayState extends MusicBeatState
 			vocals.volume = 1;
 
 			if (!note.isSustainNote)
-			{
-				note.kill();
-				notes.remove(note, true);
-				note.destroy();
-			}
+				endNote(note);
 		}
 	}
 

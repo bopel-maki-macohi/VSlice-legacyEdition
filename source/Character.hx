@@ -22,6 +22,9 @@ class Character extends CharacterBase
 				playAnim('shoot1');
 		}
 
+		if (curCharacter == 'dad')
+			dadVar = 6.1;
+
 		danceCallback = function()
 		{
 			switch (curCharacter)
@@ -77,19 +80,33 @@ class Character extends CharacterBase
 		}
 	}
 
+	public var dadVar:Float = 4;
+	
+	public var startedDeath:Bool = false;
+
 	override function update(elapsed:Float)
 	{
 		super.update(elapsed);
 
-		if (!curCharacter.startsWith('bf'))
+		if (!debugMode)
+		{
+			if (animation.curAnim?.name.startsWith('sing'))
+				holdTimer += elapsed;
+			else
+				holdTimer = 0;
+
+			if (animation.curAnim?.name.endsWith('miss') && animation.curAnim?.finished && !debugMode)
+				playAnim('idle', true, false, 10);
+
+			if (animation.curAnim?.name == 'firstDeath' && animation.curAnim?.finished && startedDeath)
+				playAnim('deathLoop');
+		}
+
+		if (!isPlayer)
 		{
 			if (animation.curAnim?.name.startsWith('sing'))
 				holdTimer += elapsed;
 
-			var dadVar:Float = 4;
-
-			if (curCharacter == 'dad')
-				dadVar = 6.1;
 			if (holdTimer >= Conductor.stepCrochet * dadVar * 0.001)
 			{
 				dance();
