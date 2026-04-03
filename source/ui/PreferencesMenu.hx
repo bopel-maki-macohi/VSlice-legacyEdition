@@ -197,7 +197,7 @@ class CheckboxThingie extends FlxSprite
 	{
 		super.update(elapsed);
 
-		switch (animation.curAnim.name)
+		switch (animation.curAnim?.name)
 		{
 			case 'static':
 				offset.set();

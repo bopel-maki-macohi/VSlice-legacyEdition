@@ -368,7 +368,7 @@ class StoryMenuState extends MusicBeatState
 
 			for (c in prevChars)
 			{
-				if (c.ID == i && c.character == char)
+				if (c.ID == i && c.curCharacter == char)
 				{
 					addedOldChar = true;
 					grpWeekCharacters.add(c);
@@ -386,10 +386,7 @@ class StoryMenuState extends MusicBeatState
 			if (weekCharacterThing.graphic == null)
 				continue;
 
-			weekCharacterThing.x += weekCharacterThing.propData?.offsets[0] ?? 0;
-			weekCharacterThing.y += weekCharacterThing.propData?.offsets[1] ?? 0;
-			
-			weekCharacterThing.playAnimation('idle');
+			weekCharacterThing.playAnim('idle');
 			grpWeekCharacters.add(weekCharacterThing);
 		}
 

@@ -1,0 +1,62 @@
+{
+    "path": "characters/BOYFRIEND",
+    "flipX": true,
+    "animations": [
+        {
+            "name": "idle",
+            "prefix": "BF idle dance"
+        },
+        {
+            "name": "singLEFT",
+            "prefix": "BF NOTE LEFT0"
+        },
+        {
+            "name": "singDOWN",
+            "prefix": "BF NOTE DOWN0"
+        },
+        {
+            "name": "singUP",
+            "prefix": "BF NOTE UP0"
+        },
+        {
+            "name": "singRIGHT",
+            "prefix": "BF NOTE RIGHT0"
+        },
+        {
+            "name": "singLEFTmiss",
+            "prefix": "BF NOTE LEFT MISS0"
+        },
+        {
+            "name": "singDOWNmiss",
+            "prefix": "BF NOTE DOWN MISS0"
+        },
+        {
+            "name": "singUPmiss",
+            "prefix": "BF NOTE UP MISS0"
+        },
+        {
+            "name": "singRIGHTmiss",
+            "prefix": "BF NOTE RIGHT MISS0"
+        },
+        {
+            "name": "hey",
+            "prefix": "BF HEY"
+        },
+        {
+            "name": "firstDeath",
+            "prefix": "BF dies"
+        },
+        {
+            "name": "deathLoop",
+            "prefix": "BF Dead Loop"
+        },
+        {
+            "name": "deathConfirm",
+            "prefix": "BF Dead confirm"
+        },
+        {
+            "name": "scared",
+            "prefix": "BF idle shaking"
+        }
+    ]
+}

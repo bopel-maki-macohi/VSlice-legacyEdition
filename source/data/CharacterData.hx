@@ -9,9 +9,9 @@ typedef CharacterData =
 			prefix:String,
 
 			?looping:Bool,
-			?offsets:Array<Float>,
+			?offsets:Array<Null<Float>>,
 		}>,
-	?offsets:Array<Float>,
+	?offsets:Array<Null<Float>>,
 	?scale:Array<Float>,
 	?flipX:Bool,
 	?flipY:Bool,

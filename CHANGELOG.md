@@ -8,10 +8,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This is VSlice Legacy Edition now!
 
+### Changed
+- Moved character offset files to "data/characters"
+- The following are driven by data JSON files now:
+    - Characters
+    - Storymode characters / props
+        - Uses the same data format as characters, so anything added for characters works for storymode characters, including (but not limited to) spritesheet formats
+    - Storymode weeks
+        - Freeplay is generated from the weeks
+        - Order (and inclusion) is dependent on a text file
+- Moved song files / folders to "data/songs"
+
 ### Fixed
+- When character offset files can't be found, it won't crash
 - Video cutscenes work on desktop now!
 
 ### Removed
+- Video cutscenes on web (could re-add it tho)
 - Newgrounds (It's gone now)
 
 ## [0.2.8] - 2021-04-18

@@ -34,7 +34,7 @@
 	<!-- _________________________ Application Settings _________________________ -->
 
 	<app title="VSlice Legacy" file="VSliceLegacy" packageName="com.maki.vslicelegacy"
-		package="com.maki.vslicelegacy" main="Main" version="0.2.8.1" company="Maki" />
+		package="com.maki.vslicelegacy" main="Main" version="0.2.9" company="Maki" />
 
 	<set name="APP_ID" value="0x0100f6c013bbc000" />
 	<app preloader="flixel.system.FlxPreloader" />
