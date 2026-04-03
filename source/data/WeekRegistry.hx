@@ -29,7 +29,7 @@ class WeekRegistry
 	{
 		if (week == null || week == '') return null;
 
-        var path = Paths.json('weeks/' + week);
+        var path = Paths.json('ui/storymode/weeks/' + week);
         if (!Assets.exists(path)) return null;
 
 		var rawJson = Assets.getText(path);
