@@ -12,6 +12,8 @@
 	<define name="CAN_CHEAT" if="switch debug" />
 
 	<define name="VIDEOS_ALLOWED" if="desktop" unless="hl"/>
+	
+	<define name="PLAYTESTING_BUILD" if="debug"/>
 
 	<!-- _______________________________ Libraries ______________________________ -->
 

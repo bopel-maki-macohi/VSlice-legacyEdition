@@ -850,6 +850,20 @@ class PlayState extends MusicBeatState
 		}
 
 		super.create();
+
+		
+		var versionShit:FlxText = new FlxText(5, FlxG.height - 18, 0, "V-Slice : Legacy Edition v" + Application.current.meta.get('version'), 12);
+		versionShit.scrollFactor.set();
+		versionShit.setFormat("VCR OSD Mono", 16, FlxColor.WHITE, LEFT, FlxTextBorderStyle.OUTLINE, FlxColor.BLACK);
+		versionShit.cameras = [camHUD];
+
+		#if (debug || PLAYTESTING_BUILD)
+		add(versionShit);
+		#end
+
+		#if PLAYTESTING_BUILD
+		versionShit.text += ' (Playtesting build)';
+		#end
 	}
 
 	function defaultCutsceneFinishcallback()
