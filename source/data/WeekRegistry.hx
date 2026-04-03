@@ -8,9 +8,9 @@ using StringTools;
 
 class WeekRegistry
 {
-	public static var weeks(get, never):Array<String>;
+	public static var weekList(get, never):Array<String>;
 
-	static function get_weeks():Array<String>
+	static function get_weekList():Array<String>
 	{
 		var w = [];
 

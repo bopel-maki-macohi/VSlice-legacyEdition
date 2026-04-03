@@ -57,7 +57,7 @@ class FreeplayState extends MusicBeatState
 				FlxG.sound.playMusic(Paths.music('freakyMenu'));
 		}
 
-		for (i => week in WeekRegistry.weeks)
+		for (i => week in WeekRegistry.weekList)
 		{
 			final parsedWeek = WeekRegistry.loadFromJson(week);
 

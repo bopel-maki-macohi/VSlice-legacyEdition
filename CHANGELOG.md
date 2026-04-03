@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This is VSlice Legacy Edition now!
 
 ### Added
-
+- BOPEEBO ERECT!
 - Censored roses cutscene!
 - Censored stress cutscene!
 
@@ -19,6 +19,7 @@ This is VSlice Legacy Edition now!
     - There are plans to soon depricate offset text files, keep this in mind
 - The following are driven by data JSON files now:
     - Characters
+        - The characters list is generated dynamically from all the character files now
     - Storymode characters / props
         - Uses the same data format as characters, so anything added for characters works for storymode characters, including (but not limited to) spritesheet formats
     - Storymode weeks

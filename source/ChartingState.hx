@@ -222,18 +222,16 @@ class ChartingState extends MusicBeatState
 		stepperBPM.value = Conductor.bpm;
 		stepperBPM.name = 'song_bpm';
 
-		var characters:Array<String> = CoolUtil.coolTextFile(Paths.txt('characterList'));
-
-		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+		var player1DropDown = new FlxUIDropDownMenu(10, 100, FlxUIDropDownMenu.makeStrIdLabelArray(CharacterRegistry.characterList, true), function(character:String)
 		{
-			_song.player1 = characters[Std.parseInt(character)];
+			_song.player1 = CharacterRegistry.characterList[Std.parseInt(character)];
 			updateHeads();
 		});
 		player1DropDown.selectedLabel = _song.player1;
 
-		var player2DropDown = new FlxUIDropDownMenu(140, 100, FlxUIDropDownMenu.makeStrIdLabelArray(characters, true), function(character:String)
+		var player2DropDown = new FlxUIDropDownMenu(140, 100, FlxUIDropDownMenu.makeStrIdLabelArray(CharacterRegistry.characterList, true), function(character:String)
 		{
-			_song.player2 = characters[Std.parseInt(character)];
+			_song.player2 = CharacterRegistry.characterList[Std.parseInt(character)];
 			updateHeads();
 		});
 		player2DropDown.selectedLabel = _song.player2;

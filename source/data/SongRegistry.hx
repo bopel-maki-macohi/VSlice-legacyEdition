@@ -16,7 +16,7 @@ class SongRegistry
 
 		var s = [];
 
-		for (week in WeekRegistry.weeks)
+		for (week in WeekRegistry.weekList)
 		{
 			final parsedWeek = WeekRegistry.loadFromJson(week);
 

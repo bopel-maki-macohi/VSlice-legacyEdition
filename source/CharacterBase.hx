@@ -121,30 +121,7 @@ class CharacterBase extends FlxSprite
 	{
 		final prevCharacterData = data;
 
-		if (c == '' || c == null)
-		{
-			trace('Who dis? Blank "c"');
-			return;
-		}
-
-		var path = Paths.json('$dataPath$c');
-		if (!Assets.exists(path))
-		{
-			trace('Couldnt find data path: $path');
-			return;
-		}
-
-		var rawJson = Assets.getText(path);
-
-		try
-		{
-			data = Json.parse(rawJson);
-		}
-		catch (e)
-		{
-			data = null;
-			trace('Couldnt parse Character Data JSON: $c\n$e');
-		}
+		data = CharacterRegistry.loadFromJson(c, dataPath);
 
 		if (data == null || data.animations.length < 1)
 		{
