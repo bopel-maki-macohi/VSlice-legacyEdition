@@ -3,39 +3,42 @@
 		"profile": "default",
 		"pkgs": [
 			{
-				"name": "flixel"
-			},
-			{
-				"name": "lime"
-			},
-			{
-				"name": "openfl"
-			},
-			{
-				"name": "flixel-addons"
-			},
-			{
-				"name": "hscript"
-			},
-			{
-				"name": "flixel-ui"
-			},
-			{
-				"name": "hxcpp-debug-server"
-			},
-			{
 				"name": "discord_rpc",
 				"link": "https://github.com/Aidan63/linc_discord-rpc"
 			},
 			{
-				"name": "polymod",
-				"link": "https://github.com/larsiusprime/polymod.git"
+				"name": "flixel",
+				"version": "6.1.2"
+			},
+			{
+				"name": "flixel-addons",
+				"version": "4.0.1"
+			},
+			{
+				"name": "flixel-ui",
+				"version": "2.6.4"
+			},
+			{
+				"name": "hscript",
+				"version": "2.7.0"
 			},
 			{
 				"name": "hxcpp"
 			},
 			{
-				"name": "hxvlc"
+				"name": "hxcpp-debug-server"
+			},
+			{
+				"name": "hxvlc",
+				"version": "2.2.6"
+			},
+			{
+				"name": "lime",
+				"version": "8.3.1"
+			},
+			{
+				"name": "openfl",
+				"version": "9.5.1"
 			}
 		]
 	}
