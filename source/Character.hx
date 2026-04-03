@@ -15,8 +15,6 @@ class Character extends CharacterBase
 
 		this.isPlayer = isPlayer;
 
-		var tex:FlxAtlasFrames;
-
 		if (curCharacter == 'pico-speaker')
 		{
 			loadMappedAnims();
@@ -76,8 +74,6 @@ class Character extends CharacterBase
 				}
 			}
 		}
-
-		dance();
 	}
 
 	override function update(elapsed:Float)
@@ -178,5 +174,13 @@ class Character extends CharacterBase
 	function sortAnims(val1:Array<Dynamic>, val2:Array<Dynamic>):Int
 	{
 		return FlxSort.byValues(FlxSort.ASCENDING, val1[0], val2[0]);
+	}
+
+	override function loadData(c:String)
+	{
+		super.loadData(c);
+
+		dance();
+		animation.finish();
 	}
 }
