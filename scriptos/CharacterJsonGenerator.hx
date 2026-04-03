@@ -46,7 +46,6 @@ class CharacterJsonGenerator
 	{
 		var animations:Array<Dynamic> = [];
 		var scale:Array<Float> = [1, 1];
-		var isPlayer = false;
 		var packer = false;
 		var startingAnim:String = '';
 		var isPixel = false;
@@ -64,25 +63,27 @@ class CharacterJsonGenerator
 		}
 
 		function addByPrefix(a:String, b:String, c:Int = 24, d:Bool = false)
-			animations.push({
-				name: a,
-				prefix: b,
-				fps: c,
-				looping: d,
-			});
+			animations.push(
+				{
+					name: a,
+					prefix: b,
+					fps: c,
+					looping: d,
+				});
 
 		function quickAnimAdd(a:String, b:String)
 			addByPrefix(a, b, 24, false);
 
 		function addByIndices(a:String, b:String, c:Array<Int>, d:String = '', e:Int = 24, f:Bool = false)
-			animations.push({
-				name: a,
-				prefix: b,
-				indices: c,
-				postfix: d,
-				fps: e,
-				looping: f,
-			});
+			animations.push(
+				{
+					name: a,
+					prefix: b,
+					indices: c,
+					postfix: d,
+					fps: e,
+					looping: f,
+				});
 
 		function setGraphicSize(s:Int = 1)
 		{
@@ -556,18 +557,21 @@ class CharacterJsonGenerator
 
 		if (isPlayer) flipX = !flipX;
 
-		File.saveContent('assets/preload/data/characters/$character.json', Json.stringify({
-			path: path,
-			animations: animations,
-			antialiasing: antialiasing,
-			flipY: flipY,
-			flipX: flipX,
-			scale: scale,
-			offsets: [0, 0],
-			offsetFile: offsetFile,
-			packer: packer,
-			startingAnim: startingAnim,
-			isPixel: isPixel,
-		}, '\t'));
+		trace(character + ' : ' + isPlayer);
+
+		File.saveContent('assets/preload/data/characters/$character.json', Json.stringify(
+			{
+				path: path,
+				animations: animations,
+				antialiasing: antialiasing,
+				flipY: flipY,
+				flipX: flipX,
+				scale: scale,
+				offsets: [0, 0],
+				offsetFile: offsetFile,
+				packer: packer,
+				startingAnim: startingAnim,
+				isPixel: isPixel,
+			}, '\t'));
 	}
 }
