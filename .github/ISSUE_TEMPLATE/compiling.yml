@@ -1,6 +1,6 @@
 name: Compiling Help
 description: Report an issue with compiling the game.
-labels: ["type: compilation help", "status: pending triage"]
+labels: ["compiling help"]
 title: "Compiling Help: "
 body:
   # - type: markdown
@@ -22,13 +22,13 @@ body:
       label: Platform
       description: Which platform are you compiling for?
       options:
-       # - Android
-       # - iOS/iPadOS
-       # - Web/HTML5
-       - Desktop (Windows)
-       - Desktop (Mac)
-       - Desktop (Linux)
-       - Other
+        # - Android
+        # - iOS/iPadOS
+        # - Web/HTML5
+        - Desktop (Windows)
+        - Desktop (Mac)
+        - Desktop (Linux)
+        - Other
     validations:
       required: true
 
