@@ -10,6 +10,8 @@
 		0
 	],
 	"path": "characters/BOYFRIEND",
+	"startingAnim": "idle",
+	"packer": false,
 	"flipY": false,
 	"antialiasing": true,
 	"animations": [

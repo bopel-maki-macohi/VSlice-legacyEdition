@@ -10,6 +10,8 @@
 		0
 	],
 	"path": "characters/spirit",
+	"startingAnim": "idle",
+	"packer": true,
 	"flipY": false,
 	"antialiasing": false,
 	"animations": [

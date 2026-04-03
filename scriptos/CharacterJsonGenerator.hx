@@ -44,12 +44,20 @@ class CharacterJsonGenerator
 		var animations:Array<Dynamic> = [];
 		var scale:Array<Float> = [1, 1];
 		var isPlayer = false;
+		var packer = false;
+		var startingAnim:String = '';
 
 		function getSparrowAtlas(v:String)
+		{
+			packer = false;
 			return v;
+		}
 
 		function getPackerAtlas(v:String)
+		{
+			packer = true;
 			return v;
+		}
 
 		function addByPrefix(a:String, b:String, c:Int = 24, d:Bool = false)
 			animations.push({
@@ -78,11 +86,14 @@ class CharacterJsonGenerator
 		}
 
 		var offsetFile = character;
-		function loadOffsetFile(v:String) 
+		function loadOffsetFile(v:String)
 		{
 			offsetFile = v;
 		}
-		function playAnim(v:String) {}
+		function playAnim(v:String)
+		{
+			startingAnim = v;
+		}
 		function updateHitbox() {}
 		function loadMappedAnims() {}
 
@@ -529,7 +540,7 @@ class CharacterJsonGenerator
 				playAnim('idle');
 
 				flipX = true;
-				
+
 				loadOffsetFile(character);
 		}
 
@@ -542,6 +553,8 @@ class CharacterJsonGenerator
 			scale: scale,
 			offsets: [0, 0],
 			offsetFile: offsetFile,
+			packer: packer,
+			startingAnim: startingAnim,
 		}, '\t'));
 	}
 }

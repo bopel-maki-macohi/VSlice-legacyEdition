@@ -10,6 +10,8 @@
 		0
 	],
 	"path": "characters/bfPixelsDEAD",
+	"startingAnim": "firstDeath",
+	"packer": false,
 	"flipY": false,
 	"antialiasing": false,
 	"animations": [

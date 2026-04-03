@@ -10,6 +10,8 @@
 		0
 	],
 	"path": "characters/monsterChristmas",
+	"startingAnim": "idle",
+	"packer": false,
 	"flipY": false,
 	"antialiasing": true,
 	"animations": [

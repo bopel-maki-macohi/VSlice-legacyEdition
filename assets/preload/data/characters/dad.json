@@ -10,6 +10,8 @@
 		0
 	],
 	"path": "characters/DADDY_DEAREST",
+	"startingAnim": "idle",
+	"packer": false,
 	"flipY": false,
 	"antialiasing": true,
 	"animations": [

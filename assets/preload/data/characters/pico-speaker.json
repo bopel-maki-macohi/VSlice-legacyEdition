@@ -10,6 +10,8 @@
 		0
 	],
 	"path": "characters/picoSpeaker",
+	"startingAnim": "shoot1",
+	"packer": false,
 	"flipY": false,
 	"antialiasing": true,
 	"animations": [

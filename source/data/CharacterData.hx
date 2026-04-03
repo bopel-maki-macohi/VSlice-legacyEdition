@@ -8,6 +8,9 @@ typedef CharacterData =
 			name:String,
 			prefix:String,
 
+			?indices:Array<Int>,
+			?postfix:String,
+
 			?looping:Bool,
 			?offsets:Array<Float>,
 		}>,
@@ -16,4 +19,6 @@ typedef CharacterData =
 	?flipX:Bool,
 	?flipY:Bool,
 	?offsetFile:String,
+	?packer:Bool,
+	?startingAnim:String,
 }

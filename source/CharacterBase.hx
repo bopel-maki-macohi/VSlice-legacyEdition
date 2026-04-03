@@ -152,7 +152,12 @@ class CharacterBase extends FlxSprite
 			return;
 		}
 
-		var tex = Paths.getSparrowAtlas(data?.path ?? '$dataPath/$c');
+		var tex:FlxAtlasFrames = null;
+
+		if (data.packer)
+			tex = Paths.getPackerAtlas(data?.path ?? '$dataPath/$c');
+		else
+			tex = Paths.getSparrowAtlas(data?.path ?? '$dataPath/$c');
 		frames = tex;
 
 		if (frames == null)
@@ -163,10 +168,13 @@ class CharacterBase extends FlxSprite
 
 		for (a in data.animations)
 		{
-			if (a.name == null || a.prefix == null)
+			if (a.name == null)
 				continue;
 
-			animation.addByPrefix(a.name, a.prefix, 24, a?.looping ?? true);
+			if (a.indices != null)
+				animation.addByIndices(a.name, a.prefix, a.indices, a.postfix, 24, a?.looping ?? true);
+			else if (a.prefix != null)
+				animation.addByPrefix(a.name, a.prefix, 24, a?.looping ?? true);
 
 			if (a.offsets != null)
 				addOffset(a.name, a.offsets[0] ?? 0, a.offsets[1] ?? 0);
@@ -182,5 +190,8 @@ class CharacterBase extends FlxSprite
 		flipY = data?.flipY;
 
 		loadOffsetFile(data?.offsetFile ?? c);
+
+		if (animation.getNameList().contains(data.startingAnim))
+			playAnim(data.startingAnim);
 	}
 }

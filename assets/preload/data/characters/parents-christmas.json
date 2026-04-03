@@ -10,6 +10,8 @@
 		0
 	],
 	"path": "characters/mom_dad_christmas_assets",
+	"startingAnim": "idle",
+	"packer": false,
 	"flipY": false,
 	"antialiasing": true,
 	"animations": [

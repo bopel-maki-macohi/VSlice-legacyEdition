@@ -10,6 +10,8 @@
 		0
 	],
 	"path": "characters/Pico_FNF_assetss",
+	"startingAnim": "idle",
+	"packer": false,
 	"flipY": false,
 	"antialiasing": true,
 	"animations": [

@@ -10,6 +10,8 @@
 		0
 	],
 	"path": "characters/Mom_Assets",
+	"startingAnim": "idle",
+	"packer": false,
 	"flipY": false,
 	"antialiasing": true,
 	"animations": [
