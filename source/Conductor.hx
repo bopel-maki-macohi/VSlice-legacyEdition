@@ -1,10 +1,11 @@
 package;
 
+import flixel.sound.FlxSound;
+
 /**
  * ...
  * @author
  */
-
 typedef BPMChangeEvent =
 {
 	var stepTime:Int;
@@ -26,35 +27,41 @@ class Conductor
 
 	public static var bpmChangeMap:Array<BPMChangeEvent> = [];
 
-	public function new()
-	{
-	}
+	public function new() {}
 
-	public static function mapBPMChanges(song:SongData)
+	public static function mapBPMChanges(song:SongData, ?iwantthebpmMap:Bool = true)
 	{
 		bpmChangeMap = [];
 
 		var curBPM:Float = song.bpm;
 		var totalSteps:Int = 0;
 		var totalPos:Float = 0;
+
 		for (i in 0...song.notes.length)
 		{
-			if(song.notes[i].changeBPM && song.notes[i].bpm != curBPM)
+			if (song.notes[i].changeBPM && song.notes[i].bpm != curBPM)
 			{
 				curBPM = song.notes[i].bpm;
-				var event:BPMChangeEvent = {
-					stepTime: totalSteps,
-					songTime: totalPos,
-					bpm: curBPM
-				};
-				bpmChangeMap.push(event);
+				
+				if (iwantthebpmMap)
+				{
+					var event:BPMChangeEvent = {
+						stepTime: totalSteps,
+						songTime: totalPos,
+						bpm: curBPM
+					};
+					bpmChangeMap.push(event);
+				}
 			}
 
 			var deltaSteps:Int = song.notes[i].lengthInSteps;
 			totalSteps += deltaSteps;
 			totalPos += ((60 / curBPM) * 1000 / 4) * deltaSteps;
 		}
-		trace("new BPM map BUDDY " + bpmChangeMap);
+		if (iwantthebpmMap)
+			trace("new BPM map BUDDY " + bpmChangeMap);
+
+		return totalPos;
 	}
 
 	public static function changeBPM(newBpm:Float)
@@ -64,4 +71,7 @@ class Conductor
 		crochet = ((60 / bpm) * 1000);
 		stepCrochet = crochet / 4;
 	}
+
+	public static function calcSongLength(song:SongData)
+		return mapBPMChanges(song, false);
 }

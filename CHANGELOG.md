@@ -10,19 +10,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 This is VSlice Legacy Edition now!
 
 ### Added
-- Chart Editor hitsounds (this code yoinked from psych)!
-- Chart Editor SOUNDS (sfx themselves yoinked from VSlice)!
+- Chart Editor
+    - Chart Editor hitsounds (this code yoinked from psych)!
+    - Chart Editor SOUNDS (sfx themselves yoinked from VSlice)!
+
 - Difficulty dropdown to chart editor (looks for the song jsons)
 - BOPEEBO ERECT!
-- Censored roses cutscene!
-- Censored stress cutscene!
+- Cutscenes
+    - Censored roses cutscene!
+    - Censored stress cutscene!
 
 ### Changed
+- Chart Editor
+    - The chart editor "bpmText" has had modifications
+    - You can no longer scroll with the scroll wheel in the chart editor while an input box has focus
+    - All chart editor keyboard shortcuts no longer work while an input box has focus
+
 - Freeplay now auto-finds all the difficulties that exist for the song and you cant select anything else
     - Example: if `tutorial-nightmare.json` exists then nightmare is selectable via freeplay
+
 - The notes fade when u've passed them now in the chart editor so thats cool too
 - Moved character offset files to "data/characters"
     - There are plans to soon depricate offset text files, keep this in mind
+
 - The following are driven by data JSON files now:
     - Characters
         - The characters list is generated dynamically from all the character files now
@@ -31,6 +41,7 @@ This is VSlice Legacy Edition now!
     - Storymode weeks
         - Freeplay is generated from the weeks
         - Order (and inclusion) is dependent on a text file
+
 - Moved song files / folders to "data/songs"
 
 ### Fixed
