@@ -18,6 +18,8 @@ This is VSlice Legacy Edition now!
 - Censored stress cutscene!
 
 ### Changed
+- Freeplay now auto-finds all the difficulties that exist for the song and you cant select anything else
+    - Example: if `tutorial-nightmare.json` exists then nightmare is selectable via freeplay
 - The notes fade when u've passed them now in the chart editor so thats cool too
 - Moved character offset files to "data/characters"
     - There are plans to soon depricate offset text files, keep this in mind
